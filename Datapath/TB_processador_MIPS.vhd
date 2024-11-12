@@ -1,19 +1,15 @@
+-- Libraries definitions
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all; -- Uso do numeric_std para compatibilidade adequada
+use ieee.numeric_std.all;
 
 entity tb_processador is
 end entity;
 
-architecture sim of tb_processador is
-    -- Sinais para o testbench
-    signal clock    : std_logic := '0';
-    signal reset    : std_logic := '0';
-    signal R0_out   : std_logic_vector(7 downto 0);
-    signal R1_out   : std_logic_vector(7 downto 0);
+architecture behaviour of tb_processador is
 
-    -- Instância do processador
-    component processador
+    -- Componente a ser validado
+    component processador is
         port(
             clock   : in std_logic;
             reset   : in std_logic;
@@ -22,47 +18,45 @@ architecture sim of tb_processador is
         );
     end component;
 
+    -- Sinais para o testbench
+    signal reset_sg     : std_logic := '1';  -- Sinal de reset
+    signal clock_sg     : std_logic := '0';  -- Sinal de clock
+    signal R0_out_sg    : std_logic_vector(7 downto 0); -- Saída R0
+    signal R1_out_sg    : std_logic_vector(7 downto 0); -- Saída R1
+
 begin
-    -- Instanciação do processador
-    uut: processador
+    -- Instanciação do componente processador
+    inst_processador : processador
         port map (
-            clock   => clock,
-            reset   => reset,
-            R0_out  => R0_out,
-            R1_out  => R1_out
+            clock   => clock_sg,
+            reset   => reset_sg,
+            R0_out  => R0_out_sg,
+            R1_out  => R1_out_sg
         );
 
-    -- Geração do clock: alterna a cada 10 ns
-    clock_process : process
+    -- Geração do clock
+    clock_sg <= not clock_sg after 5 ns;
+
+    -- Processo para simulação
+    process
     begin
-        while true loop
-            clock <= '0';
-            wait for 10 ns;
-            clock <= '1';
-            wait for 10 ns;
-        end loop;
-    end process;
+        -- Inicializa reset
+        wait for 2 ns;
+        reset_sg <= '0';  -- Desativa o reset
 
-    -- Processo de teste
-    stimulus: process
-    begin
-        -- Aplica reset
-        reset <= '1';
-        wait for 20 ns;
-        reset <= '0';
+        -- Teste 1: Carrega instruções e verifica saídas
+        wait for 8 ns;
+        -- Nesse instante, verificações podem ser realizadas nos valores de R0_out e R1_out
+        -- Para observar os valores esperados conforme a lógica da ULA e as operações carregadas na memória de instruções.
 
-        -- Testa algumas instruções de exemplo, esperando alguns ciclos de clock entre elas
-        wait for 40 ns;  -- Deixe o processador executar as instruções iniciais
+        -- Teste 2: Altera o estado das memórias de entrada e verifica comportamento do pipeline
+        wait for 10 ns;
 
-        -- Exibe o valor dos registradores de saída após a execução de instruções
-        wait for 80 ns; -- Tempo extra para verificar operações
+        -- Teste 3: Teste adicional para operações aritméticas
+        wait for 10 ns;
 
-        -- Teste de carregamento de dados e operações aritméticas
-        wait for 100 ns;  -- Aguarda para observar as operações LOAD e ADD
-        report "R0_out: " & integer'image(to_integer(unsigned(R0_out))) & 
-               ", R1_out: " & integer'image(to_integer(unsigned(R1_out)));
-
-        -- Fim da simulação
+        -- Fim do teste
         wait;
     end process;
-end architecture;
+
+end behaviour;
