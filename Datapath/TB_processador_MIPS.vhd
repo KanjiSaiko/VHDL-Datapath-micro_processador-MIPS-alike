@@ -3,35 +3,38 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity tb_processador is
+entity tb_processador_MIPS is
 end entity;
 
-architecture behaviour of tb_processador is
+architecture behaviour of tb_processador_MIPS is
 
     -- Componente a ser validado
-    component processador is
+    component processador_MIPS is
         port(
-            clock   : in std_logic;
-            reset   : in std_logic;
-            R0_out  : out std_logic_vector(7 downto 0);
-            R1_out  : out std_logic_vector(7 downto 0)
+            clock       : in std_logic;
+            reset       : in std_logic;
+            R0_out      : out std_logic_vector(7 downto 0);
+            R1_out      : out std_logic_vector(7 downto 0);
+            Regs_out    : out std_logic_vector(7 downto 0)
         );
     end component;
 
     -- Sinais para o testbench
-    signal reset_sg     : std_logic := '1';  -- Sinal de reset
-    signal clock_sg     : std_logic := '0';  -- Sinal de clock
-    signal R0_out_sg    : std_logic_vector(7 downto 0); -- Saída R0
-    signal R1_out_sg    : std_logic_vector(7 downto 0); -- Saída R1
+    signal reset_sg       : std_logic := '1';  -- Sinal de reset
+    signal clock_sg       : std_logic := '0';  -- Sinal de clock
+    signal R0_out_sg      : std_logic_vector(7 downto 0); -- Saída R0
+    signal R1_out_sg      : std_logic_vector(7 downto 0); -- Saída R1
+    signal Regs_out_sg    : std_logic_vector(7 downto 0); -- Saída R1
 
 begin
-    -- Instanciação do componente processador
-    inst_processador : processador
+    -- Instanciação do componente processador_MIPS
+    inst_processador_MIPS : processador_MIPS
         port map (
-            clock   => clock_sg,
-            reset   => reset_sg,
-            R0_out  => R0_out_sg,
-            R1_out  => R1_out_sg
+            clock     => clock_sg,
+            reset     => reset_sg,
+            R0_out    => R0_out_sg,
+            R1_out    => R1_out_sg,
+            Regs_out  => Regs_out_sg
         );
 
     -- Geração do clock
