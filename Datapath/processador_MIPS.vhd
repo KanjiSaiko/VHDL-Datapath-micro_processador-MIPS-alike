@@ -23,7 +23,7 @@ architecture behavior of processador_MIPS is
         1 => "0000000100000010", -- LDA endereço 2 para R1
         2 => "0011001000000001", -- ADD R0 + R1 -> R2 => 4
         3 => "0111001000000001", -- STA R2 no endereço 1
-        others => (others => '0') -- Demais posições zeradas
+        others => (others => '1') -- Demais posições zeradas
     );
 
     signal mem_d	            : mem_dados := ( --Memória de Dados, com 255 posições de 8 bits cada.
@@ -57,7 +57,8 @@ begin --a memória de instruções é carregada com valores iniciais. Cada posi�
     desvio <= '1' when (opcode = "0100" and equal = '1') or (opcode = "0101" and equal = '0') or (opcode = "0110") else
         '0';
 
-    
+    R0 <= regs(conv_integer(instrucao(7 downto 4)));
+    R1 <= regs(conv_integer(instrucao(11 downto 8)));
 
     process(reset, clock)
         begin
@@ -72,11 +73,6 @@ begin --a memória de instruções é carregada com valores iniciais. Cada posi�
                 instrucao <= mem_i(conv_integer(PC));
                 opcode <= instrucao(15 downto 12);
 
-                if(enable_reg = '1') then
-                    R0 <= regs(conv_integer(instrucao(7 downto 4)));
-                    R1 <= regs(conv_integer(instrucao(11 downto 8)));
-                end if;
-
                 -- Decodificação e execução
                 case opcode is
                     when "0000" => -- LOAD
@@ -86,15 +82,15 @@ begin --a memória de instruções é carregada com valores iniciais. Cada posi�
                         mem_d(conv_integer(instrucao(7 downto 0))) <= regs(conv_integer(instrucao(11 downto 8)));
                     
                     when "0001" => -- ADD
-                        ula <= regs(conv_integer(instrucao(7 downto 4))) + regs(conv_integer(instrucao(11 downto 8)));
+                        ula <= R0 + R1;
                         regs(conv_integer(instrucao(11 downto 8))) <= ula;
 
                     when "0010" => -- SUB
-                        ula <= regs(conv_integer(instrucao(7 downto 4))) - regs(conv_integer(instrucao(11 downto 8)));
+                        ula <= R0 - R1;
                         regs(conv_integer(instrucao(11 downto 8))) <= ula;
 
                     when "0011" => -- MULT
-                        ula <= regs(conv_integer(instrucao(7 downto 4))) * regs(conv_integer(instrucao(11 downto 8)));
+                        ula <= R0 * R1;
                         regs(conv_integer(instrucao(11 downto 8))) <= ula(7 downto 0);
 
                     when others =>
