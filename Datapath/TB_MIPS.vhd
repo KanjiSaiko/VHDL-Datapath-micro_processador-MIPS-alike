@@ -3,13 +3,13 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity tb_processador_MIPS is
+entity TB_MIPS is
 end entity;
 
-architecture behaviour of tb_processador_MIPS is
+architecture behaviour of TB_MIPS is
 
     -- Componente a ser validado
-    component processador_MIPS is
+    component MIPS is
         port(
             clock       : in std_logic;
             reset       : in std_logic
@@ -24,7 +24,7 @@ architecture behaviour of tb_processador_MIPS is
 
 begin
     -- Instanciação do componente processador_MIPS
-    inst_processador_MIPS : processador_MIPS
+    inst_MIPS : MIPS
         port map (
             clock     => clock_sg,
             reset     => reset_sg

@@ -3,15 +3,15 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 
-entity processador_MIPS is
+entity MIPS is
 	port (
 		clock	: in std_logic;
 		reset	: in std_logic
         --Reg_out    : out std_logic_vector(7 downto 0)
 		);
-end processador_MIPS;
+end MIPS;
 
-architecture behavior of processador_MIPS is
+architecture behavior of MIPS is
 
     signal PC	: std_logic_vector(7 downto 0); -- Contador de programa (Program Counter) que armazena o endereço atual de execução.
     type mem_dados is array (integer range 0 to 255) of std_logic_vector(7 downto 0);
@@ -43,18 +43,26 @@ architecture behavior of processador_MIPS is
     signal desvio	            : std_logic; --Controle para indicar se deve ocorrer um salto (branch).
     signal ula		            : std_logic_vector(15 downto 0); --Saída da ULA que executa operações aritméticas.
     signal equal	            : std_logic; --Sinal para verificar se R0 é igual a R1 (usado em instruções de comparação).
+    signal enable_reg	        : std_logic; --Habilita a gravação de valores em registradores.
+    signal R0, R1               : std_logic_vector(7 downto 0);
 
 begin --a memória de instruções é carregada com valores iniciais. Cada posição contém uma instrução.
+    
+    R0 <= regs(conv_integer(mem_i(conv_integer(PC))(7 downto 4)));
+    R1 <= regs(conv_integer(mem_i(conv_integer(PC))(3 downto 0)));
+
+    enable_reg	<= '1' when (mem_i(conv_integer(PC))(15 downto 12) = "0000") or (mem_i(conv_integer(PC))(15 downto 12) = "0001") or (mem_i(conv_integer(PC))(15 downto 12) = "0010") or (mem_i(conv_integer(PC))(15 downto 12) = "0011") else
+				'0';
 
     --Verifica se R0 e R1 têm valores iguais.
-    equal <= '1' when (regs(conv_integer(mem_i(conv_integer(PC))(7 downto 4))) = regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8)))) else
+    equal <= '1' when (R0 = R1) else
         '0';
 
     --Indica se um salto deve ocorrer.
     desvio <= '1' when (mem_i(conv_integer(PC))(15 downto 12) = "0100" and equal = '0') or (mem_i(conv_integer(PC))(15 downto 12) = "0101" and equal = '1') or (mem_i(conv_integer(PC))(15 downto 12) = "0110" and equal = '0') else
         '0';
 
-    ula <= regs(conv_integer(mem_i(conv_integer(PC))(7 downto 4))) * regs(conv_integer(mem_i(conv_integer(PC))(3 downto 0)));
+    ula <= R0 * R1;
     process(reset, clock)
         begin
             if (reset = '1') then   --Se reset está ativo (1), ele zera tudo
@@ -71,18 +79,18 @@ begin --a memória de instruções é carregada com valores iniciais. Cada posi�
                         mem_d(conv_integer(mem_i(conv_integer(PC))(7 downto 0))) <= regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8)));
                     
                     when "0001" => -- ADD
-                        --ula <= R0 + R1;
-                        regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= regs(conv_integer(mem_i(conv_integer(PC))(7 downto 4))) + regs(conv_integer(mem_i(conv_integer(PC))(3 downto 0)));
+--                        ula <= R0 + R1;
+                        regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= R0 + R1;
 
                     when "0010" => -- SUB
                         --ula <= R0 - R1;
-                        regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= regs(conv_integer(mem_i(conv_integer(PC))(7 downto 4))) - regs(conv_integer(mem_i(conv_integer(PC))(3 downto 0)));
+                        regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= R0 - R1;
 
                     when "0011" => -- MULT
                         regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= ula(7 downto 0);
 
                     when others =>
-    
+                        
                     end case;
 
                 if (desvio = '0') then --Se não houver desvio.
@@ -90,11 +98,11 @@ begin --a memória de instruções é carregada com valores iniciais. Cada posi�
 
                 else --Caso contrário, ele pula para o endereço indicado. --JUMP, BEQ OU BQE
                     if (mem_i(conv_integer(PC))(15 downto 12) = "0110" or mem_i(conv_integer(PC))(15 downto 12) = "0101") then
-
+                        
                         PC <= PC + mem_i(conv_integer(PC))(2 downto 0);
-
+                    
                     elsif (mem_i(conv_integer(PC))(15 downto 12) = "0100") then
-
+                        
                         PC <= mem_i(conv_integer(PC))(7 downto 0);
 
                     end if;
