@@ -5,9 +5,9 @@ use ieee.std_logic_arith.all;
 
 entity MIPS is
 	port (
-		clock	: in std_logic;
-		reset	: in std_logic
-        --Reg_out    : out std_logic_vector(7 downto 0)
+		clock	    : in std_logic;
+		reset	    : in std_logic;
+        Reg_out     : out std_logic_vector(7 downto 0)
 		);
 end MIPS;
 
@@ -18,7 +18,7 @@ architecture behavior of MIPS is
     type mem_instruc is array (integer range 0 to 255) of std_logic_vector(15 downto 0);
     type banco_regs is array (integer range 0 to 15) of std_logic_vector(7 downto 0);
 
-    signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 255 posições de 16 bits cada.
+    signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 256 posições de 16 bits cada.
         0 => "0110000000010111", -- BNE R0 != R1 
         1 => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
         2 => "0000000100000011", -- LDA endereço 2 para R1 (Valor 3)
@@ -32,7 +32,7 @@ architecture behavior of MIPS is
         others => (others => '1') -- Demais posiçõe zeradas
     );
 
-    signal mem_d	            : mem_dados := ( --Memória de Dados, com 255 posições de 8 bits cada.
+    signal mem_d	            : mem_dados := ( --Memória de Dados, com 256 posições de 8 bits cada.
     --    0 => "00000000",
     --    1 => "00000001", --1
     --    2 => "00000011", --3
@@ -43,15 +43,15 @@ architecture behavior of MIPS is
     signal desvio	            : std_logic; --Controle para indicar se deve ocorrer um salto (branch).
     signal ula		            : std_logic_vector(15 downto 0); --Saída da ULA que executa operações aritméticas.
     signal equal	            : std_logic; --Sinal para verificar se R0 é igual a R1 (usado em instruções de comparação).
-    signal enable_reg	        : std_logic; --Habilita a gravação de valores em registradores.
+    signal enable_reg_out	        : std_logic; --Habilita a gravação de valores em registradores.
     signal R0, R1               : std_logic_vector(7 downto 0);
 
-begin --a memória de instruções é carregada com valores iniciais. Cada posição contém uma instrução.
+begin 
     
     R0 <= regs(conv_integer(mem_i(conv_integer(PC))(7 downto 4)));
     R1 <= regs(conv_integer(mem_i(conv_integer(PC))(3 downto 0)));
 
-    enable_reg	<= '1' when (mem_i(conv_integer(PC))(15 downto 12) = "0000") or (mem_i(conv_integer(PC))(15 downto 12) = "0001") or (mem_i(conv_integer(PC))(15 downto 12) = "0010") or (mem_i(conv_integer(PC))(15 downto 12) = "0011") else
+    enable_reg_out	<= '1' when (mem_i(conv_integer(PC))(15 downto 12) = "0001") or (mem_i(conv_integer(PC))(15 downto 12) = "0010") or (mem_i(conv_integer(PC))(15 downto 12) = "0011") else
 				'0';
 
     --Verifica se R0 e R1 têm valores iguais.
@@ -61,8 +61,11 @@ begin --a memória de instruções é carregada com valores iniciais. Cada posi�
     --Indica se um salto deve ocorrer.
     desvio <= '1' when (mem_i(conv_integer(PC))(15 downto 12) = "0100" and equal = '0') or (mem_i(conv_integer(PC))(15 downto 12) = "0101" and equal = '1') or (mem_i(conv_integer(PC))(15 downto 12) = "0110" and equal = '0') else
         '0';
-
+    
     ula <= R0 * R1;
+
+    Reg_out <= regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8)));
+    
     process(reset, clock)
         begin
             if (reset = '1') then   --Se reset está ativo (1), ele zera tudo
@@ -108,6 +111,6 @@ begin --a memória de instruções é carregada com valores iniciais. Cada posi�
                     end if;
                 end if;
             end if;
-                    
-            end process;
+    end process;
+
 end behavior;

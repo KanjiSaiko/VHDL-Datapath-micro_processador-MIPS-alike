@@ -12,23 +12,23 @@ architecture behaviour of TB_MIPS is
     component MIPS is
         port(
             clock       : in std_logic;
-            reset       : in std_logic
-            --Regs_out    : out std_logic_vector(7 downto 0)
+            reset       : in std_logic;
+            Reg_out    : out std_logic_vector(7 downto 0)
         );
     end component;
 
     -- Sinais para o testbench
     signal reset_sg       : std_logic := '1';  -- Sinal de reset
     signal clock_sg       : std_logic := '0';  -- Sinal de clock
-   -- signal Regs_out_sg    : std_logic_vector(7 downto 0); -- Saída R1
+    signal Reg_out_sg    : std_logic_vector(7 downto 0); -- Saída R1
 
 begin
     -- Instanciação do componente processador_MIPS
     inst_MIPS : MIPS
         port map (
             clock     => clock_sg,
-            reset     => reset_sg
-            --Regs_out  => Regs_out_sg
+            reset     => reset_sg,
+            Reg_out  => Reg_out_sg
         );
 
     -- Geração do clock
