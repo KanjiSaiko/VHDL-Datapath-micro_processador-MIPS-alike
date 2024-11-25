@@ -1,0 +1,10 @@
+vendor_name = ModelSim
+source_file = 1, C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-processador_MIPS/processador_MIPS.vhd
+source_file = 1, C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-processador_MIPS/db/processador_MIPS.cbx.xml
+source_file = 1, c:/altera/13.0/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
+source_file = 1, c:/altera/13.0/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
+source_file = 1, c:/altera/13.0/quartus/libraries/vhdl/ieee/timing_b.vhd
+source_file = 1, c:/altera/13.0/quartus/libraries/vhdl/ieee/timing_p.vhd
+design_name = processador_MIPS
+instance = comp, \clock~input\, clock~input, processador_MIPS, 1
+instance = comp, \reset~input\, reset~input, processador_MIPS, 1
