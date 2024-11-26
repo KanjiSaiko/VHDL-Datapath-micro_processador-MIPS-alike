@@ -30,6 +30,7 @@ architecture behavior of MIPS is
         7 => "0111001100000010", -- STA R3 no endereço 2 (Valor 12)
         8 => "0010001000100000", -- SUB R2 - R0 -> R2 (Valor 3)
         9 => "0111001000000011", -- STA R2 no endereço 3 (Valor 3)
+       10 => "1001010000101111", -- ADDI R2 + IMM -> R4 (Valor 18)
         others => (others => '1') -- Demais posiçõe zeradas
     );
 
@@ -91,6 +92,9 @@ begin
 
                     when "0011" => -- MULT
                         regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= ula(7 downto 0);
+
+                    when "1001" => -- ADDI
+                        regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= R0 + mem_i(conv_integer(PC))(3 downto 0);
 
                     when others =>
                         
