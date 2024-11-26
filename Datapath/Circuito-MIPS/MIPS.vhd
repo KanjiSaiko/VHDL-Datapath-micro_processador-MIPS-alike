@@ -7,7 +7,8 @@ entity MIPS is
 	port (
 		clock	    : in std_logic;
 		reset	    : in std_logic;
-        Reg_out     : out std_logic_vector(7 downto 0)
+        R0_out      : out std_logic_vector(7 downto 0);
+        R1_out      : out std_logic_vector(7 downto 0)
 		);
 end MIPS;
 
@@ -29,6 +30,7 @@ architecture behavior of MIPS is
         7 => "0111001100000010", -- STA R3 no endereço 2 (Valor 12)
         8 => "0010001000100000", -- SUB R2 - R0 -> R2 (Valor 3)
         9 => "0111001000000011", -- STA R2 no endereço 3 (Valor 3)
+       10 => "1001010000101111", -- ADDI R2 + IMM -> R4 (Valor 18)
         others => (others => '1') -- Demais posiçõe zeradas
     );
 
@@ -43,9 +45,8 @@ architecture behavior of MIPS is
     signal desvio	            : std_logic; --Controle para indicar se deve ocorrer um salto (branch).
     signal ula		            : std_logic_vector(15 downto 0); --Saída da ULA que executa operações aritméticas.
     signal equal	            : std_logic; --Sinal para verificar se R0 é igual a R1 (usado em instruções de comparação).
-    signal enable_reg_out	        : std_logic; --Habilita a gravação de valores em registradores.
+    signal enable_reg_out	    : std_logic; --Habilita a gravação de valores em registradores.
     signal R0, R1               : std_logic_vector(7 downto 0);
-
 begin 
     
     R0 <= regs(conv_integer(mem_i(conv_integer(PC))(7 downto 4)));
@@ -64,13 +65,13 @@ begin
     
     ula <= R0 * R1;
 
-    Reg_out <= regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8)));
-    
+    R0_out <= R0;
+    R1_out <= R1;
     process(reset, clock)
         begin
             if (reset = '1') then   --Se reset está ativo (1), ele zera tudo
-                regs <= (others => (others => '0'));
-                PC   <= (others => '0');
+                regs    <= (others => (others => '0'));
+                PC      <= (others => '0');
 
             elsif (clock = '1' and clock'event) then
                 -- Decodificação e execução
@@ -91,6 +92,9 @@ begin
 
                     when "0011" => -- MULT
                         regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= ula(7 downto 0);
+
+                    when "1001" => -- ADDI
+                        regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= R0 + mem_i(conv_integer(PC))(3 downto 0);
 
                     when others =>
                         

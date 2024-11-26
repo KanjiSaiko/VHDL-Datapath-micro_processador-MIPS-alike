@@ -1,5 +1,5 @@
 Analysis & Synthesis report for MIPS
-Mon Nov 25 17:27:40 2024
+Mon Nov 25 23:49:51 2024
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -13,16 +13,14 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. Removed Registers Triggering Further Register Optimizations
- 10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
- 13. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_mult:mac_mult1
- 14. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_out:mac_out2
- 15. lpm_mult Parameter Settings by Entity Instance
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
+ 11. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_mult:mac_mult1
+ 12. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_out:mac_out2
+ 13. lpm_mult Parameter Settings by Entity Instance
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -48,16 +46,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Nov 25 17:27:40 2024      ;
+; Analysis & Synthesis Status        ; Successful - Mon Nov 25 23:49:51 2024      ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
 ; Revision Name                      ; MIPS                                       ;
 ; Top-level Entity Name              ; MIPS                                       ;
 ; Family                             ; Cyclone IV GX                              ;
-; Total logic elements               ; 247                                        ;
-;     Total combinational functions  ; 223                                        ;
-;     Dedicated logic registers      ; 40                                         ;
-; Total registers                    ; 40                                         ;
-; Total pins                         ; 10                                         ;
+; Total logic elements               ; 405                                        ;
+;     Total combinational functions  ; 293                                        ;
+;     Dedicated logic registers      ; 136                                        ;
+; Total registers                    ; 136                                        ;
+; Total pins                         ; 18                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -172,21 +170,21 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                 ; Library ;
 +----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------+
-; MIPS.vhd                         ; yes             ; User VHDL File               ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/cria-circuito/MIPS.vhd             ;         ;
+; MIPS.vhd                         ; yes             ; User VHDL File               ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-MIPS/MIPS.vhd             ;         ;
 ; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/lpm_mult.tdf                                                                                  ;         ;
 ; aglobal130.inc                   ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/aglobal130.inc                                                                                ;         ;
 ; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/lpm_add_sub.inc                                                                               ;         ;
 ; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/multcore.inc                                                                                  ;         ;
 ; bypassff.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/bypassff.inc                                                                                  ;         ;
 ; altshift.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/altshift.inc                                                                                  ;         ;
-; db/mult_4et.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/cria-circuito/db/mult_4et.tdf      ;         ;
+; db/mult_4et.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-MIPS/db/mult_4et.tdf      ;         ;
 ; alt_mac_mult.tdf                 ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/alt_mac_mult.tdf                                                                              ;         ;
 ; lpm_mult.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/lpm_mult.inc                                                                                  ;         ;
-; db/mac_mult_vvg1.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/cria-circuito/db/mac_mult_vvg1.tdf ;         ;
-; db/mult_nrl.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/cria-circuito/db/mult_nrl.tdf      ;         ;
+; db/mac_mult_vvg1.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-MIPS/db/mac_mult_vvg1.tdf ;         ;
+; db/mult_nrl.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-MIPS/db/mult_nrl.tdf      ;         ;
 ; alt_mac_out.tdf                  ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/alt_mac_out.tdf                                                                               ;         ;
 ; alt_zaccum.inc                   ; yes             ; Megafunction                 ; c:/altera/13.0/quartus/libraries/megafunctions/alt_zaccum.inc                                                                                ;         ;
-; db/mac_out_ov82.tdf              ; yes             ; Auto-Generated Megafunction  ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/cria-circuito/db/mac_out_ov82.tdf  ;         ;
+; db/mac_out_ov82.tdf              ; yes             ; Auto-Generated Megafunction  ; C:/Users/Erick_Matos/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-MIPS/db/mac_out_ov82.tdf  ;         ;
 +----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -195,12 +193,12 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------+------------------+
 ; Resource                 ; Usage            ;
 +--------------------------+------------------+
-; I/O pins                 ; 10               ;
+; I/O pins                 ; 18               ;
 ; DSP block 9-bit elements ; 0                ;
-; Maximum fan-out node     ; Mux12~2          ;
-; Maximum fan-out          ; 55               ;
-; Total fan-out            ; 938              ;
-; Average fan-out          ; 3.31             ;
+; Maximum fan-out node     ; clock~input      ;
+; Maximum fan-out          ; 136              ;
+; Total fan-out            ; 1625             ;
+; Average fan-out          ; 3.49             ;
 +--------------------------+------------------+
 
 
@@ -209,131 +207,14 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                 ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                             ; Library Name ;
 +--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
-; |MIPS                                      ; 223 (176)         ; 40 (40)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 10   ; 0            ; |MIPS                                                                                                           ;              ;
-;    |lpm_mult:Mult0|                        ; 47 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0                                                                                            ;              ;
-;       |mult_4et:auto_generated|            ; 47 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0|mult_4et:auto_generated                                                                    ;              ;
-;          |alt_mac_mult:mac_mult1|          ; 47 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_mult:mac_mult1                                             ;              ;
-;             |mac_mult_vvg1:auto_generated| ; 47 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_mult:mac_mult1|mac_mult_vvg1:auto_generated                ;              ;
-;                |mult_nrl:mult1|            ; 47 (47)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_mult:mac_mult1|mac_mult_vvg1:auto_generated|mult_nrl:mult1 ;              ;
+; |MIPS                                      ; 293 (247)         ; 136 (136)    ; 0           ; 0            ; 0       ; 0         ; 0         ; 18   ; 0            ; |MIPS                                                                                                           ;              ;
+;    |lpm_mult:Mult0|                        ; 46 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0                                                                                            ;              ;
+;       |mult_4et:auto_generated|            ; 46 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0|mult_4et:auto_generated                                                                    ;              ;
+;          |alt_mac_mult:mac_mult1|          ; 46 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_mult:mac_mult1                                             ;              ;
+;             |mac_mult_vvg1:auto_generated| ; 46 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_mult:mac_mult1|mac_mult_vvg1:auto_generated                ;              ;
+;                |mult_nrl:mult1|            ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0|mult_4et:auto_generated|alt_mac_mult:mac_mult1|mac_mult_vvg1:auto_generated|mult_nrl:mult1 ;              ;
 +--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; regs[9][2]                             ; Merged with regs[4][7]                 ;
-; regs[11][2]                            ; Merged with regs[4][7]                 ;
-; regs[5][2]                             ; Merged with regs[4][7]                 ;
-; regs[8][2]                             ; Merged with regs[4][7]                 ;
-; regs[5][0]                             ; Merged with regs[4][7]                 ;
-; regs[4][2]                             ; Merged with regs[4][7]                 ;
-; regs[10][2]                            ; Merged with regs[4][7]                 ;
-; regs[10][7]                            ; Merged with regs[4][7]                 ;
-; regs[5][4]                             ; Merged with regs[4][7]                 ;
-; regs[11][1]                            ; Merged with regs[4][7]                 ;
-; regs[8][7]                             ; Merged with regs[4][7]                 ;
-; regs[6][0]                             ; Merged with regs[4][7]                 ;
-; regs[4][6]                             ; Merged with regs[4][7]                 ;
-; regs[9][6]                             ; Merged with regs[4][7]                 ;
-; regs[9][5]                             ; Merged with regs[4][7]                 ;
-; regs[10][6]                            ; Merged with regs[4][7]                 ;
-; regs[4][1]                             ; Merged with regs[4][7]                 ;
-; regs[11][6]                            ; Merged with regs[4][7]                 ;
-; regs[9][3]                             ; Merged with regs[4][7]                 ;
-; regs[10][1]                            ; Merged with regs[4][7]                 ;
-; regs[5][5]                             ; Merged with regs[4][7]                 ;
-; regs[8][6]                             ; Merged with regs[4][7]                 ;
-; regs[11][5]                            ; Merged with regs[4][7]                 ;
-; regs[6][3]                             ; Merged with regs[4][7]                 ;
-; regs[6][2]                             ; Merged with regs[4][7]                 ;
-; regs[7][0]                             ; Merged with regs[4][7]                 ;
-; regs[7][4]                             ; Merged with regs[4][7]                 ;
-; regs[8][1]                             ; Merged with regs[4][7]                 ;
-; regs[8][4]                             ; Merged with regs[4][7]                 ;
-; regs[8][5]                             ; Merged with regs[4][7]                 ;
-; regs[8][0]                             ; Merged with regs[4][7]                 ;
-; regs[4][4]                             ; Merged with regs[4][7]                 ;
-; regs[9][4]                             ; Merged with regs[4][7]                 ;
-; regs[4][3]                             ; Merged with regs[4][7]                 ;
-; regs[9][0]                             ; Merged with regs[4][7]                 ;
-; regs[9][1]                             ; Merged with regs[4][7]                 ;
-; regs[10][4]                            ; Merged with regs[4][7]                 ;
-; regs[10][0]                            ; Merged with regs[4][7]                 ;
-; regs[4][0]                             ; Merged with regs[4][7]                 ;
-; regs[11][4]                            ; Merged with regs[4][7]                 ;
-; regs[4][5]                             ; Merged with regs[4][7]                 ;
-; regs[11][0]                            ; Merged with regs[4][7]                 ;
-; regs[5][6]                             ; Merged with regs[4][7]                 ;
-; regs[11][7]                            ; Merged with regs[4][7]                 ;
-; regs[10][3]                            ; Merged with regs[4][7]                 ;
-; regs[11][3]                            ; Merged with regs[4][7]                 ;
-; regs[5][3]                             ; Merged with regs[4][7]                 ;
-; regs[5][1]                             ; Merged with regs[4][7]                 ;
-; regs[5][7]                             ; Merged with regs[4][7]                 ;
-; regs[6][4]                             ; Merged with regs[4][7]                 ;
-; regs[6][5]                             ; Merged with regs[4][7]                 ;
-; regs[6][1]                             ; Merged with regs[4][7]                 ;
-; regs[6][6]                             ; Merged with regs[4][7]                 ;
-; regs[7][5]                             ; Merged with regs[4][7]                 ;
-; regs[7][6]                             ; Merged with regs[4][7]                 ;
-; regs[9][7]                             ; Merged with regs[4][7]                 ;
-; regs[7][2]                             ; Merged with regs[4][7]                 ;
-; regs[8][3]                             ; Merged with regs[4][7]                 ;
-; regs[10][5]                            ; Merged with regs[4][7]                 ;
-; regs[6][7]                             ; Merged with regs[4][7]                 ;
-; regs[7][7]                             ; Merged with regs[4][7]                 ;
-; regs[7][3]                             ; Merged with regs[4][7]                 ;
-; regs[7][1]                             ; Merged with regs[4][7]                 ;
-; regs[4][7]                             ; Stuck at GND due to stuck port data_in ;
-; regs[12][0]                            ; Stuck at GND due to stuck port data_in ;
-; regs[13][0]                            ; Stuck at GND due to stuck port data_in ;
-; regs[14][0]                            ; Stuck at GND due to stuck port data_in ;
-; regs[15][0]                            ; Stuck at GND due to stuck port data_in ;
-; regs[12][1]                            ; Stuck at GND due to stuck port data_in ;
-; regs[13][1]                            ; Stuck at GND due to stuck port data_in ;
-; regs[14][1]                            ; Stuck at GND due to stuck port data_in ;
-; regs[15][1]                            ; Stuck at GND due to stuck port data_in ;
-; regs[12][2]                            ; Stuck at GND due to stuck port data_in ;
-; regs[13][2]                            ; Stuck at GND due to stuck port data_in ;
-; regs[14][2]                            ; Stuck at GND due to stuck port data_in ;
-; regs[15][2]                            ; Stuck at GND due to stuck port data_in ;
-; regs[12][3]                            ; Stuck at GND due to stuck port data_in ;
-; regs[13][3]                            ; Stuck at GND due to stuck port data_in ;
-; regs[14][3]                            ; Stuck at GND due to stuck port data_in ;
-; regs[15][3]                            ; Stuck at GND due to stuck port data_in ;
-; regs[12][4]                            ; Stuck at GND due to stuck port data_in ;
-; regs[13][4]                            ; Stuck at GND due to stuck port data_in ;
-; regs[14][4]                            ; Stuck at GND due to stuck port data_in ;
-; regs[15][4]                            ; Stuck at GND due to stuck port data_in ;
-; regs[12][5]                            ; Stuck at GND due to stuck port data_in ;
-; regs[13][5]                            ; Stuck at GND due to stuck port data_in ;
-; regs[14][5]                            ; Stuck at GND due to stuck port data_in ;
-; regs[15][5]                            ; Stuck at GND due to stuck port data_in ;
-; regs[12][6]                            ; Stuck at GND due to stuck port data_in ;
-; regs[13][6]                            ; Stuck at GND due to stuck port data_in ;
-; regs[14][6]                            ; Stuck at GND due to stuck port data_in ;
-; regs[15][6]                            ; Stuck at GND due to stuck port data_in ;
-; regs[12][7]                            ; Stuck at GND due to stuck port data_in ;
-; regs[13][7]                            ; Stuck at GND due to stuck port data_in ;
-; regs[14][7]                            ; Stuck at GND due to stuck port data_in ;
-; regs[15][7]                            ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 96 ;                                        ;
-+----------------------------------------+----------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                            ;
-+---------------+---------------------------+--------------------------------------------------------------------------------------------+
-; Register name ; Reason for Removal        ; Registers Removed due to This Register                                                     ;
-+---------------+---------------------------+--------------------------------------------------------------------------------------------+
-; regs[4][7]    ; Stuck at GND              ; regs[12][2], regs[13][2], regs[14][2], regs[15][2], regs[12][3], regs[13][3], regs[14][3], ;
-;               ; due to stuck port data_in ; regs[15][3], regs[12][4], regs[13][4], regs[14][4], regs[15][4], regs[12][5], regs[13][5], ;
-;               ;                           ; regs[14][5], regs[15][5], regs[12][6], regs[13][6], regs[14][6], regs[15][6], regs[12][7], ;
-;               ;                           ; regs[13][7], regs[14][7], regs[15][7]                                                      ;
-+---------------+---------------------------+--------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -341,12 +222,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 40    ;
+; Total registers                              ; 136   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 40    ;
+; Number of registers using Asynchronous Clear ; 136   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 32    ;
+; Number of registers using Clock Enable       ; 128   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -356,18 +237,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |MIPS|PC[4]                ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |MIPS|regs[0][5]           ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |MIPS|regs[1][5]           ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |MIPS|regs[2][5]           ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |MIPS|regs[3][2]           ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |MIPS|regs[12][7]          ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |MIPS|regs[13][7]          ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |MIPS|regs[14][3]          ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |MIPS|regs[15][2]          ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |MIPS|Mux23                ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |MIPS|Mux2                 ;
-; 16:1               ; 8 bits    ; 80 LEs        ; 72 LEs               ; 8 LEs                  ; No         ; |MIPS|Mux12                ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |MIPS|PC[5]                ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[15][6]          ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[14][7]          ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[13][7]          ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[12][0]          ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[11][6]          ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[10][5]          ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[9][2]           ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[8][0]           ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[7][3]           ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[6][2]           ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[5][5]           ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[4][4]           ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[3][4]           ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[2][3]           ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[1][1]           ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |MIPS|regs[0][1]           ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |MIPS|Mux10                ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |MIPS|Mux19                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -590,16 +478,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Mon Nov 25 17:27:37 2024
+    Info: Processing started: Mon Nov 25 23:49:47 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MIPS -c MIPS
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file mips.vhd
     Info (12022): Found design unit 1: MIPS-behavior
     Info (12023): Found entity 1: MIPS
 Info (12127): Elaborating entity "MIPS" for the top level hierarchy
-Warning (10540): VHDL Signal Declaration warning at MIPS.vhd(21): used explicit default value for signal "mem_i" because signal was never assigned a value
-Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(35): object "mem_d" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(46): object "enable_reg_out" assigned a value but never read
+Warning (10540): VHDL Signal Declaration warning at MIPS.vhd(22): used explicit default value for signal "mem_i" because signal was never assigned a value
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(37): object "mem_d" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(48): object "enable_reg_out" assigned a value but never read
 Info (278001): Inferred 1 megafunctions from design logic
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0"
 Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0"
@@ -723,14 +611,14 @@ Info (13014): Ignored 62 buffer(s)
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 265 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 439 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 255 logic cells
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 421 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 36 warnings
-    Info: Peak virtual memory: 4690 megabytes
-    Info: Processing ended: Mon Nov 25 17:27:40 2024
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 4697 megabytes
+    Info: Processing ended: Mon Nov 25 23:49:51 2024
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
 
 
