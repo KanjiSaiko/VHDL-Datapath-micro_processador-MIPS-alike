@@ -1,0 +1,2021 @@
+Analysis & Synthesis report for MIPS
+Wed Nov 27 21:44:49 2024
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
+ 13. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1
+ 14. lpm_mult Parameter Settings by Entity Instance
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Nov 27 21:44:49 2024           ;
+; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; MIPS                                            ;
+; Top-level Entity Name              ; MIPS                                            ;
+; Family                             ; Cyclone III                                     ;
+; Total logic elements               ; 1,486                                           ;
+;     Total combinational functions  ; 865                                             ;
+;     Dedicated logic registers      ; 648                                             ;
+; Total registers                    ; 648                                             ;
+; Total pins                         ; 18                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 1                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; MIPS               ; MIPS               ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; VHDL Show LMF Mapping Messages                                             ; Off                ;                    ;
+; VHDL Version                                                               ; VHDL_2008          ; VHDL_1993          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 12     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                  ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+; MIPS.vhd                         ; yes             ; User VHDL File               ; C:/Users/2310100966/Desktop/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-MIPS/MIPS.vhd        ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mult.tdf                                                ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                              ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_add_sub.inc                                             ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/multcore.inc                                                ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/bypassff.inc                                                ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altshift.inc                                                ;         ;
+; db/mult_19t.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/2310100966/Desktop/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-MIPS/db/mult_19t.tdf ;         ;
+; db/mult_p8t.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/2310100966/Desktop/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-MIPS/db/mult_p8t.tdf ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 1,486       ;
+;                                             ;             ;
+; Total combinational functions               ; 865         ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 771         ;
+;     -- 3 input functions                    ; 61          ;
+;     -- <=2 input functions                  ; 33          ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 818         ;
+;     -- arithmetic mode                      ; 47          ;
+;                                             ;             ;
+; Total registers                             ; 648         ;
+;     -- Dedicated logic registers            ; 648         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 18          ;
+; Embedded Multiplier 9-bit elements          ; 1           ;
+; Maximum fan-out node                        ; clock~input ;
+; Maximum fan-out                             ; 648         ;
+; Total fan-out                               ; 5450        ;
+; Average fan-out                             ; 3.51        ;
++---------------------------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                       ;
++---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------+--------------+
+; Compilation Hierarchy Node      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                          ; Library Name ;
++---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------+--------------+
+; |MIPS                           ; 865 (831)         ; 648 (648)    ; 0           ; 1            ; 1       ; 0         ; 18   ; 0            ; |MIPS                                        ; work         ;
+;    |lpm_mult:Mult0|             ; 0 (0)             ; 0 (0)        ; 0           ; 1            ; 1       ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0                         ; work         ;
+;       |mult_19t:auto_generated| ; 0 (0)             ; 0 (0)        ; 0           ; 1            ; 1       ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult0|mult_19t:auto_generated ; work         ;
+;    |lpm_mult:Mult1|             ; 34 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult1                         ; work         ;
+;       |mult_p8t:auto_generated| ; 34 (34)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MIPS|lpm_mult:Mult1|mult_p8t:auto_generated ; work         ;
++---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 1           ;
+; Simple Multipliers (18-bit)           ; 0           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 1           ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 1           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
++----------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                     ;
++------------------------------------------+---------------------------------------------+
+; Register name                            ; Reason for Removal                          ;
++------------------------------------------+---------------------------------------------+
+; mem_d~529                                ; Lost fanout                                 ;
+; mem_d~537                                ; Lost fanout                                 ;
+; mem_d~545                                ; Lost fanout                                 ;
+; mem_d~553                                ; Lost fanout                                 ;
+; mem_d~561                                ; Lost fanout                                 ;
+; mem_d~569                                ; Lost fanout                                 ;
+; mem_d~577                                ; Lost fanout                                 ;
+; mem_d~585                                ; Lost fanout                                 ;
+; mem_d~593                                ; Lost fanout                                 ;
+; mem_d~601                                ; Lost fanout                                 ;
+; mem_d~609                                ; Lost fanout                                 ;
+; mem_d~617                                ; Lost fanout                                 ;
+; mem_d~625                                ; Lost fanout                                 ;
+; mem_d~633                                ; Lost fanout                                 ;
+; mem_d~641                                ; Lost fanout                                 ;
+; mem_d~649                                ; Lost fanout                                 ;
+; mem_d~657                                ; Lost fanout                                 ;
+; mem_d~665                                ; Lost fanout                                 ;
+; mem_d~673                                ; Lost fanout                                 ;
+; mem_d~681                                ; Lost fanout                                 ;
+; mem_d~689                                ; Lost fanout                                 ;
+; mem_d~697                                ; Lost fanout                                 ;
+; mem_d~705                                ; Lost fanout                                 ;
+; mem_d~713                                ; Lost fanout                                 ;
+; mem_d~721                                ; Lost fanout                                 ;
+; mem_d~729                                ; Lost fanout                                 ;
+; mem_d~737                                ; Lost fanout                                 ;
+; mem_d~745                                ; Lost fanout                                 ;
+; mem_d~753                                ; Lost fanout                                 ;
+; mem_d~761                                ; Lost fanout                                 ;
+; mem_d~769                                ; Lost fanout                                 ;
+; mem_d~777                                ; Lost fanout                                 ;
+; mem_d~785                                ; Lost fanout                                 ;
+; mem_d~793                                ; Lost fanout                                 ;
+; mem_d~801                                ; Lost fanout                                 ;
+; mem_d~809                                ; Lost fanout                                 ;
+; mem_d~817                                ; Lost fanout                                 ;
+; mem_d~825                                ; Lost fanout                                 ;
+; mem_d~833                                ; Lost fanout                                 ;
+; mem_d~841                                ; Lost fanout                                 ;
+; mem_d~849                                ; Lost fanout                                 ;
+; mem_d~857                                ; Lost fanout                                 ;
+; mem_d~865                                ; Lost fanout                                 ;
+; mem_d~873                                ; Lost fanout                                 ;
+; mem_d~881                                ; Lost fanout                                 ;
+; mem_d~889                                ; Lost fanout                                 ;
+; mem_d~897                                ; Lost fanout                                 ;
+; mem_d~905                                ; Lost fanout                                 ;
+; mem_d~913                                ; Lost fanout                                 ;
+; mem_d~921                                ; Lost fanout                                 ;
+; mem_d~929                                ; Lost fanout                                 ;
+; mem_d~937                                ; Lost fanout                                 ;
+; mem_d~945                                ; Lost fanout                                 ;
+; mem_d~953                                ; Lost fanout                                 ;
+; mem_d~961                                ; Lost fanout                                 ;
+; mem_d~969                                ; Lost fanout                                 ;
+; mem_d~977                                ; Lost fanout                                 ;
+; mem_d~985                                ; Lost fanout                                 ;
+; mem_d~993                                ; Lost fanout                                 ;
+; mem_d~1001                               ; Lost fanout                                 ;
+; mem_d~1009                               ; Lost fanout                                 ;
+; mem_d~1017                               ; Lost fanout                                 ;
+; mem_d~1025                               ; Lost fanout                                 ;
+; mem_d~1033                               ; Lost fanout                                 ;
+; mem_d~1041                               ; Lost fanout                                 ;
+; mem_d~1049                               ; Lost fanout                                 ;
+; mem_d~1057                               ; Lost fanout                                 ;
+; mem_d~1065                               ; Lost fanout                                 ;
+; mem_d~1073                               ; Lost fanout                                 ;
+; mem_d~1081                               ; Lost fanout                                 ;
+; mem_d~1089                               ; Lost fanout                                 ;
+; mem_d~1097                               ; Lost fanout                                 ;
+; mem_d~1105                               ; Lost fanout                                 ;
+; mem_d~1113                               ; Lost fanout                                 ;
+; mem_d~1121                               ; Lost fanout                                 ;
+; mem_d~1129                               ; Lost fanout                                 ;
+; mem_d~1137                               ; Lost fanout                                 ;
+; mem_d~1145                               ; Lost fanout                                 ;
+; mem_d~1153                               ; Lost fanout                                 ;
+; mem_d~1161                               ; Lost fanout                                 ;
+; mem_d~1169                               ; Lost fanout                                 ;
+; mem_d~1177                               ; Lost fanout                                 ;
+; mem_d~1185                               ; Lost fanout                                 ;
+; mem_d~1193                               ; Lost fanout                                 ;
+; mem_d~1201                               ; Lost fanout                                 ;
+; mem_d~1209                               ; Lost fanout                                 ;
+; mem_d~1217                               ; Lost fanout                                 ;
+; mem_d~1225                               ; Lost fanout                                 ;
+; mem_d~1233                               ; Lost fanout                                 ;
+; mem_d~1241                               ; Lost fanout                                 ;
+; mem_d~1249                               ; Lost fanout                                 ;
+; mem_d~1257                               ; Lost fanout                                 ;
+; mem_d~1265                               ; Lost fanout                                 ;
+; mem_d~1273                               ; Lost fanout                                 ;
+; mem_d~1281                               ; Lost fanout                                 ;
+; mem_d~1289                               ; Lost fanout                                 ;
+; mem_d~1297                               ; Lost fanout                                 ;
+; mem_d~1305                               ; Lost fanout                                 ;
+; mem_d~1313                               ; Lost fanout                                 ;
+; mem_d~1321                               ; Lost fanout                                 ;
+; mem_d~1329                               ; Lost fanout                                 ;
+; mem_d~1337                               ; Lost fanout                                 ;
+; mem_d~1345                               ; Lost fanout                                 ;
+; mem_d~1353                               ; Lost fanout                                 ;
+; mem_d~1361                               ; Lost fanout                                 ;
+; mem_d~1369                               ; Lost fanout                                 ;
+; mem_d~1377                               ; Lost fanout                                 ;
+; mem_d~1385                               ; Lost fanout                                 ;
+; mem_d~1393                               ; Lost fanout                                 ;
+; mem_d~1401                               ; Lost fanout                                 ;
+; mem_d~1409                               ; Lost fanout                                 ;
+; mem_d~1417                               ; Lost fanout                                 ;
+; mem_d~1425                               ; Lost fanout                                 ;
+; mem_d~1433                               ; Lost fanout                                 ;
+; mem_d~1441                               ; Lost fanout                                 ;
+; mem_d~1449                               ; Lost fanout                                 ;
+; mem_d~1457                               ; Lost fanout                                 ;
+; mem_d~1465                               ; Lost fanout                                 ;
+; mem_d~1473                               ; Lost fanout                                 ;
+; mem_d~1481                               ; Lost fanout                                 ;
+; mem_d~1489                               ; Lost fanout                                 ;
+; mem_d~1497                               ; Lost fanout                                 ;
+; mem_d~1505                               ; Lost fanout                                 ;
+; mem_d~1513                               ; Lost fanout                                 ;
+; mem_d~1521                               ; Lost fanout                                 ;
+; mem_d~1529                               ; Lost fanout                                 ;
+; mem_d~1537                               ; Lost fanout                                 ;
+; mem_d~1545                               ; Lost fanout                                 ;
+; mem_d~530                                ; Lost fanout                                 ;
+; mem_d~538                                ; Lost fanout                                 ;
+; mem_d~546                                ; Lost fanout                                 ;
+; mem_d~554                                ; Lost fanout                                 ;
+; mem_d~562                                ; Lost fanout                                 ;
+; mem_d~570                                ; Lost fanout                                 ;
+; mem_d~578                                ; Lost fanout                                 ;
+; mem_d~586                                ; Lost fanout                                 ;
+; mem_d~594                                ; Lost fanout                                 ;
+; mem_d~602                                ; Lost fanout                                 ;
+; mem_d~610                                ; Lost fanout                                 ;
+; mem_d~618                                ; Lost fanout                                 ;
+; mem_d~626                                ; Lost fanout                                 ;
+; mem_d~634                                ; Lost fanout                                 ;
+; mem_d~642                                ; Lost fanout                                 ;
+; mem_d~650                                ; Lost fanout                                 ;
+; mem_d~658                                ; Lost fanout                                 ;
+; mem_d~666                                ; Lost fanout                                 ;
+; mem_d~674                                ; Lost fanout                                 ;
+; mem_d~682                                ; Lost fanout                                 ;
+; mem_d~690                                ; Lost fanout                                 ;
+; mem_d~698                                ; Lost fanout                                 ;
+; mem_d~706                                ; Lost fanout                                 ;
+; mem_d~714                                ; Lost fanout                                 ;
+; mem_d~722                                ; Lost fanout                                 ;
+; mem_d~730                                ; Lost fanout                                 ;
+; mem_d~738                                ; Lost fanout                                 ;
+; mem_d~746                                ; Lost fanout                                 ;
+; mem_d~754                                ; Lost fanout                                 ;
+; mem_d~762                                ; Lost fanout                                 ;
+; mem_d~770                                ; Lost fanout                                 ;
+; mem_d~778                                ; Lost fanout                                 ;
+; mem_d~786                                ; Lost fanout                                 ;
+; mem_d~794                                ; Lost fanout                                 ;
+; mem_d~802                                ; Lost fanout                                 ;
+; mem_d~810                                ; Lost fanout                                 ;
+; mem_d~818                                ; Lost fanout                                 ;
+; mem_d~826                                ; Lost fanout                                 ;
+; mem_d~834                                ; Lost fanout                                 ;
+; mem_d~842                                ; Lost fanout                                 ;
+; mem_d~850                                ; Lost fanout                                 ;
+; mem_d~858                                ; Lost fanout                                 ;
+; mem_d~866                                ; Lost fanout                                 ;
+; mem_d~874                                ; Lost fanout                                 ;
+; mem_d~882                                ; Lost fanout                                 ;
+; mem_d~890                                ; Lost fanout                                 ;
+; mem_d~898                                ; Lost fanout                                 ;
+; mem_d~906                                ; Lost fanout                                 ;
+; mem_d~914                                ; Lost fanout                                 ;
+; mem_d~922                                ; Lost fanout                                 ;
+; mem_d~930                                ; Lost fanout                                 ;
+; mem_d~938                                ; Lost fanout                                 ;
+; mem_d~946                                ; Lost fanout                                 ;
+; mem_d~954                                ; Lost fanout                                 ;
+; mem_d~962                                ; Lost fanout                                 ;
+; mem_d~970                                ; Lost fanout                                 ;
+; mem_d~978                                ; Lost fanout                                 ;
+; mem_d~986                                ; Lost fanout                                 ;
+; mem_d~994                                ; Lost fanout                                 ;
+; mem_d~1002                               ; Lost fanout                                 ;
+; mem_d~1010                               ; Lost fanout                                 ;
+; mem_d~1018                               ; Lost fanout                                 ;
+; mem_d~1026                               ; Lost fanout                                 ;
+; mem_d~1034                               ; Lost fanout                                 ;
+; mem_d~1042                               ; Lost fanout                                 ;
+; mem_d~1050                               ; Lost fanout                                 ;
+; mem_d~1058                               ; Lost fanout                                 ;
+; mem_d~1066                               ; Lost fanout                                 ;
+; mem_d~1074                               ; Lost fanout                                 ;
+; mem_d~1082                               ; Lost fanout                                 ;
+; mem_d~1090                               ; Lost fanout                                 ;
+; mem_d~1098                               ; Lost fanout                                 ;
+; mem_d~1106                               ; Lost fanout                                 ;
+; mem_d~1114                               ; Lost fanout                                 ;
+; mem_d~1122                               ; Lost fanout                                 ;
+; mem_d~1130                               ; Lost fanout                                 ;
+; mem_d~1138                               ; Lost fanout                                 ;
+; mem_d~1146                               ; Lost fanout                                 ;
+; mem_d~1154                               ; Lost fanout                                 ;
+; mem_d~1162                               ; Lost fanout                                 ;
+; mem_d~1170                               ; Lost fanout                                 ;
+; mem_d~1178                               ; Lost fanout                                 ;
+; mem_d~1186                               ; Lost fanout                                 ;
+; mem_d~1194                               ; Lost fanout                                 ;
+; mem_d~1202                               ; Lost fanout                                 ;
+; mem_d~1210                               ; Lost fanout                                 ;
+; mem_d~1218                               ; Lost fanout                                 ;
+; mem_d~1226                               ; Lost fanout                                 ;
+; mem_d~1234                               ; Lost fanout                                 ;
+; mem_d~1242                               ; Lost fanout                                 ;
+; mem_d~1250                               ; Lost fanout                                 ;
+; mem_d~1258                               ; Lost fanout                                 ;
+; mem_d~1266                               ; Lost fanout                                 ;
+; mem_d~1274                               ; Lost fanout                                 ;
+; mem_d~1282                               ; Lost fanout                                 ;
+; mem_d~1290                               ; Lost fanout                                 ;
+; mem_d~1298                               ; Lost fanout                                 ;
+; mem_d~1306                               ; Lost fanout                                 ;
+; mem_d~1314                               ; Lost fanout                                 ;
+; mem_d~1322                               ; Lost fanout                                 ;
+; mem_d~1330                               ; Lost fanout                                 ;
+; mem_d~1338                               ; Lost fanout                                 ;
+; mem_d~1346                               ; Lost fanout                                 ;
+; mem_d~1354                               ; Lost fanout                                 ;
+; mem_d~1362                               ; Lost fanout                                 ;
+; mem_d~1370                               ; Lost fanout                                 ;
+; mem_d~1378                               ; Lost fanout                                 ;
+; mem_d~1386                               ; Lost fanout                                 ;
+; mem_d~1394                               ; Lost fanout                                 ;
+; mem_d~1402                               ; Lost fanout                                 ;
+; mem_d~1410                               ; Lost fanout                                 ;
+; mem_d~1418                               ; Lost fanout                                 ;
+; mem_d~1426                               ; Lost fanout                                 ;
+; mem_d~1434                               ; Lost fanout                                 ;
+; mem_d~1442                               ; Lost fanout                                 ;
+; mem_d~1450                               ; Lost fanout                                 ;
+; mem_d~1458                               ; Lost fanout                                 ;
+; mem_d~1466                               ; Lost fanout                                 ;
+; mem_d~1474                               ; Lost fanout                                 ;
+; mem_d~1482                               ; Lost fanout                                 ;
+; mem_d~1490                               ; Lost fanout                                 ;
+; mem_d~1498                               ; Lost fanout                                 ;
+; mem_d~1506                               ; Lost fanout                                 ;
+; mem_d~1514                               ; Lost fanout                                 ;
+; mem_d~1522                               ; Lost fanout                                 ;
+; mem_d~1530                               ; Lost fanout                                 ;
+; mem_d~1538                               ; Lost fanout                                 ;
+; mem_d~1546                               ; Lost fanout                                 ;
+; mem_d~531                                ; Lost fanout                                 ;
+; mem_d~539                                ; Lost fanout                                 ;
+; mem_d~547                                ; Lost fanout                                 ;
+; mem_d~555                                ; Lost fanout                                 ;
+; mem_d~563                                ; Lost fanout                                 ;
+; mem_d~571                                ; Lost fanout                                 ;
+; mem_d~579                                ; Lost fanout                                 ;
+; mem_d~587                                ; Lost fanout                                 ;
+; mem_d~595                                ; Lost fanout                                 ;
+; mem_d~603                                ; Lost fanout                                 ;
+; mem_d~611                                ; Lost fanout                                 ;
+; mem_d~619                                ; Lost fanout                                 ;
+; mem_d~627                                ; Lost fanout                                 ;
+; mem_d~635                                ; Lost fanout                                 ;
+; mem_d~643                                ; Lost fanout                                 ;
+; mem_d~651                                ; Lost fanout                                 ;
+; mem_d~659                                ; Lost fanout                                 ;
+; mem_d~667                                ; Lost fanout                                 ;
+; mem_d~675                                ; Lost fanout                                 ;
+; mem_d~683                                ; Lost fanout                                 ;
+; mem_d~691                                ; Lost fanout                                 ;
+; mem_d~699                                ; Lost fanout                                 ;
+; mem_d~707                                ; Lost fanout                                 ;
+; mem_d~715                                ; Lost fanout                                 ;
+; mem_d~723                                ; Lost fanout                                 ;
+; mem_d~731                                ; Lost fanout                                 ;
+; mem_d~739                                ; Lost fanout                                 ;
+; mem_d~747                                ; Lost fanout                                 ;
+; mem_d~755                                ; Lost fanout                                 ;
+; mem_d~763                                ; Lost fanout                                 ;
+; mem_d~771                                ; Lost fanout                                 ;
+; mem_d~779                                ; Lost fanout                                 ;
+; mem_d~787                                ; Lost fanout                                 ;
+; mem_d~795                                ; Lost fanout                                 ;
+; mem_d~803                                ; Lost fanout                                 ;
+; mem_d~811                                ; Lost fanout                                 ;
+; mem_d~819                                ; Lost fanout                                 ;
+; mem_d~827                                ; Lost fanout                                 ;
+; mem_d~835                                ; Lost fanout                                 ;
+; mem_d~843                                ; Lost fanout                                 ;
+; mem_d~851                                ; Lost fanout                                 ;
+; mem_d~859                                ; Lost fanout                                 ;
+; mem_d~867                                ; Lost fanout                                 ;
+; mem_d~875                                ; Lost fanout                                 ;
+; mem_d~883                                ; Lost fanout                                 ;
+; mem_d~891                                ; Lost fanout                                 ;
+; mem_d~899                                ; Lost fanout                                 ;
+; mem_d~907                                ; Lost fanout                                 ;
+; mem_d~915                                ; Lost fanout                                 ;
+; mem_d~923                                ; Lost fanout                                 ;
+; mem_d~931                                ; Lost fanout                                 ;
+; mem_d~939                                ; Lost fanout                                 ;
+; mem_d~947                                ; Lost fanout                                 ;
+; mem_d~955                                ; Lost fanout                                 ;
+; mem_d~963                                ; Lost fanout                                 ;
+; mem_d~971                                ; Lost fanout                                 ;
+; mem_d~979                                ; Lost fanout                                 ;
+; mem_d~987                                ; Lost fanout                                 ;
+; mem_d~995                                ; Lost fanout                                 ;
+; mem_d~1003                               ; Lost fanout                                 ;
+; mem_d~1011                               ; Lost fanout                                 ;
+; mem_d~1019                               ; Lost fanout                                 ;
+; mem_d~1027                               ; Lost fanout                                 ;
+; mem_d~1035                               ; Lost fanout                                 ;
+; mem_d~1043                               ; Lost fanout                                 ;
+; mem_d~1051                               ; Lost fanout                                 ;
+; mem_d~1059                               ; Lost fanout                                 ;
+; mem_d~1067                               ; Lost fanout                                 ;
+; mem_d~1075                               ; Lost fanout                                 ;
+; mem_d~1083                               ; Lost fanout                                 ;
+; mem_d~1091                               ; Lost fanout                                 ;
+; mem_d~1099                               ; Lost fanout                                 ;
+; mem_d~1107                               ; Lost fanout                                 ;
+; mem_d~1115                               ; Lost fanout                                 ;
+; mem_d~1123                               ; Lost fanout                                 ;
+; mem_d~1131                               ; Lost fanout                                 ;
+; mem_d~1139                               ; Lost fanout                                 ;
+; mem_d~1147                               ; Lost fanout                                 ;
+; mem_d~1155                               ; Lost fanout                                 ;
+; mem_d~1163                               ; Lost fanout                                 ;
+; mem_d~1171                               ; Lost fanout                                 ;
+; mem_d~1179                               ; Lost fanout                                 ;
+; mem_d~1187                               ; Lost fanout                                 ;
+; mem_d~1195                               ; Lost fanout                                 ;
+; mem_d~1203                               ; Lost fanout                                 ;
+; mem_d~1211                               ; Lost fanout                                 ;
+; mem_d~1219                               ; Lost fanout                                 ;
+; mem_d~1227                               ; Lost fanout                                 ;
+; mem_d~1235                               ; Lost fanout                                 ;
+; mem_d~1243                               ; Lost fanout                                 ;
+; mem_d~1251                               ; Lost fanout                                 ;
+; mem_d~1259                               ; Lost fanout                                 ;
+; mem_d~1267                               ; Lost fanout                                 ;
+; mem_d~1275                               ; Lost fanout                                 ;
+; mem_d~1283                               ; Lost fanout                                 ;
+; mem_d~1291                               ; Lost fanout                                 ;
+; mem_d~1299                               ; Lost fanout                                 ;
+; mem_d~1307                               ; Lost fanout                                 ;
+; mem_d~1315                               ; Lost fanout                                 ;
+; mem_d~1323                               ; Lost fanout                                 ;
+; mem_d~1331                               ; Lost fanout                                 ;
+; mem_d~1339                               ; Lost fanout                                 ;
+; mem_d~1347                               ; Lost fanout                                 ;
+; mem_d~1355                               ; Lost fanout                                 ;
+; mem_d~1363                               ; Lost fanout                                 ;
+; mem_d~1371                               ; Lost fanout                                 ;
+; mem_d~1379                               ; Lost fanout                                 ;
+; mem_d~1387                               ; Lost fanout                                 ;
+; mem_d~1395                               ; Lost fanout                                 ;
+; mem_d~1403                               ; Lost fanout                                 ;
+; mem_d~1411                               ; Lost fanout                                 ;
+; mem_d~1419                               ; Lost fanout                                 ;
+; mem_d~1427                               ; Lost fanout                                 ;
+; mem_d~1435                               ; Lost fanout                                 ;
+; mem_d~1443                               ; Lost fanout                                 ;
+; mem_d~1451                               ; Lost fanout                                 ;
+; mem_d~1459                               ; Lost fanout                                 ;
+; mem_d~1467                               ; Lost fanout                                 ;
+; mem_d~1475                               ; Lost fanout                                 ;
+; mem_d~1483                               ; Lost fanout                                 ;
+; mem_d~1491                               ; Lost fanout                                 ;
+; mem_d~1499                               ; Lost fanout                                 ;
+; mem_d~1507                               ; Lost fanout                                 ;
+; mem_d~1515                               ; Lost fanout                                 ;
+; mem_d~1523                               ; Lost fanout                                 ;
+; mem_d~1531                               ; Lost fanout                                 ;
+; mem_d~1539                               ; Lost fanout                                 ;
+; mem_d~1547                               ; Lost fanout                                 ;
+; mem_d~532                                ; Lost fanout                                 ;
+; mem_d~540                                ; Lost fanout                                 ;
+; mem_d~548                                ; Lost fanout                                 ;
+; mem_d~556                                ; Lost fanout                                 ;
+; mem_d~564                                ; Lost fanout                                 ;
+; mem_d~572                                ; Lost fanout                                 ;
+; mem_d~580                                ; Lost fanout                                 ;
+; mem_d~588                                ; Lost fanout                                 ;
+; mem_d~596                                ; Lost fanout                                 ;
+; mem_d~604                                ; Lost fanout                                 ;
+; mem_d~612                                ; Lost fanout                                 ;
+; mem_d~620                                ; Lost fanout                                 ;
+; mem_d~628                                ; Lost fanout                                 ;
+; mem_d~636                                ; Lost fanout                                 ;
+; mem_d~644                                ; Lost fanout                                 ;
+; mem_d~652                                ; Lost fanout                                 ;
+; mem_d~660                                ; Lost fanout                                 ;
+; mem_d~668                                ; Lost fanout                                 ;
+; mem_d~676                                ; Lost fanout                                 ;
+; mem_d~684                                ; Lost fanout                                 ;
+; mem_d~692                                ; Lost fanout                                 ;
+; mem_d~700                                ; Lost fanout                                 ;
+; mem_d~708                                ; Lost fanout                                 ;
+; mem_d~716                                ; Lost fanout                                 ;
+; mem_d~724                                ; Lost fanout                                 ;
+; mem_d~732                                ; Lost fanout                                 ;
+; mem_d~740                                ; Lost fanout                                 ;
+; mem_d~748                                ; Lost fanout                                 ;
+; mem_d~756                                ; Lost fanout                                 ;
+; mem_d~764                                ; Lost fanout                                 ;
+; mem_d~772                                ; Lost fanout                                 ;
+; mem_d~780                                ; Lost fanout                                 ;
+; mem_d~788                                ; Lost fanout                                 ;
+; mem_d~796                                ; Lost fanout                                 ;
+; mem_d~804                                ; Lost fanout                                 ;
+; mem_d~812                                ; Lost fanout                                 ;
+; mem_d~820                                ; Lost fanout                                 ;
+; mem_d~828                                ; Lost fanout                                 ;
+; mem_d~836                                ; Lost fanout                                 ;
+; mem_d~844                                ; Lost fanout                                 ;
+; mem_d~852                                ; Lost fanout                                 ;
+; mem_d~860                                ; Lost fanout                                 ;
+; mem_d~868                                ; Lost fanout                                 ;
+; mem_d~876                                ; Lost fanout                                 ;
+; mem_d~884                                ; Lost fanout                                 ;
+; mem_d~892                                ; Lost fanout                                 ;
+; mem_d~900                                ; Lost fanout                                 ;
+; mem_d~908                                ; Lost fanout                                 ;
+; mem_d~916                                ; Lost fanout                                 ;
+; mem_d~924                                ; Lost fanout                                 ;
+; mem_d~932                                ; Lost fanout                                 ;
+; mem_d~940                                ; Lost fanout                                 ;
+; mem_d~948                                ; Lost fanout                                 ;
+; mem_d~956                                ; Lost fanout                                 ;
+; mem_d~964                                ; Lost fanout                                 ;
+; mem_d~972                                ; Lost fanout                                 ;
+; mem_d~980                                ; Lost fanout                                 ;
+; mem_d~988                                ; Lost fanout                                 ;
+; mem_d~996                                ; Lost fanout                                 ;
+; mem_d~1004                               ; Lost fanout                                 ;
+; mem_d~1012                               ; Lost fanout                                 ;
+; mem_d~1020                               ; Lost fanout                                 ;
+; mem_d~1028                               ; Lost fanout                                 ;
+; mem_d~1036                               ; Lost fanout                                 ;
+; mem_d~1044                               ; Lost fanout                                 ;
+; mem_d~1052                               ; Lost fanout                                 ;
+; mem_d~1060                               ; Lost fanout                                 ;
+; mem_d~1068                               ; Lost fanout                                 ;
+; mem_d~1076                               ; Lost fanout                                 ;
+; mem_d~1084                               ; Lost fanout                                 ;
+; mem_d~1092                               ; Lost fanout                                 ;
+; mem_d~1100                               ; Lost fanout                                 ;
+; mem_d~1108                               ; Lost fanout                                 ;
+; mem_d~1116                               ; Lost fanout                                 ;
+; mem_d~1124                               ; Lost fanout                                 ;
+; mem_d~1132                               ; Lost fanout                                 ;
+; mem_d~1140                               ; Lost fanout                                 ;
+; mem_d~1148                               ; Lost fanout                                 ;
+; mem_d~1156                               ; Lost fanout                                 ;
+; mem_d~1164                               ; Lost fanout                                 ;
+; mem_d~1172                               ; Lost fanout                                 ;
+; mem_d~1180                               ; Lost fanout                                 ;
+; mem_d~1188                               ; Lost fanout                                 ;
+; mem_d~1196                               ; Lost fanout                                 ;
+; mem_d~1204                               ; Lost fanout                                 ;
+; mem_d~1212                               ; Lost fanout                                 ;
+; mem_d~1220                               ; Lost fanout                                 ;
+; mem_d~1228                               ; Lost fanout                                 ;
+; mem_d~1236                               ; Lost fanout                                 ;
+; mem_d~1244                               ; Lost fanout                                 ;
+; mem_d~1252                               ; Lost fanout                                 ;
+; mem_d~1260                               ; Lost fanout                                 ;
+; mem_d~1268                               ; Lost fanout                                 ;
+; mem_d~1276                               ; Lost fanout                                 ;
+; mem_d~1284                               ; Lost fanout                                 ;
+; mem_d~1292                               ; Lost fanout                                 ;
+; mem_d~1300                               ; Lost fanout                                 ;
+; mem_d~1308                               ; Lost fanout                                 ;
+; mem_d~1316                               ; Lost fanout                                 ;
+; mem_d~1324                               ; Lost fanout                                 ;
+; mem_d~1332                               ; Lost fanout                                 ;
+; mem_d~1340                               ; Lost fanout                                 ;
+; mem_d~1348                               ; Lost fanout                                 ;
+; mem_d~1356                               ; Lost fanout                                 ;
+; mem_d~1364                               ; Lost fanout                                 ;
+; mem_d~1372                               ; Lost fanout                                 ;
+; mem_d~1380                               ; Lost fanout                                 ;
+; mem_d~1388                               ; Lost fanout                                 ;
+; mem_d~1396                               ; Lost fanout                                 ;
+; mem_d~1404                               ; Lost fanout                                 ;
+; mem_d~1412                               ; Lost fanout                                 ;
+; mem_d~1420                               ; Lost fanout                                 ;
+; mem_d~1428                               ; Lost fanout                                 ;
+; mem_d~1436                               ; Lost fanout                                 ;
+; mem_d~1444                               ; Lost fanout                                 ;
+; mem_d~1452                               ; Lost fanout                                 ;
+; mem_d~1460                               ; Lost fanout                                 ;
+; mem_d~1468                               ; Lost fanout                                 ;
+; mem_d~1476                               ; Lost fanout                                 ;
+; mem_d~1484                               ; Lost fanout                                 ;
+; mem_d~1492                               ; Lost fanout                                 ;
+; mem_d~1500                               ; Lost fanout                                 ;
+; mem_d~1508                               ; Lost fanout                                 ;
+; mem_d~1516                               ; Lost fanout                                 ;
+; mem_d~1524                               ; Lost fanout                                 ;
+; mem_d~1532                               ; Lost fanout                                 ;
+; mem_d~1540                               ; Lost fanout                                 ;
+; mem_d~1548                               ; Lost fanout                                 ;
+; mem_d~533                                ; Lost fanout                                 ;
+; mem_d~541                                ; Lost fanout                                 ;
+; mem_d~549                                ; Lost fanout                                 ;
+; mem_d~557                                ; Lost fanout                                 ;
+; mem_d~565                                ; Lost fanout                                 ;
+; mem_d~573                                ; Lost fanout                                 ;
+; mem_d~581                                ; Lost fanout                                 ;
+; mem_d~589                                ; Lost fanout                                 ;
+; mem_d~597                                ; Lost fanout                                 ;
+; mem_d~605                                ; Lost fanout                                 ;
+; mem_d~613                                ; Lost fanout                                 ;
+; mem_d~621                                ; Lost fanout                                 ;
+; mem_d~629                                ; Lost fanout                                 ;
+; mem_d~637                                ; Lost fanout                                 ;
+; mem_d~645                                ; Lost fanout                                 ;
+; mem_d~653                                ; Lost fanout                                 ;
+; mem_d~661                                ; Lost fanout                                 ;
+; mem_d~669                                ; Lost fanout                                 ;
+; mem_d~677                                ; Lost fanout                                 ;
+; mem_d~685                                ; Lost fanout                                 ;
+; mem_d~693                                ; Lost fanout                                 ;
+; mem_d~701                                ; Lost fanout                                 ;
+; mem_d~709                                ; Lost fanout                                 ;
+; mem_d~717                                ; Lost fanout                                 ;
+; mem_d~725                                ; Lost fanout                                 ;
+; mem_d~733                                ; Lost fanout                                 ;
+; mem_d~741                                ; Lost fanout                                 ;
+; mem_d~749                                ; Lost fanout                                 ;
+; mem_d~757                                ; Lost fanout                                 ;
+; mem_d~765                                ; Lost fanout                                 ;
+; mem_d~773                                ; Lost fanout                                 ;
+; mem_d~781                                ; Lost fanout                                 ;
+; mem_d~789                                ; Lost fanout                                 ;
+; mem_d~797                                ; Lost fanout                                 ;
+; mem_d~805                                ; Lost fanout                                 ;
+; mem_d~813                                ; Lost fanout                                 ;
+; mem_d~821                                ; Lost fanout                                 ;
+; mem_d~829                                ; Lost fanout                                 ;
+; mem_d~837                                ; Lost fanout                                 ;
+; mem_d~845                                ; Lost fanout                                 ;
+; mem_d~853                                ; Lost fanout                                 ;
+; mem_d~861                                ; Lost fanout                                 ;
+; mem_d~869                                ; Lost fanout                                 ;
+; mem_d~877                                ; Lost fanout                                 ;
+; mem_d~885                                ; Lost fanout                                 ;
+; mem_d~893                                ; Lost fanout                                 ;
+; mem_d~901                                ; Lost fanout                                 ;
+; mem_d~909                                ; Lost fanout                                 ;
+; mem_d~917                                ; Lost fanout                                 ;
+; mem_d~925                                ; Lost fanout                                 ;
+; mem_d~933                                ; Lost fanout                                 ;
+; mem_d~941                                ; Lost fanout                                 ;
+; mem_d~949                                ; Lost fanout                                 ;
+; mem_d~957                                ; Lost fanout                                 ;
+; mem_d~965                                ; Lost fanout                                 ;
+; mem_d~973                                ; Lost fanout                                 ;
+; mem_d~981                                ; Lost fanout                                 ;
+; mem_d~989                                ; Lost fanout                                 ;
+; mem_d~997                                ; Lost fanout                                 ;
+; mem_d~1005                               ; Lost fanout                                 ;
+; mem_d~1013                               ; Lost fanout                                 ;
+; mem_d~1021                               ; Lost fanout                                 ;
+; mem_d~1029                               ; Lost fanout                                 ;
+; mem_d~1037                               ; Lost fanout                                 ;
+; mem_d~1045                               ; Lost fanout                                 ;
+; mem_d~1053                               ; Lost fanout                                 ;
+; mem_d~1061                               ; Lost fanout                                 ;
+; mem_d~1069                               ; Lost fanout                                 ;
+; mem_d~1077                               ; Lost fanout                                 ;
+; mem_d~1085                               ; Lost fanout                                 ;
+; mem_d~1093                               ; Lost fanout                                 ;
+; mem_d~1101                               ; Lost fanout                                 ;
+; mem_d~1109                               ; Lost fanout                                 ;
+; mem_d~1117                               ; Lost fanout                                 ;
+; mem_d~1125                               ; Lost fanout                                 ;
+; mem_d~1133                               ; Lost fanout                                 ;
+; mem_d~1141                               ; Lost fanout                                 ;
+; mem_d~1149                               ; Lost fanout                                 ;
+; mem_d~1157                               ; Lost fanout                                 ;
+; mem_d~1165                               ; Lost fanout                                 ;
+; mem_d~1173                               ; Lost fanout                                 ;
+; mem_d~1181                               ; Lost fanout                                 ;
+; mem_d~1189                               ; Lost fanout                                 ;
+; mem_d~1197                               ; Lost fanout                                 ;
+; mem_d~1205                               ; Lost fanout                                 ;
+; mem_d~1213                               ; Lost fanout                                 ;
+; mem_d~1221                               ; Lost fanout                                 ;
+; mem_d~1229                               ; Lost fanout                                 ;
+; mem_d~1237                               ; Lost fanout                                 ;
+; mem_d~1245                               ; Lost fanout                                 ;
+; mem_d~1253                               ; Lost fanout                                 ;
+; mem_d~1261                               ; Lost fanout                                 ;
+; mem_d~1269                               ; Lost fanout                                 ;
+; mem_d~1277                               ; Lost fanout                                 ;
+; mem_d~1285                               ; Lost fanout                                 ;
+; mem_d~1293                               ; Lost fanout                                 ;
+; mem_d~1301                               ; Lost fanout                                 ;
+; mem_d~1309                               ; Lost fanout                                 ;
+; mem_d~1317                               ; Lost fanout                                 ;
+; mem_d~1325                               ; Lost fanout                                 ;
+; mem_d~1333                               ; Lost fanout                                 ;
+; mem_d~1341                               ; Lost fanout                                 ;
+; mem_d~1349                               ; Lost fanout                                 ;
+; mem_d~1357                               ; Lost fanout                                 ;
+; mem_d~1365                               ; Lost fanout                                 ;
+; mem_d~1373                               ; Lost fanout                                 ;
+; mem_d~1381                               ; Lost fanout                                 ;
+; mem_d~1389                               ; Lost fanout                                 ;
+; mem_d~1397                               ; Lost fanout                                 ;
+; mem_d~1405                               ; Lost fanout                                 ;
+; mem_d~1413                               ; Lost fanout                                 ;
+; mem_d~1421                               ; Lost fanout                                 ;
+; mem_d~1429                               ; Lost fanout                                 ;
+; mem_d~1437                               ; Lost fanout                                 ;
+; mem_d~1445                               ; Lost fanout                                 ;
+; mem_d~1453                               ; Lost fanout                                 ;
+; mem_d~1461                               ; Lost fanout                                 ;
+; mem_d~1469                               ; Lost fanout                                 ;
+; mem_d~1477                               ; Lost fanout                                 ;
+; mem_d~1485                               ; Lost fanout                                 ;
+; mem_d~1493                               ; Lost fanout                                 ;
+; mem_d~1501                               ; Lost fanout                                 ;
+; mem_d~1509                               ; Lost fanout                                 ;
+; mem_d~1517                               ; Lost fanout                                 ;
+; mem_d~1525                               ; Lost fanout                                 ;
+; mem_d~1533                               ; Lost fanout                                 ;
+; mem_d~1541                               ; Lost fanout                                 ;
+; mem_d~1549                               ; Lost fanout                                 ;
+; mem_d~534                                ; Lost fanout                                 ;
+; mem_d~542                                ; Lost fanout                                 ;
+; mem_d~550                                ; Lost fanout                                 ;
+; mem_d~558                                ; Lost fanout                                 ;
+; mem_d~566                                ; Lost fanout                                 ;
+; mem_d~574                                ; Lost fanout                                 ;
+; mem_d~582                                ; Lost fanout                                 ;
+; mem_d~590                                ; Lost fanout                                 ;
+; mem_d~598                                ; Lost fanout                                 ;
+; mem_d~606                                ; Lost fanout                                 ;
+; mem_d~614                                ; Lost fanout                                 ;
+; mem_d~622                                ; Lost fanout                                 ;
+; mem_d~630                                ; Lost fanout                                 ;
+; mem_d~638                                ; Lost fanout                                 ;
+; mem_d~646                                ; Lost fanout                                 ;
+; mem_d~654                                ; Lost fanout                                 ;
+; mem_d~662                                ; Lost fanout                                 ;
+; mem_d~670                                ; Lost fanout                                 ;
+; mem_d~678                                ; Lost fanout                                 ;
+; mem_d~686                                ; Lost fanout                                 ;
+; mem_d~694                                ; Lost fanout                                 ;
+; mem_d~702                                ; Lost fanout                                 ;
+; mem_d~710                                ; Lost fanout                                 ;
+; mem_d~718                                ; Lost fanout                                 ;
+; mem_d~726                                ; Lost fanout                                 ;
+; mem_d~734                                ; Lost fanout                                 ;
+; mem_d~742                                ; Lost fanout                                 ;
+; mem_d~750                                ; Lost fanout                                 ;
+; mem_d~758                                ; Lost fanout                                 ;
+; mem_d~766                                ; Lost fanout                                 ;
+; mem_d~774                                ; Lost fanout                                 ;
+; mem_d~782                                ; Lost fanout                                 ;
+; mem_d~790                                ; Lost fanout                                 ;
+; mem_d~798                                ; Lost fanout                                 ;
+; mem_d~806                                ; Lost fanout                                 ;
+; mem_d~814                                ; Lost fanout                                 ;
+; mem_d~822                                ; Lost fanout                                 ;
+; mem_d~830                                ; Lost fanout                                 ;
+; mem_d~838                                ; Lost fanout                                 ;
+; mem_d~846                                ; Lost fanout                                 ;
+; mem_d~854                                ; Lost fanout                                 ;
+; mem_d~862                                ; Lost fanout                                 ;
+; mem_d~870                                ; Lost fanout                                 ;
+; mem_d~878                                ; Lost fanout                                 ;
+; mem_d~886                                ; Lost fanout                                 ;
+; mem_d~894                                ; Lost fanout                                 ;
+; mem_d~902                                ; Lost fanout                                 ;
+; mem_d~910                                ; Lost fanout                                 ;
+; mem_d~918                                ; Lost fanout                                 ;
+; mem_d~926                                ; Lost fanout                                 ;
+; mem_d~934                                ; Lost fanout                                 ;
+; mem_d~942                                ; Lost fanout                                 ;
+; mem_d~950                                ; Lost fanout                                 ;
+; mem_d~958                                ; Lost fanout                                 ;
+; mem_d~966                                ; Lost fanout                                 ;
+; mem_d~974                                ; Lost fanout                                 ;
+; mem_d~982                                ; Lost fanout                                 ;
+; mem_d~990                                ; Lost fanout                                 ;
+; mem_d~998                                ; Lost fanout                                 ;
+; mem_d~1006                               ; Lost fanout                                 ;
+; mem_d~1014                               ; Lost fanout                                 ;
+; mem_d~1022                               ; Lost fanout                                 ;
+; mem_d~1030                               ; Lost fanout                                 ;
+; mem_d~1038                               ; Lost fanout                                 ;
+; mem_d~1046                               ; Lost fanout                                 ;
+; mem_d~1054                               ; Lost fanout                                 ;
+; mem_d~1062                               ; Lost fanout                                 ;
+; mem_d~1070                               ; Lost fanout                                 ;
+; mem_d~1078                               ; Lost fanout                                 ;
+; mem_d~1086                               ; Lost fanout                                 ;
+; mem_d~1094                               ; Lost fanout                                 ;
+; mem_d~1102                               ; Lost fanout                                 ;
+; mem_d~1110                               ; Lost fanout                                 ;
+; mem_d~1118                               ; Lost fanout                                 ;
+; mem_d~1126                               ; Lost fanout                                 ;
+; mem_d~1134                               ; Lost fanout                                 ;
+; mem_d~1142                               ; Lost fanout                                 ;
+; mem_d~1150                               ; Lost fanout                                 ;
+; mem_d~1158                               ; Lost fanout                                 ;
+; mem_d~1166                               ; Lost fanout                                 ;
+; mem_d~1174                               ; Lost fanout                                 ;
+; mem_d~1182                               ; Lost fanout                                 ;
+; mem_d~1190                               ; Lost fanout                                 ;
+; mem_d~1198                               ; Lost fanout                                 ;
+; mem_d~1206                               ; Lost fanout                                 ;
+; mem_d~1214                               ; Lost fanout                                 ;
+; mem_d~1222                               ; Lost fanout                                 ;
+; mem_d~1230                               ; Lost fanout                                 ;
+; mem_d~1238                               ; Lost fanout                                 ;
+; mem_d~1246                               ; Lost fanout                                 ;
+; mem_d~1254                               ; Lost fanout                                 ;
+; mem_d~1262                               ; Lost fanout                                 ;
+; mem_d~1270                               ; Lost fanout                                 ;
+; mem_d~1278                               ; Lost fanout                                 ;
+; mem_d~1286                               ; Lost fanout                                 ;
+; mem_d~1294                               ; Lost fanout                                 ;
+; mem_d~1302                               ; Lost fanout                                 ;
+; mem_d~1310                               ; Lost fanout                                 ;
+; mem_d~1318                               ; Lost fanout                                 ;
+; mem_d~1326                               ; Lost fanout                                 ;
+; mem_d~1334                               ; Lost fanout                                 ;
+; mem_d~1342                               ; Lost fanout                                 ;
+; mem_d~1350                               ; Lost fanout                                 ;
+; mem_d~1358                               ; Lost fanout                                 ;
+; mem_d~1366                               ; Lost fanout                                 ;
+; mem_d~1374                               ; Lost fanout                                 ;
+; mem_d~1382                               ; Lost fanout                                 ;
+; mem_d~1390                               ; Lost fanout                                 ;
+; mem_d~1398                               ; Lost fanout                                 ;
+; mem_d~1406                               ; Lost fanout                                 ;
+; mem_d~1414                               ; Lost fanout                                 ;
+; mem_d~1422                               ; Lost fanout                                 ;
+; mem_d~1430                               ; Lost fanout                                 ;
+; mem_d~1438                               ; Lost fanout                                 ;
+; mem_d~1446                               ; Lost fanout                                 ;
+; mem_d~1454                               ; Lost fanout                                 ;
+; mem_d~1462                               ; Lost fanout                                 ;
+; mem_d~1470                               ; Lost fanout                                 ;
+; mem_d~1478                               ; Lost fanout                                 ;
+; mem_d~1486                               ; Lost fanout                                 ;
+; mem_d~1494                               ; Lost fanout                                 ;
+; mem_d~1502                               ; Lost fanout                                 ;
+; mem_d~1510                               ; Lost fanout                                 ;
+; mem_d~1518                               ; Lost fanout                                 ;
+; mem_d~1526                               ; Lost fanout                                 ;
+; mem_d~1534                               ; Lost fanout                                 ;
+; mem_d~1542                               ; Lost fanout                                 ;
+; mem_d~1550                               ; Lost fanout                                 ;
+; mem_d~535                                ; Lost fanout                                 ;
+; mem_d~543                                ; Lost fanout                                 ;
+; mem_d~551                                ; Lost fanout                                 ;
+; mem_d~559                                ; Lost fanout                                 ;
+; mem_d~567                                ; Lost fanout                                 ;
+; mem_d~575                                ; Lost fanout                                 ;
+; mem_d~583                                ; Lost fanout                                 ;
+; mem_d~591                                ; Lost fanout                                 ;
+; mem_d~599                                ; Lost fanout                                 ;
+; mem_d~607                                ; Lost fanout                                 ;
+; mem_d~615                                ; Lost fanout                                 ;
+; mem_d~623                                ; Lost fanout                                 ;
+; mem_d~631                                ; Lost fanout                                 ;
+; mem_d~639                                ; Lost fanout                                 ;
+; mem_d~647                                ; Lost fanout                                 ;
+; mem_d~655                                ; Lost fanout                                 ;
+; mem_d~663                                ; Lost fanout                                 ;
+; mem_d~671                                ; Lost fanout                                 ;
+; mem_d~679                                ; Lost fanout                                 ;
+; mem_d~687                                ; Lost fanout                                 ;
+; mem_d~695                                ; Lost fanout                                 ;
+; mem_d~703                                ; Lost fanout                                 ;
+; mem_d~711                                ; Lost fanout                                 ;
+; mem_d~719                                ; Lost fanout                                 ;
+; mem_d~727                                ; Lost fanout                                 ;
+; mem_d~735                                ; Lost fanout                                 ;
+; mem_d~743                                ; Lost fanout                                 ;
+; mem_d~751                                ; Lost fanout                                 ;
+; mem_d~759                                ; Lost fanout                                 ;
+; mem_d~767                                ; Lost fanout                                 ;
+; mem_d~775                                ; Lost fanout                                 ;
+; mem_d~783                                ; Lost fanout                                 ;
+; mem_d~791                                ; Lost fanout                                 ;
+; mem_d~799                                ; Lost fanout                                 ;
+; mem_d~807                                ; Lost fanout                                 ;
+; mem_d~815                                ; Lost fanout                                 ;
+; mem_d~823                                ; Lost fanout                                 ;
+; mem_d~831                                ; Lost fanout                                 ;
+; mem_d~839                                ; Lost fanout                                 ;
+; mem_d~847                                ; Lost fanout                                 ;
+; mem_d~855                                ; Lost fanout                                 ;
+; mem_d~863                                ; Lost fanout                                 ;
+; mem_d~871                                ; Lost fanout                                 ;
+; mem_d~879                                ; Lost fanout                                 ;
+; mem_d~887                                ; Lost fanout                                 ;
+; mem_d~895                                ; Lost fanout                                 ;
+; mem_d~903                                ; Lost fanout                                 ;
+; mem_d~911                                ; Lost fanout                                 ;
+; mem_d~919                                ; Lost fanout                                 ;
+; mem_d~927                                ; Lost fanout                                 ;
+; mem_d~935                                ; Lost fanout                                 ;
+; mem_d~943                                ; Lost fanout                                 ;
+; mem_d~951                                ; Lost fanout                                 ;
+; mem_d~959                                ; Lost fanout                                 ;
+; mem_d~967                                ; Lost fanout                                 ;
+; mem_d~975                                ; Lost fanout                                 ;
+; mem_d~983                                ; Lost fanout                                 ;
+; mem_d~991                                ; Lost fanout                                 ;
+; mem_d~999                                ; Lost fanout                                 ;
+; mem_d~1007                               ; Lost fanout                                 ;
+; mem_d~1015                               ; Lost fanout                                 ;
+; mem_d~1023                               ; Lost fanout                                 ;
+; mem_d~1031                               ; Lost fanout                                 ;
+; mem_d~1039                               ; Lost fanout                                 ;
+; mem_d~1047                               ; Lost fanout                                 ;
+; mem_d~1055                               ; Lost fanout                                 ;
+; mem_d~1063                               ; Lost fanout                                 ;
+; mem_d~1071                               ; Lost fanout                                 ;
+; mem_d~1079                               ; Lost fanout                                 ;
+; mem_d~1087                               ; Lost fanout                                 ;
+; mem_d~1095                               ; Lost fanout                                 ;
+; mem_d~1103                               ; Lost fanout                                 ;
+; mem_d~1111                               ; Lost fanout                                 ;
+; mem_d~1119                               ; Lost fanout                                 ;
+; mem_d~1127                               ; Lost fanout                                 ;
+; mem_d~1135                               ; Lost fanout                                 ;
+; mem_d~1143                               ; Lost fanout                                 ;
+; mem_d~1151                               ; Lost fanout                                 ;
+; mem_d~1159                               ; Lost fanout                                 ;
+; mem_d~1167                               ; Lost fanout                                 ;
+; mem_d~1175                               ; Lost fanout                                 ;
+; mem_d~1183                               ; Lost fanout                                 ;
+; mem_d~1191                               ; Lost fanout                                 ;
+; mem_d~1199                               ; Lost fanout                                 ;
+; mem_d~1207                               ; Lost fanout                                 ;
+; mem_d~1215                               ; Lost fanout                                 ;
+; mem_d~1223                               ; Lost fanout                                 ;
+; mem_d~1231                               ; Lost fanout                                 ;
+; mem_d~1239                               ; Lost fanout                                 ;
+; mem_d~1247                               ; Lost fanout                                 ;
+; mem_d~1255                               ; Lost fanout                                 ;
+; mem_d~1263                               ; Lost fanout                                 ;
+; mem_d~1271                               ; Lost fanout                                 ;
+; mem_d~1279                               ; Lost fanout                                 ;
+; mem_d~1287                               ; Lost fanout                                 ;
+; mem_d~1295                               ; Lost fanout                                 ;
+; mem_d~1303                               ; Lost fanout                                 ;
+; mem_d~1311                               ; Lost fanout                                 ;
+; mem_d~1319                               ; Lost fanout                                 ;
+; mem_d~1327                               ; Lost fanout                                 ;
+; mem_d~1335                               ; Lost fanout                                 ;
+; mem_d~1343                               ; Lost fanout                                 ;
+; mem_d~1351                               ; Lost fanout                                 ;
+; mem_d~1359                               ; Lost fanout                                 ;
+; mem_d~1367                               ; Lost fanout                                 ;
+; mem_d~1375                               ; Lost fanout                                 ;
+; mem_d~1383                               ; Lost fanout                                 ;
+; mem_d~1391                               ; Lost fanout                                 ;
+; mem_d~1399                               ; Lost fanout                                 ;
+; mem_d~1407                               ; Lost fanout                                 ;
+; mem_d~1415                               ; Lost fanout                                 ;
+; mem_d~1423                               ; Lost fanout                                 ;
+; mem_d~1431                               ; Lost fanout                                 ;
+; mem_d~1439                               ; Lost fanout                                 ;
+; mem_d~1447                               ; Lost fanout                                 ;
+; mem_d~1455                               ; Lost fanout                                 ;
+; mem_d~1463                               ; Lost fanout                                 ;
+; mem_d~1471                               ; Lost fanout                                 ;
+; mem_d~1479                               ; Lost fanout                                 ;
+; mem_d~1487                               ; Lost fanout                                 ;
+; mem_d~1495                               ; Lost fanout                                 ;
+; mem_d~1503                               ; Lost fanout                                 ;
+; mem_d~1511                               ; Lost fanout                                 ;
+; mem_d~1519                               ; Lost fanout                                 ;
+; mem_d~1527                               ; Lost fanout                                 ;
+; mem_d~1535                               ; Lost fanout                                 ;
+; mem_d~1543                               ; Lost fanout                                 ;
+; mem_d~1551                               ; Lost fanout                                 ;
+; mem_d~536                                ; Lost fanout                                 ;
+; mem_d~544                                ; Lost fanout                                 ;
+; mem_d~552                                ; Lost fanout                                 ;
+; mem_d~560                                ; Lost fanout                                 ;
+; mem_d~568                                ; Lost fanout                                 ;
+; mem_d~576                                ; Lost fanout                                 ;
+; mem_d~584                                ; Lost fanout                                 ;
+; mem_d~592                                ; Lost fanout                                 ;
+; mem_d~600                                ; Lost fanout                                 ;
+; mem_d~608                                ; Lost fanout                                 ;
+; mem_d~616                                ; Lost fanout                                 ;
+; mem_d~624                                ; Lost fanout                                 ;
+; mem_d~632                                ; Lost fanout                                 ;
+; mem_d~640                                ; Lost fanout                                 ;
+; mem_d~648                                ; Lost fanout                                 ;
+; mem_d~656                                ; Lost fanout                                 ;
+; mem_d~664                                ; Lost fanout                                 ;
+; mem_d~672                                ; Lost fanout                                 ;
+; mem_d~680                                ; Lost fanout                                 ;
+; mem_d~688                                ; Lost fanout                                 ;
+; mem_d~696                                ; Lost fanout                                 ;
+; mem_d~704                                ; Lost fanout                                 ;
+; mem_d~712                                ; Lost fanout                                 ;
+; mem_d~720                                ; Lost fanout                                 ;
+; mem_d~728                                ; Lost fanout                                 ;
+; mem_d~736                                ; Lost fanout                                 ;
+; mem_d~744                                ; Lost fanout                                 ;
+; mem_d~752                                ; Lost fanout                                 ;
+; mem_d~760                                ; Lost fanout                                 ;
+; mem_d~768                                ; Lost fanout                                 ;
+; mem_d~776                                ; Lost fanout                                 ;
+; mem_d~784                                ; Lost fanout                                 ;
+; mem_d~792                                ; Lost fanout                                 ;
+; mem_d~800                                ; Lost fanout                                 ;
+; mem_d~808                                ; Lost fanout                                 ;
+; mem_d~816                                ; Lost fanout                                 ;
+; mem_d~824                                ; Lost fanout                                 ;
+; mem_d~832                                ; Lost fanout                                 ;
+; mem_d~840                                ; Lost fanout                                 ;
+; mem_d~848                                ; Lost fanout                                 ;
+; mem_d~856                                ; Lost fanout                                 ;
+; mem_d~864                                ; Lost fanout                                 ;
+; mem_d~872                                ; Lost fanout                                 ;
+; mem_d~880                                ; Lost fanout                                 ;
+; mem_d~888                                ; Lost fanout                                 ;
+; mem_d~896                                ; Lost fanout                                 ;
+; mem_d~904                                ; Lost fanout                                 ;
+; mem_d~912                                ; Lost fanout                                 ;
+; mem_d~920                                ; Lost fanout                                 ;
+; mem_d~928                                ; Lost fanout                                 ;
+; mem_d~936                                ; Lost fanout                                 ;
+; mem_d~944                                ; Lost fanout                                 ;
+; mem_d~952                                ; Lost fanout                                 ;
+; mem_d~960                                ; Lost fanout                                 ;
+; mem_d~968                                ; Lost fanout                                 ;
+; mem_d~976                                ; Lost fanout                                 ;
+; mem_d~984                                ; Lost fanout                                 ;
+; mem_d~992                                ; Lost fanout                                 ;
+; mem_d~1000                               ; Lost fanout                                 ;
+; mem_d~1008                               ; Lost fanout                                 ;
+; mem_d~1016                               ; Lost fanout                                 ;
+; mem_d~1024                               ; Lost fanout                                 ;
+; mem_d~1032                               ; Lost fanout                                 ;
+; mem_d~1040                               ; Lost fanout                                 ;
+; mem_d~1048                               ; Lost fanout                                 ;
+; mem_d~1056                               ; Lost fanout                                 ;
+; mem_d~1064                               ; Lost fanout                                 ;
+; mem_d~1072                               ; Lost fanout                                 ;
+; mem_d~1080                               ; Lost fanout                                 ;
+; mem_d~1088                               ; Lost fanout                                 ;
+; mem_d~1096                               ; Lost fanout                                 ;
+; mem_d~1104                               ; Lost fanout                                 ;
+; mem_d~1112                               ; Lost fanout                                 ;
+; mem_d~1120                               ; Lost fanout                                 ;
+; mem_d~1128                               ; Lost fanout                                 ;
+; mem_d~1136                               ; Lost fanout                                 ;
+; mem_d~1144                               ; Lost fanout                                 ;
+; mem_d~1152                               ; Lost fanout                                 ;
+; mem_d~1160                               ; Lost fanout                                 ;
+; mem_d~1168                               ; Lost fanout                                 ;
+; mem_d~1176                               ; Lost fanout                                 ;
+; mem_d~1184                               ; Lost fanout                                 ;
+; mem_d~1192                               ; Lost fanout                                 ;
+; mem_d~1200                               ; Lost fanout                                 ;
+; mem_d~1208                               ; Lost fanout                                 ;
+; mem_d~1216                               ; Lost fanout                                 ;
+; mem_d~1224                               ; Lost fanout                                 ;
+; mem_d~1232                               ; Lost fanout                                 ;
+; mem_d~1240                               ; Lost fanout                                 ;
+; mem_d~1248                               ; Lost fanout                                 ;
+; mem_d~1256                               ; Lost fanout                                 ;
+; mem_d~1264                               ; Lost fanout                                 ;
+; mem_d~1272                               ; Lost fanout                                 ;
+; mem_d~1280                               ; Lost fanout                                 ;
+; mem_d~1288                               ; Lost fanout                                 ;
+; mem_d~1296                               ; Lost fanout                                 ;
+; mem_d~1304                               ; Lost fanout                                 ;
+; mem_d~1312                               ; Lost fanout                                 ;
+; mem_d~1320                               ; Lost fanout                                 ;
+; mem_d~1328                               ; Lost fanout                                 ;
+; mem_d~1336                               ; Lost fanout                                 ;
+; mem_d~1344                               ; Lost fanout                                 ;
+; mem_d~1352                               ; Lost fanout                                 ;
+; mem_d~1360                               ; Lost fanout                                 ;
+; mem_d~1368                               ; Lost fanout                                 ;
+; mem_d~1376                               ; Lost fanout                                 ;
+; mem_d~1384                               ; Lost fanout                                 ;
+; mem_d~1392                               ; Lost fanout                                 ;
+; mem_d~1400                               ; Lost fanout                                 ;
+; mem_d~1408                               ; Lost fanout                                 ;
+; mem_d~1416                               ; Lost fanout                                 ;
+; mem_d~1424                               ; Lost fanout                                 ;
+; mem_d~1432                               ; Lost fanout                                 ;
+; mem_d~1440                               ; Lost fanout                                 ;
+; mem_d~1448                               ; Lost fanout                                 ;
+; mem_d~1456                               ; Lost fanout                                 ;
+; mem_d~1464                               ; Lost fanout                                 ;
+; mem_d~1472                               ; Lost fanout                                 ;
+; mem_d~1480                               ; Lost fanout                                 ;
+; mem_d~1488                               ; Lost fanout                                 ;
+; mem_d~1496                               ; Lost fanout                                 ;
+; mem_d~1504                               ; Lost fanout                                 ;
+; mem_d~1512                               ; Lost fanout                                 ;
+; mem_d~1520                               ; Lost fanout                                 ;
+; mem_d~1528                               ; Lost fanout                                 ;
+; mem_d~1536                               ; Lost fanout                                 ;
+; mem_d~1544                               ; Lost fanout                                 ;
+; mem_d~1552                               ; Lost fanout                                 ;
+; mem_d~465                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~345                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~337                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~473                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~497                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~377                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~369                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~505                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~321                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~449                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~297                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~425                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~289                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~417                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~329                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~457                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~305                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~433                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~281                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~409                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~273                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~401                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~313                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~441                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~481                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~385                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~353                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~513                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~489                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~393                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~361                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~521                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1905                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2033                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1881                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2009                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1873                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2001                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1913                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2041                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1857                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1833                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1825                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1865                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1961                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1985                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1953                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1993                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1817                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1945                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1841                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1969                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1809                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1937                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1849                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1977                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1897                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1921                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1889                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1929                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2049                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2025                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2017                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2057                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~354                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~346                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~338                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~362                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~482                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~474                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~466                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~490                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~322                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~434                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~306                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~450                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~330                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~442                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~314                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~458                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~402                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~418                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~282                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~298                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~274                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~290                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~410                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~426                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~498                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~514                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~378                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~394                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~370                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~386                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~506                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~522                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1890                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1906                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1874                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1922                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2034                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2018                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2002                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2050                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1850                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1834                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1818                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1866                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1978                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1962                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1946                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1994                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1842                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1826                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1810                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1858                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1970                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1954                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1938                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1986                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2010                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1898                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1882                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2026                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2042                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1930                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1914                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2058                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~347                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~467                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~339                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~475                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~499                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~379                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~371                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~507                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~419                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~427                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~323                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~331                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~291                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~299                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~451                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~459                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~283                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~307                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~275                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~315                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~411                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~435                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~403                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~443                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~363                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~387                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~355                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~395                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~515                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~491                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~483                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~523                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1883                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1891                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1875                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1899                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2019                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2011                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2003                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2027                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1859                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1971                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1843                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1987                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1979                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1867                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1851                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1995                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1939                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1955                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1819                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1835                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1811                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1827                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1947                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1963                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1915                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2043                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1923                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2051                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1907                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2035                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1931                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2059                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~356                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~372                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~340                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~388                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~500                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~484                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~468                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~516                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~412                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~444                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~300                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~332                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~284                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~316                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~428                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~460                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~308                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~292                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~276                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~324                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~436                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~420                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~404                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~452                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~476                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~380                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~348                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~508                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~492                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~396                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~364                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~524                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1908                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1884                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1876                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1916                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2012                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2036                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2004                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2044                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1836                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1956                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1828                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1964                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1868                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1988                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1860                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1996                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1940                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1948                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1844                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1852                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1812                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1820                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1972                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1980                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2020                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2028                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1924                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1932                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1892                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1900                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2052                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2060                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~349                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~301                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~285                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~365                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~477                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~429                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~413                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~493                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~373                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~325                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~309                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~389                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~501                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~453                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~437                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~517                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~341                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~293                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~277                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~357                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~469                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~421                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~405                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~485                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~381                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~445                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~317                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~509                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~397                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~461                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~333                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~525                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1885                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2013                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1909                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2037                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1877                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2005                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1917                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2045                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1837                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1861                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1829                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1869                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1989                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1965                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1957                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1997                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1845                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1821                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1813                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1853                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1973                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1949                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1941                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1981                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1925                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1901                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1893                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1933                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2029                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2053                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2021                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2061                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~350                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~302                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~286                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~366                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~478                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~430                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~414                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~494                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~374                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~326                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~310                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~390                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~502                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~454                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~438                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~518                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~342                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~294                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~278                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~358                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~470                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~422                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~406                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~486                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~334                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~398                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~446                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~510                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~318                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~382                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~462                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~526                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2006                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1910                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1878                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2038                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2014                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1918                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1886                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2046                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1862                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1838                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1830                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1870                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1966                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1990                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1958                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1998                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1846                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1822                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1814                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1854                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1950                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1974                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1942                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1982                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2022                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2030                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1926                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1934                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1894                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1902                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2054                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2062                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~351                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~303                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~287                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~367                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~479                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~431                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~415                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~495                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~375                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~327                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~311                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~391                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~503                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~455                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~439                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~519                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~343                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~295                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~279                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~359                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~471                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~423                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~407                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~487                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~383                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~447                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~319                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~511                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~399                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~463                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~335                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~527                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1911                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2039                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1887                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2015                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1879                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2007                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1919                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2047                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1863                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1839                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1831                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1871                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1967                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1991                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1959                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1999                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1847                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1823                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1815                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1855                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1951                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1975                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1943                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1983                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1903                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1927                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1895                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1935                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2055                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2031                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2023                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2063                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~352                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~304                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~288                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~368                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~480                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~432                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~416                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~496                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~376                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~328                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~312                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~392                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~504                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~456                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~440                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~520                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~344                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~296                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~280                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~360                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~472                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~424                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~408                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~488                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~336                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~400                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~448                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~512                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~320                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~384                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~464                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~528                                ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1960                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1864                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1832                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1992                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1952                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1856                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1824                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1984                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1944                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1848                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1816                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1976                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1872                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1968                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1840                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2000                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1928                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2024                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1896                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2056                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2016                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1920                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1888                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2048                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1912                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2008                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1880                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2040                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2032                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1936                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~1904                               ; Stuck at GND due to stuck port clock_enable ;
+; mem_d~2064                               ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 1536 ;                                             ;
++------------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 648   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 136   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 640   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |MIPS|PC[7]                ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 40 LEs               ; 88 LEs                 ; Yes        ; |MIPS|regs[11][2]          ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 40 LEs               ; 88 LEs                 ; Yes        ; |MIPS|regs[10][1]          ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 40 LEs               ; 88 LEs                 ; Yes        ; |MIPS|regs[9][4]           ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 40 LEs               ; 88 LEs                 ; Yes        ; |MIPS|regs[8][0]           ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 40 LEs               ; 88 LEs                 ; Yes        ; |MIPS|regs[7][3]           ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 40 LEs               ; 88 LEs                 ; Yes        ; |MIPS|regs[6][1]           ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 40 LEs               ; 88 LEs                 ; Yes        ; |MIPS|regs[5][5]           ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 40 LEs               ; 88 LEs                 ; Yes        ; |MIPS|regs[4][3]           ;
+; 18:1               ; 8 bits    ; 96 LEs        ; 40 LEs               ; 56 LEs                 ; Yes        ; |MIPS|regs[15][5]          ;
+; 18:1               ; 8 bits    ; 96 LEs        ; 40 LEs               ; 56 LEs                 ; Yes        ; |MIPS|regs[14][5]          ;
+; 18:1               ; 8 bits    ; 96 LEs        ; 40 LEs               ; 56 LEs                 ; Yes        ; |MIPS|regs[13][5]          ;
+; 18:1               ; 8 bits    ; 96 LEs        ; 40 LEs               ; 56 LEs                 ; Yes        ; |MIPS|regs[12][5]          ;
+; 18:1               ; 8 bits    ; 96 LEs        ; 40 LEs               ; 56 LEs                 ; Yes        ; |MIPS|regs[3][4]           ;
+; 18:1               ; 8 bits    ; 96 LEs        ; 40 LEs               ; 56 LEs                 ; Yes        ; |MIPS|regs[2][5]           ;
+; 18:1               ; 8 bits    ; 96 LEs        ; 40 LEs               ; 56 LEs                 ; Yes        ; |MIPS|regs[1][4]           ;
+; 18:1               ; 8 bits    ; 96 LEs        ; 40 LEs               ; 56 LEs                 ; Yes        ; |MIPS|regs[0][5]           ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |MIPS|Mux9                 ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |MIPS|Mux15                ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |MIPS|Mux30                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0                    ;
++------------------------------------------------+-------------+---------------------+
+; Parameter Name                                 ; Value       ; Type                ;
++------------------------------------------------+-------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON          ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF         ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON          ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF         ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 8           ; Untyped             ;
+; LPM_WIDTHB                                     ; 8           ; Untyped             ;
+; LPM_WIDTHP                                     ; 16          ; Untyped             ;
+; LPM_WIDTHR                                     ; 16          ; Untyped             ;
+; LPM_WIDTHS                                     ; 1           ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED    ; Untyped             ;
+; LPM_PIPELINE                                   ; 0           ; Untyped             ;
+; LATENCY                                        ; 0           ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO          ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO          ; Untyped             ;
+; USE_EAB                                        ; OFF         ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5           ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone III ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL      ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT         ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0           ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0           ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_19t    ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx          ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx          ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF         ; Untyped             ;
++------------------------------------------------+-------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1                    ;
++------------------------------------------------+-------------+---------------------+
+; Parameter Name                                 ; Value       ; Type                ;
++------------------------------------------------+-------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON          ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF         ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON          ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF         ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 8           ; Untyped             ;
+; LPM_WIDTHB                                     ; 4           ; Untyped             ;
+; LPM_WIDTHP                                     ; 12          ; Untyped             ;
+; LPM_WIDTHR                                     ; 12          ; Untyped             ;
+; LPM_WIDTHS                                     ; 1           ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED    ; Untyped             ;
+; LPM_PIPELINE                                   ; 0           ; Untyped             ;
+; LATENCY                                        ; 0           ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO          ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO          ; Untyped             ;
+; USE_EAB                                        ; OFF         ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5           ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone III ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL      ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT         ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0           ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0           ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_p8t    ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx          ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx          ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF         ; Untyped             ;
++------------------------------------------------+-------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance         ;
++---------------------------------------+----------------+
+; Name                                  ; Value          ;
++---------------------------------------+----------------+
+; Number of entity instances            ; 2              ;
+; Entity Instance                       ; lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8              ;
+;     -- LPM_WIDTHB                     ; 8              ;
+;     -- LPM_WIDTHP                     ; 16             ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED       ;
+;     -- INPUT_A_IS_CONSTANT            ; NO             ;
+;     -- INPUT_B_IS_CONSTANT            ; NO             ;
+;     -- USE_EAB                        ; OFF            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
+; Entity Instance                       ; lpm_mult:Mult1 ;
+;     -- LPM_WIDTHA                     ; 8              ;
+;     -- LPM_WIDTHB                     ; 4              ;
+;     -- LPM_WIDTHP                     ; 12             ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED       ;
+;     -- INPUT_A_IS_CONSTANT            ; NO             ;
+;     -- INPUT_B_IS_CONSTANT            ; NO             ;
+;     -- USE_EAB                        ; OFF            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
++---------------------------------------+----------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 32-bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Wed Nov 27 21:44:45 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MIPS -c MIPS
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file mips.vhd
+    Info (12022): Found design unit 1: MIPS-behavior
+    Info (12023): Found entity 1: MIPS
+Info (12127): Elaborating entity "MIPS" for the top level hierarchy
+Warning (10540): VHDL Signal Declaration warning at MIPS.vhd(22): used explicit default value for signal "mem_i" because signal was never assigned a value
+Warning (10036): Verilog HDL or VHDL warning at MIPS.vhd(51): object "enable_reg_out" assigned a value but never read
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "mem_d" is uninferred due to asynchronous read logic
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult1"
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0"
+Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "8"
+    Info (12134): Parameter "LPM_WIDTHB" = "8"
+    Info (12134): Parameter "LPM_WIDTHP" = "16"
+    Info (12134): Parameter "LPM_WIDTHR" = "16"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_19t.tdf
+    Info (12023): Found entity 1: mult_19t
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult1"
+Info (12133): Instantiated megafunction "lpm_mult:Mult1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "8"
+    Info (12134): Parameter "LPM_WIDTHB" = "4"
+    Info (12134): Parameter "LPM_WIDTHP" = "12"
+    Info (12134): Parameter "LPM_WIDTHR" = "12"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_p8t.tdf
+    Info (12023): Found entity 1: mult_p8t
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following LCELL buffer node(s):
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le3a[9]"
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le5a[8]"
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le5a[4]"
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following LCELL buffer node(s):
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le3a[8]"
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le4a[9]"
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le4a[8]"
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le4a[7]"
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le4a[6]"
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le5a[7]"
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le5a[6]"
+        Warning (14320): Synthesized away node "lpm_mult:Mult1|mult_p8t:auto_generated|le5a[5]"
+Info (13014): Ignored 44 buffer(s)
+    Info (13016): Ignored 4 CARRY_SUM buffer(s)
+    Info (13019): Ignored 40 SOFT buffer(s)
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1024 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1521 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 1502 logic cells
+    Info (21062): Implemented 1 DSP elements
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 18 warnings
+    Info: Peak virtual memory: 397 megabytes
+    Info: Processing ended: Wed Nov 27 21:44:49 2024
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
+
+

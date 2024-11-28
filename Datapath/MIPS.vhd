@@ -57,8 +57,6 @@ begin
     R1 <= regs(conv_integer(mem_i(conv_integer(PC))(3 downto 0)));
     R1i <= (("0000") & mem_i(conv_integer(PC))(3 downto 0));
 
-    enable_reg_out	<= '1' when (mem_i(conv_integer(PC))(15 downto 12) = "0001") or (mem_i(conv_integer(PC))(15 downto 12) = "0010") or (mem_i(conv_integer(PC))(15 downto 12) = "0011") else
-				'0';
 
     --Verifica se R0 e R1 têm valores iguais.
     equal <= '1' when (R0 = R1) else
