@@ -9,7 +9,10 @@ opcode	dest	reg0	reg1
 0101 -> BEQ
 0110 -> BNE
 0111 -> STA
+1000 -> MUI
 1001 -> ADDI
+1010 -> LWI
+1011 -> SUI
 1111 -> NAO FAZ NADA
 
 

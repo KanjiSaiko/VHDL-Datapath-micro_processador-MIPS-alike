@@ -65,7 +65,10 @@ begin --a memória de instruções é carregada com valores iniciais. Cada posi�
                 -- Decodificação e execução
                 case mem_i(conv_integer(PC))(15 downto 12) is
                     when "0000" => -- LOAD
+                        regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= mem_d(conv_interger(mem_i(conv_integer(PC))(7 downto 0)));
+                    when "1010" => -- LOAD-I
                         regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8))) <= mem_i(conv_integer(PC))(7 downto 0);
+                    
                     
                     when "0111" => -- STORE
                         mem_d(conv_integer(mem_i(conv_integer(PC))(7 downto 0))) <= regs(conv_integer(mem_i(conv_integer(PC))(11 downto 8)));
