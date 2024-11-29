@@ -99,6 +99,8 @@ begin
 
                 PCIF_ID <= PC;
                 PCID_EX <= PCIF_ID;
+                PCEX_MEM <= PCID_EX;
+                PCMEM_WB <= PCEX_MEM;
 
                 if (desvio = '1') then
 
@@ -114,84 +116,73 @@ begin
                     PC <= PC + 1;
                     
                 end if;
-            end if;
-    end process;
 
-    --ID_EX
-    process(InID_EX)
-        begin
-            if(InID_EX(15 downto 12) = "0100") then --jump
+                --ID_EX
+                if(InID_EX(15 downto 12) = "0100") then --jump
 
-            elsif(InID_EX(15 downto 12) = "0001" or InID_EX(15 downto 12) = "0010" or InID_EX(15 downto 12) = "0011") then --R
-                R0ID_EX <= regs(conv_integer(InID_EX(7 downto 4)));
-                R1ID_EX <= regs(conv_integer(InID_EX(3 downto 0)));
-                RwID_EX <= regs(conv_integer(InID_EX(11 downto 8)));
+                elsif(InID_EX(15 downto 12) = "0001" or InID_EX(15 downto 12) = "0010" or InID_EX(15 downto 12) = "0011") then --R
+                    R0ID_EX <= regs(conv_integer(InID_EX(7 downto 4)));
+                    R1ID_EX <= regs(conv_integer(InID_EX(3 downto 0)));
+                    RwID_EX <= regs(conv_integer(InID_EX(11 downto 8)));
 
-            else --Imediatos e BEQ/BNE
-                R0ID_EX <= regs(conv_integer(InID_EX(7 downto 4)));
-                RwID_EX <= regs(conv_integer(InID_EX(11 downto 8)));
-            
-            end if;
-    end process;
-
-    
-    --EX_MEM
-    process(InEX_MEM)
-        variable temp_PC : std_logic_vector(7 downto 0);
-        begin
-            R0EX_MEM <= R0ID_EX;
-            R1EX_MEM <= R1ID_EX;
-            RwEX_MEM <= RwID_EX;
-            temp_PC := PCID_EX;
-
-            if(desvio = '1') then
-                temp_PC := temp_PC + (("0000") & InEX_MEM(3 downto 0));
-            
-            else
-                case InEX_MEM(15 downto 12) is
-                    when "0001" => -- ADD
-                        ulaEX_MEM <= (("00000000") & (R0EX_MEM + R1EX_MEM));
-
-                    when "0010" => -- SUB
-                        ulaEX_MEM <= (("00000000") & (R0EX_MEM - R1EX_MEM));
-
-                    when "0011" => -- MULT
-                        ulaEX_MEM <= R0EX_MEM * R1EX_MEM;
-                        
-                    when "1001" => -- ADDI
-                        ulaEX_MEM <= (("00000000") & (R0EX_MEM + (("0000") & InEX_MEM(3 downto 0))));
-
-                    when "1011" => -- SUI
-                        ulaEX_MEM <= (("00000000") & (R0EX_MEM - (("0000") & InEX_MEM(3 downto 0))));    
+                else --Imediatos e BEQ/BNE
+                    R0ID_EX <= regs(conv_integer(InID_EX(7 downto 4)));
+                    RwID_EX <= regs(conv_integer(InID_EX(11 downto 8)));
                 
-                    when "1000" => -- MUI
-                        ulaEX_MEM <= R0EX_MEM * (("0000") & InEX_MEM(3 downto 0));
+                end if;
 
-                    when others =>
-                        
-                    end case;
+                --EX_MEM
+                R0EX_MEM <= R0ID_EX;
+                R1EX_MEM <= R1ID_EX;
+                RwEX_MEM <= RwID_EX;
+
+                if(desvio = '1') then
+                    PCEX_MEM <= PCEX_MEM + (("0000") & InEX_MEM(3 downto 0));
+                
+                else
+                    case InEX_MEM(15 downto 12) is
+                        when "0001" => -- ADD
+                            ulaEX_MEM <= (("00000000") & (R0EX_MEM + R1EX_MEM));
+
+                        when "0010" => -- SUB
+                            ulaEX_MEM <= (("00000000") & (R0EX_MEM - R1EX_MEM));
+
+                        when "0011" => -- MULT
+                            ulaEX_MEM <= R0EX_MEM * R1EX_MEM;
+                            
+                        when "1001" => -- ADDI
+                            ulaEX_MEM <= (("00000000") & (R0EX_MEM + (("0000") & InEX_MEM(3 downto 0))));
+
+                        when "1011" => -- SUI
+                            ulaEX_MEM <= (("00000000") & (R0EX_MEM - (("0000") & InEX_MEM(3 downto 0))));    
+                    
+                        when "1000" => -- MUI
+                            ulaEX_MEM <= R0EX_MEM * (("0000") & InEX_MEM(3 downto 0));
+
+                        when others =>
+                            
+                        end case;
+                end if;
+
+                --MEM_WB
+                RwMEM_WB <= RwEX_MEM;
+                ulaMEM_WB <= ulaEX_MEM;
+
+                if(InMEM_WB(15 downto 12) = "0111") then --STORE
+                    mem_d(conv_integer(InMEM_WB(7 downto 0))) <= RwMEM_WB;
+                
+                elsif(InMEM_WB(15 downto 12) = "0000") then -- LOAD
+                    regs(conv_integer(InMEM_WB(15 downto 12))) <= mem_d(conv_integer(InMEM_WB(7 downto 0)));
+
+                elsif(InMEM_WB(15 downto 12) = "0000") then -- LOAD-I
+                    regs(conv_integer(InMEM_WB(15 downto 12))) <= InMEM_WB(7 downto 0);
+                
+                else --TIPO R
+                    regs(conv_integer(InMEM_WB(15 downto 12))) <= ulaMEM_WB(7 downto 0);
+
+                end if;
+
             end if;
-            PCEX_MEM <= temp_PC;
     end process;
 
-    process(InMEM_WB)
-        begin
-            PCMEM_WB <= PCEX_MEM;
-            RwMEM_WB <= RwEX_MEM;
-            ulaMEM_WB <= ulaEX_MEM;
-
-            if(InMEM_WB(15 downto 12) = "0111") then --STORE
-                mem_d(conv_integer(InMEM_WB(7 downto 0))) <= RwMEM_WB;
-            
-            elsif(InMEM_WB(15 downto 12) = "0000") then -- LOAD
-                regs(conv_integer(InMEM_WB(15 downto 12))) <= mem_d(conv_integer(InMEM_WB(7 downto 0)));
-
-            elsif(InMEM_WB(15 downto 12) = "0000") then -- LOAD-I
-                regs(conv_integer(InMEM_WB(15 downto 12))) <= InMEM_WB(7 downto 0);
-            
-            else --TIPO R
-                regs(conv_integer(InMEM_WB(15 downto 12))) <= ulaMEM_WB(7 downto 0);
-
-            end if;
-        end process;
 end behavior;
