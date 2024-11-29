@@ -1,5 +1,0 @@
-|processador_MIPS
-clock => ~NO_FANOUT~
-reset => ~NO_FANOUT~
-
-
