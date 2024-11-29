@@ -21,16 +21,22 @@ architecture behavior of MIPS_Pipeline is
         0 => "0110000000010111", -- BNE R0 != R1 
         1 => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
         2 => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
-        3 => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4) // hazard de dependência de dados!!
-        4 => "0111001000000001", -- STA R2 no endereço 1 (Valor 4)
-        --5 => "0011001100100001", -- MUL R1 * R2 no R3 (Valor 12)
-        5 => "1000001100100011", -- MUI R1 * R2 no R3 (Valor 12)
-        6 => "0110001000010010", -- BEQ R2 - R0 -> R2 (ENDEREÇO 8)
-        7 => "0111001100000010", -- STA R3 no endereço 2 (Valor 12)
-        --8 => "0010001000100000", -- SUB R2 - R0 -> R2 (Valor 3)
-        8 => "1011001000100001", -- SUI R2 - R0 -> R2 (Valor 3)
-        9 => "0111001000000011", -- STA R2 no endereço 3 (Valor 3)
-       10 => "1001010000101111", -- ADDI R2 + IMM -> R4 (Valor 18)
+        3 => "1111111111111111", -- Bolha artificial
+        4 => "1111111111111111", -- Bolha artificial
+        5 => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4) // hazard de dependência de dados!!
+        6 => "1111111111111111", -- Bolha artificial
+        7 => "1111111111111111", -- Bolha artificial
+        --8 => "0011001100100001", -- MUL R1 * R2 no R3 (Valor 12)
+        8 => "1000001100100011", -- MUI R1 * R2 no R3 (Valor 12)
+        9 => "0111001000000001", -- STA R2 no endereço 1 (Valor 4)
+        10 => "0110001000010010", -- BEQ R2 - R0 -> R2 (ENDEREÇO 8)
+        11 => "0111001100000010", -- STA R3 no endereço 2 (Valor 12)
+        --12 => "0010001000100000", -- SUB R2 - R0 -> R2 (Valor 3)
+        12 => "1011001000100001", -- SUI R2 - R0 -> R2 (Valor 3)
+        13 => "1111111111111111", -- Bolha artificial
+        14 => "1111111111111111", -- Bolha artificial
+        15 => "0111001000000011", -- STA R2 no endereço 3 (Valor 3)
+        16 => "1001010000101111", -- ADDI R2 + IMM -> R4 (Valor 18)
         others => (others => '1') -- Demais posiçõe zeradas
     );
 
@@ -52,16 +58,9 @@ architecture behavior of MIPS_Pipeline is
     signal RwID_EX, RwEX_MEM, RwMEM_WB              : std_logic_vector(7 downto 0); --registrador a ser escrito
     signal PCIF_ID, PCID_EX, PCEX_MEM, PCMEM_WB     : std_logic_vector(7 downto 0); -- Contador de programa (Program Counter) que armazena o endereço atual de execução.
     signal InIF_ID, InID_EX, InEX_MEM, InMEM_WB     : std_logic_vector(15 downto 0); --Instrução Atual
-    signal hazard_detectedR0, hazard_detectedR1     : std_logic;
 
 
 begin 
-            hazard_detectedR0 <= '1' when (InEX_MEM(7 downto 4) = InMEM_WB(11 downto 8)) else
-                '0';
-
-            hazard_detectedR1 <= '1' when (InEX_MEM(3 downto 0) = InMEM_WB(11 downto 8)) else
-                '0';
-
             --Verifica se R0 e R1 têm valores iguais.
             equal <= '1' when (R0EX_MEM = RwEX_MEM) else
                 '0';
@@ -144,36 +143,6 @@ begin
                 R0EX_MEM <= R0ID_EX;
                 R1EX_MEM <= R1ID_EX;
                 RwEX_MEM <= RwID_EX;
-
-                -- Lógica de FORWARDING LOAD
-                if(InMEM_WB(15 downto 12) = "0000") then
-                    if (hazard_detectedR0 = '1') then -- R0 forwarding de WB
-                        R0EX_MEM <= mem_d(conv_integer(InMEM_WB(7 downto 0)));
-
-                    elsif (hazard_detectedR1 = '1') then -- R1 forwarding de WB
-                        R1EX_MEM <= mem_d(conv_integer(InMEM_WB(7 downto 0)));
-                    end if;
-                
-                -- Lógica de FORWARDING LOAD-I
-                elsif(InMEM_WB(15 downto 12) = "1010") then --SE A INSTRUCAO ANTERIOR FOR UM LOAD-I, FAZ O ENCAMINHAMENTO
-                    if (hazard_detectedR0 = '1') then -- R0 forwarding de WB
-                        R0EX_MEM <= InMEM_WB(7 downto 0);
-                    end if;
-                
-                -- lógica de FORWARDING para TIPO R
-                elsif (InMEM_WB(15 downto 12) = "0001" or InMEM_WB(15 downto 12) = "0010" or InMEM_WB(15 downto 12) = "0011") then
-                    if (hazard_detectedR0 = '1') then -- R0 forwarding de WB
-                        R0EX_MEM <= ulaMEM_WB(7 downto 0);
-
-                    elsif (hazard_detectedR1 = '1') then -- R1 forwarding de WB
-                        R1EX_MEM <= ulaMEM_WB(7 downto 0);
-                    end if;
-
-                else --tipo I
-                    if (hazard_detectedR0 = '1') then -- R0 forwarding de WB
-                        R0EX_MEM <= ulaMEM_WB(7 downto 0);
-                    end if;
-                end if;
 
                 if(desvio = '1') then
                     PCEX_MEM <= PCEX_MEM + (("0000") & InEX_MEM(3 downto 0));
