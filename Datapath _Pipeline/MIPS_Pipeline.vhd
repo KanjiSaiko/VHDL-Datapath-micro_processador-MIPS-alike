@@ -21,7 +21,7 @@ architecture behavior of MIPS_Pipeline is
         0 => "0110000000010111", -- BNE R0 != R1 
         1 => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
         2 => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
-        3 => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4)
+        3 => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4) // hazard de dependência de dados!!
         4 => "0111001000000001", -- STA R2 no endereço 1 (Valor 4)
         --5 => "0011001100100001", -- MUL R1 * R2 no R3 (Valor 12)
         5 => "1000001100100011", -- MUI R1 * R2 no R3 (Valor 12)
@@ -52,8 +52,16 @@ architecture behavior of MIPS_Pipeline is
     signal RwID_EX, RwEX_MEM, RwMEM_WB              : std_logic_vector(7 downto 0); --registrador a ser escrito
     signal PCIF_ID, PCID_EX, PCEX_MEM, PCMEM_WB     : std_logic_vector(7 downto 0); -- Contador de programa (Program Counter) que armazena o endereço atual de execução.
     signal InIF_ID, InID_EX, InEX_MEM, InMEM_WB     : std_logic_vector(15 downto 0); --Instrução Atual
+    signal hazard_detectedR0, hazard_detectedR1     : std_logic;
+
 
 begin 
+            hazard_detectedR0 <= '1' when (InEX_MEM(7 downto 4) = InMEM_WB(11 downto 8)) else
+                '0';
+
+            hazard_detectedR1 <= '1' when (InEX_MEM(3 downto 0) = InMEM_WB(11 downto 8)) else
+                '0';
+
             --Verifica se R0 e R1 têm valores iguais.
             equal <= '1' when (R0EX_MEM = RwEX_MEM) else
                 '0';
@@ -61,7 +69,6 @@ begin
             --Indica se um salto deve ocorrer. Fazer Bolhas
             desvio <= '1' when (InEX_MEM(15 downto 12) = "0110" and equal = '0') or (InEX_MEM(15 downto 12) = "0101" and equal = '1') else
                 '0';
-
             R0_out <= R0EX_MEM;
             R1_out <= R1EX_MEM;
 
@@ -92,8 +99,10 @@ begin
                 RwMEM_WB  <= (others => '0');
 
             elsif (clock = '1' and clock'event) then
+                --IF_ID
                 InIF_ID <= mem_i(conv_integer(PC))(15 downto 0);
                 InID_EX <= InIF_ID;
+
                 InEX_MEM <= InID_EX;
                 InMEM_WB <= InEX_MEM;
 
@@ -120,10 +129,10 @@ begin
                 --ID_EX
                 if(InID_EX(15 downto 12) = "0100") then --jump
 
-                elsif(InID_EX(15 downto 12) = "0001" or InID_EX(15 downto 12) = "0010" or InID_EX(15 downto 12) = "0011") then --R
+                elsif(InID_EX(15 downto 12) = "0001" or InID_EX(15 downto 12) = "0010" or InID_EX(15 downto 12) = "0011") then
+                    --R
                     R0ID_EX <= regs(conv_integer(InID_EX(7 downto 4)));
                     R1ID_EX <= regs(conv_integer(InID_EX(3 downto 0)));
-                    RwID_EX <= regs(conv_integer(InID_EX(11 downto 8)));
 
                 else --Imediatos e BEQ/BNE
                     R0ID_EX <= regs(conv_integer(InID_EX(7 downto 4)));
@@ -135,6 +144,36 @@ begin
                 R0EX_MEM <= R0ID_EX;
                 R1EX_MEM <= R1ID_EX;
                 RwEX_MEM <= RwID_EX;
+
+                -- Lógica de FORWARDING LOAD
+                if(InMEM_WB(15 downto 12) = "0000") then
+                    if (hazard_detectedR0 = '1') then -- R0 forwarding de WB
+                        R0EX_MEM <= mem_d(conv_integer(InMEM_WB(7 downto 0)));
+
+                    elsif (hazard_detectedR1 = '1') then -- R1 forwarding de WB
+                        R1EX_MEM <= mem_d(conv_integer(InMEM_WB(7 downto 0)));
+                    end if;
+                
+                -- Lógica de FORWARDING LOAD-I
+                elsif(InMEM_WB(15 downto 12) = "1010") then --SE A INSTRUCAO ANTERIOR FOR UM LOAD-I, FAZ O ENCAMINHAMENTO
+                    if (hazard_detectedR0 = '1') then -- R0 forwarding de WB
+                        R0EX_MEM <= InMEM_WB(7 downto 0);
+                    end if;
+                
+                -- lógica de FORWARDING para TIPO R
+                elsif (InMEM_WB(15 downto 12) = "0001" or InMEM_WB(15 downto 12) = "0010" or InMEM_WB(15 downto 12) = "0011") then
+                    if (hazard_detectedR0 = '1') then -- R0 forwarding de WB
+                        R0EX_MEM <= ulaMEM_WB(7 downto 0);
+
+                    elsif (hazard_detectedR1 = '1') then -- R1 forwarding de WB
+                        R1EX_MEM <= ulaMEM_WB(7 downto 0);
+                    end if;
+
+                else --tipo I
+                    if (hazard_detectedR0 = '1') then -- R0 forwarding de WB
+                        R0EX_MEM <= ulaMEM_WB(7 downto 0);
+                    end if;
+                end if;
 
                 if(desvio = '1') then
                     PCEX_MEM <= PCEX_MEM + (("0000") & InEX_MEM(3 downto 0));
@@ -172,13 +211,13 @@ begin
                     mem_d(conv_integer(InMEM_WB(7 downto 0))) <= RwMEM_WB;
                 
                 elsif(InMEM_WB(15 downto 12) = "0000") then -- LOAD
-                    regs(conv_integer(InMEM_WB(15 downto 12))) <= mem_d(conv_integer(InMEM_WB(7 downto 0)));
+                    regs(conv_integer(InMEM_WB(11 downto 8))) <= mem_d(conv_integer(InMEM_WB(7 downto 0)));
 
                 elsif(InMEM_WB(15 downto 12) = "0000") then -- LOAD-I
-                    regs(conv_integer(InMEM_WB(15 downto 12))) <= InMEM_WB(7 downto 0);
+                    regs(conv_integer(InMEM_WB(11 downto 8))) <= InMEM_WB(7 downto 0);
                 
-                else --TIPO R
-                    regs(conv_integer(InMEM_WB(15 downto 12))) <= ulaMEM_WB(7 downto 0);
+                else --TIPO R e I
+                    regs(conv_integer(InMEM_WB(11 downto 8))) <= ulaMEM_WB(7 downto 0);
 
                 end if;
 
