@@ -19,6 +19,7 @@ architecture behavior of MIPS_Pipeline is
 
     signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 256 posições de 16 bits cada.
         0 => "0101000000011000", -- BEQ R0 != R1 pula para inst 8
+        --0 => "0100000000000101", -- JMP para endereço 5
         1 => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
         2 => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
         3 => "1111111111111111", -- Bolha artificial
@@ -114,11 +115,10 @@ begin
 
                     if (InEX_MEM(15 downto 12) = "0101" or InEX_MEM(15 downto 12) = "0110") then
                         PC <= PCEX_MEM + InEX_MEM(3 downto 0); -- BEQ/BNE
-
-                    elsif (InEX_MEM(15 downto 12) = "0100") then
-                        PC <= InEX_MEM(7 downto 0); -- JMP
-
                     end if;
+
+                elsif (InEX_MEM(15 downto 12) = "0100") then
+                    PC <= InEX_MEM(7 downto 0); -- JMP    
 
                 else
                     PC <= PC + 1;
