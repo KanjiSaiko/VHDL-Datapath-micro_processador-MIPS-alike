@@ -18,7 +18,7 @@ architecture behavior of MIPS_Pipeline is
     type banco_regs is array (integer range 0 to 15) of std_logic_vector(7 downto 0);
 
     signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 256 posições de 16 bits cada.
-        0 => "0110000000010111", -- BNE R0 != R1 
+        0 => "0101000000010001", -- BEQ R0 != R1 
         1 => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
         2 => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
         3 => "1111111111111111", -- Bolha artificial
@@ -51,10 +51,11 @@ architecture behavior of MIPS_Pipeline is
     signal regs                                     : banco_regs := (others => (others => '0')); --Banco com 16 Registradores
     signal desvio	                                : std_logic; --Controle para indicar se deve ocorrer um salto (branch).
     --signal CalcdesvioID_EX                          : std_logic_vector(7 downto 0); --Saída da ULA que executa operações aritméticas.
-    signal ulaEX_MEM, ulaMEM_WB                     : std_logic_vector(15 downto 0); --Saída da ULA que executa operações aritméticas.
+    signal multiplicacao, multiplicai               : std_logic_vector(15 downto 0); --Saída da ULA que executa operações aritméticas.
+    signal ulaEX_MEM                                : std_logic_vector(7 downto 0); --Saída da ULA que executa operações aritméticas.
     signal equal	                                : std_logic; --Sinal para verificar se R0 é igual a R1 (usado em instruções de comparação).
-    signal R0ID_EX, R0EX_MEM                        : std_logic_vector(7 downto 0);
-    signal R1ID_EX, R1EX_MEM                        : std_logic_vector(7 downto 0);
+    signal R0ID_EX                                  : std_logic_vector(7 downto 0);
+    signal R1ID_EX                                  : std_logic_vector(7 downto 0);
     signal RwID_EX, RwEX_MEM, RwMEM_WB              : std_logic_vector(7 downto 0); --registrador a ser escrito
     signal PCIF_ID, PCID_EX, PCEX_MEM, PCMEM_WB     : std_logic_vector(7 downto 0); -- Contador de programa (Program Counter) que armazena o endereço atual de execução.
     signal InIF_ID, InID_EX, InEX_MEM, InMEM_WB     : std_logic_vector(15 downto 0); --Instrução Atual
@@ -62,14 +63,17 @@ architecture behavior of MIPS_Pipeline is
 
 begin 
             --Verifica se R0 e R1 têm valores iguais.
-            equal <= '1' when (R0EX_MEM = RwEX_MEM) else
+            equal <= '1' when (R0ID_EX = RwEX_MEM) else
                 '0';
 
             --Indica se um salto deve ocorrer. Fazer Bolhas
             desvio <= '1' when (InEX_MEM(15 downto 12) = "0110" and equal = '0') or (InEX_MEM(15 downto 12) = "0101" and equal = '1') else
                 '0';
-            R0_out <= R0EX_MEM;
-            R1_out <= R1EX_MEM;
+
+            multiplicai <= R0ID_EX * (("0000") & InEX_MEM(3 downto 0));
+            multiplicacao <= R0ID_EX * R1ID_EX;
+            R0_out <= R0ID_EX;
+            R1_out <= R1ID_EX;
 
     process(reset, clock)
         begin
@@ -87,12 +91,9 @@ begin
                 InMEM_WB  <= (others => '0');
 
                 ulaEX_MEM <= (others => '0');
-                ulaMEM_WB <= (others => '0');
 
-                R0ID_EX   <= (others => '0');
-                R1ID_EX   <= (others => '0');
-                R0EX_MEM  <= (others => '0');
-                R1EX_MEM  <= (others => '0');
+                R0ID_EX  <= (others => '0');
+                R1ID_EX  <= (others => '0');
                 RwID_EX  <= (others => '0');
                 RwEX_MEM  <= (others => '0');
                 RwMEM_WB  <= (others => '0');
@@ -140,53 +141,51 @@ begin
                 end if;
 
                 --EX_MEM
-                R0EX_MEM <= R0ID_EX;
-                R1EX_MEM <= R1ID_EX;
-                RwEX_MEM <= RwID_EX;
+                
+                
 
                 if(desvio = '1') then
-                    PCEX_MEM <= PCEX_MEM + (("0000") & InEX_MEM(3 downto 0));
-                
+                    PCEX_MEM <= PCEX_MEM + InEX_MEM(3 downto 0);
+                    R0ID_EX  <= (others => '0');
+                    R1ID_EX  <= (others => '0');
+
                 else
+                    RwEX_MEM <= RwID_EX;
                     case InEX_MEM(15 downto 12) is
                         when "0001" => -- ADD
-                            ulaEX_MEM <= (("00000000") & (R0EX_MEM + R1EX_MEM));
+                            ulaEX_MEM <= R0ID_EX + R1ID_EX;
 
                         when "0010" => -- SUB
-                            ulaEX_MEM <= (("00000000") & (R0EX_MEM - R1EX_MEM));
+                            ulaEX_MEM <= R0ID_EX - R1ID_EX;
 
                         when "0011" => -- MULT
-                            ulaEX_MEM <= R0EX_MEM * R1EX_MEM;
+                            ulaEX_MEM <= multiplicacao(7 downto 0);
                             
                         when "1001" => -- ADDI
-                            ulaEX_MEM <= (("00000000") & (R0EX_MEM + (("0000") & InEX_MEM(3 downto 0))));
+                            ulaEX_MEM <= R0ID_EX + InEX_MEM(3 downto 0);
 
                         when "1011" => -- SUI
-                            ulaEX_MEM <= (("00000000") & (R0EX_MEM - (("0000") & InEX_MEM(3 downto 0))));    
+                            ulaEX_MEM <= R0ID_EX - InEX_MEM(3 downto 0);
                     
                         when "1000" => -- MUI
-                            ulaEX_MEM <= R0EX_MEM * (("0000") & InEX_MEM(3 downto 0));
+                            ulaEX_MEM <= multiplicai(7 downto 0);
 
                         when others =>
                             
                         end case;
                 end if;
 
-                --MEM_WB
-                RwMEM_WB <= RwEX_MEM;
-                ulaMEM_WB <= ulaEX_MEM;
-
                 if(InMEM_WB(15 downto 12) = "0111") then --STORE
-                    mem_d(conv_integer(InMEM_WB(7 downto 0))) <= RwMEM_WB;
-                
+                    mem_d(conv_integer(InMEM_WB(7 downto 0))) <= RwEX_MEM;
+
                 elsif(InMEM_WB(15 downto 12) = "0000") then -- LOAD
                     regs(conv_integer(InMEM_WB(11 downto 8))) <= mem_d(conv_integer(InMEM_WB(7 downto 0)));
 
                 elsif(InMEM_WB(15 downto 12) = "0000") then -- LOAD-I
                     regs(conv_integer(InMEM_WB(11 downto 8))) <= InMEM_WB(7 downto 0);
-                
+
                 else --TIPO R e I
-                    regs(conv_integer(InMEM_WB(11 downto 8))) <= ulaMEM_WB(7 downto 0);
+                    regs(conv_integer(InMEM_WB(11 downto 8))) <= ulaEX_MEM;
 
                 end if;
 
