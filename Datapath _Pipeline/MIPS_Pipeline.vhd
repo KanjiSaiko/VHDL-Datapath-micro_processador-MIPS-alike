@@ -18,7 +18,7 @@ architecture behavior of MIPS_Pipeline is
     type banco_regs is array (integer range 0 to 15) of std_logic_vector(7 downto 0);
 
     signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 256 posições de 16 bits cada.
-        0 => "0101000000010001", -- BEQ R0 != R1 
+        0 => "0101000000011000", -- BEQ R0 != R1 pula para inst 8
         1 => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
         2 => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
         3 => "1111111111111111", -- Bolha artificial
@@ -50,7 +50,6 @@ architecture behavior of MIPS_Pipeline is
     signal PC	                                    : std_logic_vector(7 downto 0); -- Contador de programa (Program Counter)
     signal regs                                     : banco_regs := (others => (others => '0')); --Banco com 16 Registradores
     signal desvio	                                : std_logic; --Controle para indicar se deve ocorrer um salto (branch).
-    --signal CalcdesvioID_EX                          : std_logic_vector(7 downto 0); --Saída da ULA que executa operações aritméticas.
     signal multiplicacao, multiplicai               : std_logic_vector(15 downto 0); --Saída da ULA que executa operações aritméticas.
     signal ulaEX_MEM                                : std_logic_vector(7 downto 0); --Saída da ULA que executa operações aritméticas.
     signal equal	                                : std_logic; --Sinal para verificar se R0 é igual a R1 (usado em instruções de comparação).
@@ -113,11 +112,11 @@ begin
 
                 if (desvio = '1') then
 
-                    if (InMEM_WB(15 downto 12) = "0101" or InMEM_WB(15 downto 12) = "0110") then
-                        PC <= PC + InMEM_WB(3 downto 0); -- BEQ/BNE
+                    if (InEX_MEM(15 downto 12) = "0101" or InEX_MEM(15 downto 12) = "0110") then
+                        PC <= PCEX_MEM + InEX_MEM(3 downto 0); -- BEQ/BNE
 
-                    elsif (InMEM_WB(15 downto 12) = "0100") then
-                        PC <= InMEM_WB(7 downto 0); -- JMP
+                    elsif (InEX_MEM(15 downto 12) = "0100") then
+                        PC <= InEX_MEM(7 downto 0); -- JMP
 
                     end if;
 
@@ -141,15 +140,7 @@ begin
                 end if;
 
                 --EX_MEM
-                
-                
-
-                if(desvio = '1') then
-                    PCEX_MEM <= PCEX_MEM + InEX_MEM(3 downto 0);
-                    R0ID_EX  <= (others => '0');
-                    R1ID_EX  <= (others => '0');
-
-                else
+                --else
                     RwEX_MEM <= RwID_EX;
                     case InEX_MEM(15 downto 12) is
                         when "0001" => -- ADD
@@ -173,8 +164,9 @@ begin
                         when others =>
                             
                         end case;
-                end if;
+                --end if;
 
+                --MEM_WB
                 if(InMEM_WB(15 downto 12) = "0111") then --STORE
                     mem_d(conv_integer(InMEM_WB(7 downto 0))) <= RwEX_MEM;
 
