@@ -140,7 +140,14 @@ begin
                 end if;
 
                 --EX_MEM
-                --else
+                if(desvio = '1') then
+                    R0ID_EX <= (others => '0');
+                    R1ID_EX <= (others => '0');
+                    InIF_ID <= (others => '1');
+                    InID_EX <= (others => '1');
+                    InEX_MEM <= (others => '1');
+                 
+                else
                     RwEX_MEM <= RwID_EX;
                     case InEX_MEM(15 downto 12) is
                         when "0001" => -- ADD
@@ -164,7 +171,7 @@ begin
                         when others =>
                             
                         end case;
-                --end if;
+                end if;
 
                 --MEM_WB
                 if(InMEM_WB(15 downto 12) = "0111") then --STORE
