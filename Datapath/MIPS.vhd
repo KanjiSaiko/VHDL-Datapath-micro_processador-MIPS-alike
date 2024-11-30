@@ -20,7 +20,8 @@ architecture behavior of MIPS is
     type banco_regs is array (integer range 0 to 15) of std_logic_vector(7 downto 0);
 
     signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 256 posições de 16 bits cada.
-        0 => "0110000000010111", -- BNE R0 != R1 
+        0 => "0110000000010010", -- BNE R0 != R1 
+        --0 => "0101000000010010", -- BEQ R0 != R1 
         1 => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
         2 => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
         3 => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4)
@@ -48,7 +49,6 @@ architecture behavior of MIPS is
     signal ula		            : std_logic_vector(15 downto 0); --Saída da ULA que executa operações aritméticas.
     signal ulai		            : std_logic_vector(15 downto 0); --Saída da ULA que executa operações aritméticas.
     signal equal	            : std_logic; --Sinal para verificar se R0 é igual a R1 (usado em instruções de comparação).
-    signal enable_reg_out	    : std_logic; --Habilita a gravação de valores em registradores.
     signal R0, R1, R1i          : std_logic_vector(7 downto 0);
 begin 
     
