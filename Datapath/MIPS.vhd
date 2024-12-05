@@ -20,20 +20,20 @@ architecture behavior of MIPS is
     type banco_regs is array (integer range 0 to 15) of std_logic_vector(7 downto 0);
 
     signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 256 posições de 16 bits cada.
-        0 => "0110000000010010", -- BNE R0 != R1 
+        0  => "0110000000010010", -- BNE R0 != R1 
         --0 => "0101000000010010", -- BEQ R0 != R1 
-        1 => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
-        2 => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
-        3 => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4)
-        4 => "0111001000000001", -- STA R2 no endereço 1 (Valor 4)
+        1  => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
+        2  => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
+        3  => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4)
+        4  => "0111001000000001", -- STA R2 no endereço 1 (Valor 4)
         --5 => "0011001100100001", -- MUL R1 * R2 no R3 (Valor 12)
-        5 => "1000001100100011", -- MUI R1 * R2 no R3 (Valor 12)
-        6 => "0110001000010010", -- BEQ R2 - R0 -> R2 (ENDEREÇO 8)
-        7 => "0111001100000010", -- STA R3 no endereço 2 (Valor 12)
+        5  => "1000001100100011", -- MUI R1 * R2 no R3 (Valor 12)
+        6  => "0110001000010010", -- BEQ R2 - R0 -> R2 (ENDEREÇO 8)
+        7  => "0111001100000010", -- STA R3 no endereço 2 (Valor 12)
         --8 => "0010001000100000", -- SUB R2 - R0 -> R2 (Valor 3)
-        8 => "1011001000100001", -- SUI R2 - R0 -> R2 (Valor 3)
-        9 => "0111001000000011", -- STA R2 no endereço 3 (Valor 3)
-       10 => "1001010000101111", -- ADDI R2 + IMM -> R4 (Valor 18)
+        8  => "1011001000100001", -- SUI R2 - R0 -> R2 (Valor 3)
+        9  => "0111001000000011", -- STA R2 no endereço 3 (Valor 3)
+        10 => "1001010000101111", -- ADDI R2 + IMM -> R4 (Valor 18)
         others => (others => '1') -- Demais posiçõe zeradas
     );
 

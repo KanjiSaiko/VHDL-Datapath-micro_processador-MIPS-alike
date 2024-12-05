@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="MIPS_Pipeline">
+		<CBX_INST_ENTRY INSTANCE_NAME="|MIPS_Pipeline|altsyncram:mem_d_rtl_0" CBX_FILE_NAME="altsyncram_aom1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|MIPS_Pipeline|lpm_mult:Mult0" CBX_FILE_NAME="mult_p8t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|MIPS_Pipeline|lpm_mult:Mult1" CBX_FILE_NAME="mult_19t.tdf"/>
+	</PROJECT>
+</LOG_ROOT>
