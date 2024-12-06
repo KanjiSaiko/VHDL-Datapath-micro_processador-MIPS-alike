@@ -18,21 +18,22 @@ architecture behavior of MIPS_Pipeline is
     type banco_regs is array (integer range 0 to 15) of std_logic_vector(7 downto 0);
 
     signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 256 posições de 16 bits cada.
-        0 => "0110000000011000", -- BNE R0 != R1 FALSO
-        1 => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
-        2 => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
-        3 => "1111111111111111", -- Bolha artificial
-        4 => "1111111111111111", -- Bolha artificial
-        5 => "0101000000011111", -- BEQ R0 = R1 VAI DAR FALSO
-        6 => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4) // hazard de dependência de dados!!
-        7 => "1111111111111111", -- Bolha artificial
-        8 => "1111111111111111", -- Bolha artificial
-        --8 => "0011001100100001", -- MUL R1 * R2 no R3 (Valor 12)
-        9 => "1000001100100011", -- MUI R1 * R2 no R3 (Valor 12)
+        0  => "0110000000000000", -- BNE R0 != R0 FALSO
+      --0  => "0100000000001010", -- BNE R0 != R1 FALSO
+        1  => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
+        2  => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
+        3  => "1111111111111111", -- Bolha artificial
+        4  => "1111111111111111", -- Bolha artificial
+        5  => "0101000000011111", -- BEQ R0 = R1 VAI DAR FALSO
+        6  => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4) // hazard de dependência de dados!!
+        7  => "1111111111111111", -- Bolha artificial
+        8  => "1111111111111111", -- Bolha artificial
+       --8 => "0011001100100001", -- MUL R1 * R2 no R3 (Valor 12)
+        9  => "1000001100100011", -- MUI R1 * R2 no R3 (Valor 12)
         10 => "0111001000000001", -- STA R2 no endereço 1 (Valor 4)
         11 => "0110001000010010", -- BNE R2 - R1 SALTO PC+2
         12 => "0111001100000010", -- STA R3 no endereço 2 (Valor 12)
-        --12 => "0010001000100000", -- SUB R2 - R0 -> R2 (Valor 3)
+      --12 => "0010001000100000", -- SUB R2 - R0 -> R2 (Valor 3)
         13 => "1011001000100001", -- SUI R2 - R0 -> R2 (Valor 3)
         14 => "1111111111111111", -- Bolha artificial
         15 => "1111111111111111", -- Bolha artificial
@@ -128,6 +129,9 @@ begin
 
                 --ID_EX
                 if(InID_EX(15 downto 12) = "0100") then --jump
+                    R0ID_EX <= "11111111";
+                    R1ID_EX <= "11111111";
+                    InID_EX <= "1111111111111111";
 
                 elsif(InID_EX(15 downto 12) = "0001" or InID_EX(15 downto 12) = "0010" or InID_EX(15 downto 12) = "0011") then
                     --R
@@ -142,12 +146,10 @@ begin
 
                 --EX_MEM
                 if(desvio = '1') then
-                    R0ID_EX <= (others => '0');
-                    R1ID_EX <= (others => '0');
-                    InIF_ID <= (others => '1');
-                    InID_EX <= (others => '1');
-                    InEX_MEM <= (others => '1');
-                 
+                    R0ID_EX <= "11111111";
+                    R1ID_EX <= "11111111";
+                    InID_EX <= "1111111111111111";
+                
                 else
                     RwEX_MEM <= RwID_EX;
                     case InEX_MEM(15 downto 12) is
@@ -183,6 +185,8 @@ begin
 
                 elsif(InMEM_WB(15 downto 12) = "0000") then -- LOAD-I
                     regs(conv_integer(InMEM_WB(11 downto 8))) <= InMEM_WB(7 downto 0);
+
+                elsif(InMEM_WB(15 downto 12) = "0101" or InMEM_WB(15 downto 12) = "0110" or InMEM_WB(15 downto 12) = "0100") then -- Desvio
 
                 else --TIPO R e I
                     regs(conv_integer(InMEM_WB(11 downto 8))) <= ulaEX_MEM;
