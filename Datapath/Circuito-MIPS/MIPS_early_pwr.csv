@@ -1,0 +1,35 @@
+EARLY_POWER_ESTIMATOR_FILE_FORMAT_VERSION,6
+QUARTUS_II_VERSION,13.0.0 Build 156 04/24/2013 SJ Web Edition
+PROJECT,"MIPS"
+REVISION,"MIPS"
+PROJECT_FILE,"C:/Users/ricks/OneDrive/Desktop/Unipampa/4-Semestre/PDII/VHDL-Datapath-micro_processador-MIPS-alike/Datapath/Circuito-MIPS/MIPS.qpf"
+TIME,"Sun Dec 08 13:56:08 2024"
+TIME_SECONDS,"1733676968"
+FAMILY,"Cyclone III"
+DEVICE,"EP3C5"
+PACKAGE,"FBGA"
+PART,"EP3C5F256C6"
+POWER_USE_DEVICE_CHARACTERISTICS,"TYPICAL"
+POWER_AUTO_COMPUTE_TJ,"ON"
+POWER_TJ_VALUE,"25"
+POWER_USE_CUSTOM_COOLING_SOLUTION,"OFF"
+MIN_JUNCTION_TEMPERATURE,"0"
+MAX_JUNCTION_TEMPERATURE,"85"
+POWER_PRESET_COOLING_SOLUTION,"23 mm heat sink with 200 LFpM airflow"
+POWER_BOARD_THERMAL_MODEL,"None (Conservative)"
+POWER_USE_TA_VALUE,"25.00"
+POWER_BOARD_TEMPERATURE,"-1.00"
+POWER_OJC_VALUE,"11.70"
+POWER_OCS_VALUE,"0.10"
+POWER_OSA_VALUE,"4.30"
+POWER_OJB_VALUE,"-1.00"
+VCCIO,,1,2.50,2,2.50,3,2.50,4,2.50,5,2.50,6,2.50,7,2.50,8,2.50,
+RAIL_VOLTAGES,,VCCINT,1.200,VCCA,2.500,VCCD,1.200,
+
+
+BLOCK,Embedded multiplier output,count,1,avg_toggle_rate,"6063552.875000",avg_toggle_rate_ratio,"0.058271",avg_fanout,"1.000000",fmax,"104.058",mac_mode,"Simple Multiplier",num_multipliers,"1",mac_width,"9",input_reg_used,"0",pipe_reg_used,"0",second_adder_reg_used,"0",output_reg_used,"0"
+BLOCK,Combinational cell,count,585,avg_toggle_rate,"10133570.945368",avg_toggle_rate_ratio,"0.097384",avg_fanout,"3.998291",fmax,"104.058"
+BLOCK,Clock control block,count,1,avg_toggle_rate,"208116544.000000",avg_toggle_rate_ratio,"2.000000",avg_fanout,"392.000000",fmax,"104.058",global_type,"GCLK",global_clk_ena_static_prob,"1",global_type_usage,"Clock",num_raw_fanout,"392",num_lc_comb_fanout,"0",num_lc_ff_fanout,"392",sum_lc_ff_clkena_static_prob,"8.24016",avg_lc_ff_clk_ena_static_prob,"0.0210208",num_pin_fanout,"0",num_m512_fanout,"0",num_m9k_fanout,"0",num_m144k_fanout,"0",num_mlab_fanout,"0",num_dsp_fanout,"0",num_dsp9x9_fanout,"0",num_misc_fanout,"0"
+BLOCK,Register cell,count,392,avg_toggle_rate,"13007284.000000",avg_toggle_rate_ratio,"0.125000",avg_fanout,"1.471939",fmax,"104.058"
+BLOCK,I/O pad,count,16,avg_toggle_rate,"15480172.343750",avg_toggle_rate_ratio,"0.148764",avg_fanout,"0.000000",fmax,"104.058",io_mode,"OUTPUT_PIN",output_load,"0",io_standard,"2_5",drive_strength,"DEFAULT",is_ddr,"0",input_termination,"OFF",output_termination,"SERIES_50_OHMS_WITHOUT_CALIBRATION",output_termination_sp,"0",output_ena_static_prob,"1",vod,"-1",slew_rate,"2"
+BLOCK,I/O pad,count,2,avg_toggle_rate,"104058272.500000",avg_toggle_rate_ratio,"1.000000",avg_fanout,"1.000000",fmax,"104.058",io_mode,"INPUT_PIN",output_load,"0",io_standard,"2_5",drive_strength,"DEFAULT",is_ddr,"0",input_termination,"OFF",output_termination,"OFF",output_termination_sp,"0",output_ena_static_prob,"0",vod,"-1",slew_rate,"-1"
