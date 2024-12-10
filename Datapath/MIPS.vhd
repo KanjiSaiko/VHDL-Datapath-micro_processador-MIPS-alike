@@ -25,12 +25,12 @@ architecture behavior of MIPS is
         2  => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
         3  => "1010100000000111", -- LWI Valor 7 no registrador 8
         4  => "0101000000011111", -- BEQ R0 = R1 VAI DAR FALSO
-        5  => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4) // hazard de dependência de dados!!
+        5  => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4)
         6  => "1001001100100101", -- ADDI R2 + 5 -> R3 => (Valor 9)
         7  => "0011010000100011", -- MUL R3 * R2 no R4 (Valor 36)
         8  => "1000010100010101", -- MUI R1 * 5 no R5 (Valor 15)
         9 =>  "0111001000000100", -- STA R2 no endereço 4 (Valor 4)
-        10 => "0110001000010010", -- BNE R2 != R1 SALTO PC+3 => PC 21
+        10 => "0110001000010011", -- BNE R2 != R1 SALTO PC+3 => PC 13
         11 => "0111001100000101", -- STA R3 no endereço 5 (Valor 9)
         12 => "0011100000100011", -- MUL R3 * R2 no R8 (Valor 36)
         13 => "1000101000010101", -- MUI R1 * 5 no R10 (Valor 15)

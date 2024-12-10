@@ -34,7 +34,7 @@ architecture behavior of MIPS_Pipeline is
         13  => "0011010000100011", -- MUL R3 * R2 no R4 (Valor 36)
         14  => "1000010100010101", -- MUI R1 * 5 no R5 (Valor 15)
         15 => "0111001000000100", -- STA R2 no endereço 4 (Valor 4)
-        16 => "0110001000010010", -- BNE R2 != R1 SALTO PC+3 => PC 21
+        16 => "0110001000010010", -- BNE R2 != R1 SALTO PC+2 => PC 21
         17 => "0111001100000101", -- STA R3 no endereço 5 (Valor 9)
         18 => "0011100000100011", -- MUL R3 * R2 no R8 (Valor 36)
         19 => "1000101000010101", -- MUI R1 * 5 no R10 (Valor 15)
