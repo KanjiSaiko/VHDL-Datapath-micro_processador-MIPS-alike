@@ -1,0 +1,123 @@
+Setup: 'clock' report for MIPS
+Sun Dec 08 13:22:54 2024
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+
+\begin{longtable}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Slack} & \textbf{From Node} & \textbf{To Node} & \textbf{Launch Clock} & \textbf{Latch Clock} & \textbf{Relationship} & \textbf{Clock Skew} & \textbf{Data Delay} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Slack} & \textbf{From Node} & \textbf{To Node} & \textbf{Launch Clock} & \textbf{Latch Clock} & \textbf{Relationship} & \textbf{Clock Skew} & \textbf{Data Delay} \\
+\hline
+\endhead
+  %+-------------------------------------------------------------------------------------------------------+
+  %; Slow 1200mV 85C Model Setup: 'clock'                                                                  ;
+  %+-------+-----------+-------------+--------------+-------------+--------------+------------+------------+
+  %; Slack ; From Node ; To Node     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
+  %+-------+-----------+-------------+--------------+-------------+--------------+------------+------------+
+0.083 & PC[0]     & regs[3][5]  & clock        & clock       & 9.610        & 0.269      & 9.791 \\
+0.085 & PC[2]     & regs[3][5]  & clock        & clock       & 9.610        & 0.269      & 9.789 \\
+0.112 & PC[0]     & regs[0][5]  & clock        & clock       & 9.610        & 0.298      & 9.791 \\
+0.114 & PC[2]     & regs[0][5]  & clock        & clock       & 9.610        & 0.298      & 9.789 \\
+0.118 & PC[0]     & regs[4][5]  & clock        & clock       & 9.610        & 0.261      & 9.748 \\
+0.120 & PC[2]     & regs[4][5]  & clock        & clock       & 9.610        & 0.261      & 9.746 \\
+0.129 & PC[0]     & regs[4][2]  & clock        & clock       & 9.610        & 0.261      & 9.737 \\
+0.131 & PC[2]     & regs[4][2]  & clock        & clock       & 9.610        & 0.261      & 9.735 \\
+0.156 & PC[0]     & regs[5][5]  & clock        & clock       & 9.610        & 0.291      & 9.740 \\
+0.158 & PC[2]     & regs[5][5]  & clock        & clock       & 9.610        & 0.291      & 9.738 \\
+0.162 & PC[0]     & regs[13][5] & clock        & clock       & 9.610        & 0.275      & 9.718 \\
+0.164 & PC[0]     & regs[5][2]  & clock        & clock       & 9.610        & 0.291      & 9.732 \\
+0.164 & PC[2]     & regs[13][5] & clock        & clock       & 9.610        & 0.275      & 9.716 \\
+0.166 & PC[2]     & regs[5][2]  & clock        & clock       & 9.610        & 0.291      & 9.730 \\
+0.176 & PC[0]     & regs[14][2] & clock        & clock       & 9.610        & 0.305      & 9.734 \\
+0.178 & PC[2]     & regs[14][2] & clock        & clock       & 9.610        & 0.305      & 9.732 \\
+0.189 & PC[0]     & regs[14][5] & clock        & clock       & 9.610        & 0.305      & 9.721 \\
+0.189 & PC[0]     & regs[8][7]  & clock        & clock       & 9.610        & 0.270      & 9.686 \\
+0.191 & PC[2]     & regs[14][5] & clock        & clock       & 9.610        & 0.305      & 9.719 \\
+0.191 & PC[2]     & regs[8][7]  & clock        & clock       & 9.610        & 0.270      & 9.684 \\
+0.206 & PC[0]     & regs[11][0] & clock        & clock       & 9.610        & 0.264      & 9.663 \\
+0.206 & PC[0]     & regs[4][6]  & clock        & clock       & 9.610        & 0.261      & 9.660 \\
+0.208 & PC[2]     & regs[11][0] & clock        & clock       & 9.610        & 0.264      & 9.661 \\
+0.208 & PC[2]     & regs[4][6]  & clock        & clock       & 9.610        & 0.261      & 9.658 \\
+0.220 & PC[0]     & regs[9][5]  & clock        & clock       & 9.610        & 0.293      & 9.678 \\
+0.222 & PC[2]     & regs[9][5]  & clock        & clock       & 9.610        & 0.293      & 9.676 \\
+0.224 & PC[0]     & regs[10][7] & clock        & clock       & 9.610        & 0.300      & 9.681 \\
+0.226 & PC[2]     & regs[10][7] & clock        & clock       & 9.610        & 0.300      & 9.679 \\
+0.227 & PC[5]     & regs[3][5]  & clock        & clock       & 9.610        & 0.269      & 9.647 \\
+0.246 & PC[0]     & regs[9][0]  & clock        & clock       & 9.610        & 0.293      & 9.652 \\
+0.248 & PC[2]     & regs[9][0]  & clock        & clock       & 9.610        & 0.293      & 9.650 \\
+0.253 & PC[0]     & regs[13][7] & clock        & clock       & 9.610        & 0.275      & 9.627 \\
+0.255 & PC[2]     & regs[13][7] & clock        & clock       & 9.610        & 0.275      & 9.625 \\
+0.256 & PC[5]     & regs[0][5]  & clock        & clock       & 9.610        & 0.298      & 9.647 \\
+0.262 & PC[5]     & regs[4][5]  & clock        & clock       & 9.610        & 0.261      & 9.604 \\
+0.265 & PC[0]     & regs[2][7]  & clock        & clock       & 9.610        & 0.270      & 9.610 \\
+0.267 & PC[2]     & regs[2][7]  & clock        & clock       & 9.610        & 0.270      & 9.608 \\
+0.273 & PC[5]     & regs[4][2]  & clock        & clock       & 9.610        & 0.261      & 9.593 \\
+0.282 & PC[0]     & regs[14][7] & clock        & clock       & 9.610        & 0.305      & 9.628 \\
+0.283 & PC[0]     & regs[15][7] & clock        & clock       & 9.610        & 0.268      & 9.590 \\
+0.284 & PC[2]     & regs[14][7] & clock        & clock       & 9.610        & 0.305      & 9.626 \\
+0.285 & PC[0]     & regs[3][7]  & clock        & clock       & 9.610        & 0.266      & 9.586 \\
+0.285 & PC[2]     & regs[15][7] & clock        & clock       & 9.610        & 0.268      & 9.588 \\
+0.287 & PC[2]     & regs[3][7]  & clock        & clock       & 9.610        & 0.266      & 9.584 \\
+0.297 & PC[0]     & regs[1][7]  & clock        & clock       & 9.610        & 0.300      & 9.608 \\
+0.299 & PC[2]     & regs[1][7]  & clock        & clock       & 9.610        & 0.300      & 9.606 \\
+0.300 & PC[5]     & regs[5][5]  & clock        & clock       & 9.610        & 0.291      & 9.596 \\
+0.302 & PC[5]     & regs[4][6]  & clock        & clock       & 9.610        & 0.261      & 9.564 \\
+0.306 & PC[5]     & regs[13][5] & clock        & clock       & 9.610        & 0.275      & 9.574 \\
+0.308 & PC[5]     & regs[5][2]  & clock        & clock       & 9.610        & 0.291      & 9.588 \\
+0.310 & PC[0]     & regs[12][7] & clock        & clock       & 9.610        & 0.297      & 9.592 \\
+0.311 & PC[0]     & regs[2][2]  & clock        & clock       & 9.610        & 0.281      & 9.575 \\
+0.312 & PC[2]     & regs[12][7] & clock        & clock       & 9.610        & 0.297      & 9.590 \\
+0.313 & PC[2]     & regs[2][2]  & clock        & clock       & 9.610        & 0.281      & 9.573 \\
+0.315 & PC[0]     & regs[3][2]  & clock        & clock       & 9.610        & 0.266      & 9.556 \\
+0.316 & PC[1]     & regs[3][5]  & clock        & clock       & 9.610        & 0.269      & 9.558 \\
+0.317 & PC[2]     & regs[3][2]  & clock        & clock       & 9.610        & 0.266      & 9.554 \\
+0.318 & PC[0]     & regs[0][7]  & clock        & clock       & 9.610        & 0.296      & 9.583 \\
+0.320 & PC[5]     & regs[14][2] & clock        & clock       & 9.610        & 0.305      & 9.590 \\
+0.320 & PC[2]     & regs[0][7]  & clock        & clock       & 9.610        & 0.296      & 9.581 \\
+0.321 & PC[0]     & regs[11][5] & clock        & clock       & 9.610        & 0.264      & 9.548 \\
+0.323 & PC[2]     & regs[11][5] & clock        & clock       & 9.610        & 0.264      & 9.546 \\
+0.327 & PC[0]     & regs[12][2] & clock        & clock       & 9.610        & 0.265      & 9.543 \\
+0.329 & PC[2]     & regs[12][2] & clock        & clock       & 9.610        & 0.265      & 9.541 \\
+0.333 & PC[3]     & regs[3][5]  & clock        & clock       & 9.610        & 0.269      & 9.541 \\
+0.333 & PC[5]     & regs[14][5] & clock        & clock       & 9.610        & 0.305      & 9.577 \\
+0.333 & PC[5]     & regs[8][7]  & clock        & clock       & 9.610        & 0.270      & 9.542 \\
+0.337 & PC[0]     & regs[4][1]  & clock        & clock       & 9.610        & 0.261      & 9.529 \\
+0.339 & PC[2]     & regs[4][1]  & clock        & clock       & 9.610        & 0.261      & 9.527 \\
+0.340 & PC[0]     & regs[1][2]  & clock        & clock       & 9.610        & 0.308      & 9.573 \\
+0.342 & PC[2]     & regs[1][2]  & clock        & clock       & 9.610        & 0.308      & 9.571 \\
+0.345 & PC[1]     & regs[0][5]  & clock        & clock       & 9.610        & 0.298      & 9.558 \\
+0.346 & PC[0]     & regs[0][2]  & clock        & clock       & 9.610        & 0.296      & 9.555 \\
+0.348 & PC[2]     & regs[0][2]  & clock        & clock       & 9.610        & 0.296      & 9.553 \\
+0.350 & PC[0]     & regs[15][5] & clock        & clock       & 9.610        & 0.268      & 9.523 \\
+0.350 & PC[5]     & regs[11][0] & clock        & clock       & 9.610        & 0.264      & 9.519 \\
+0.351 & PC[1]     & regs[4][5]  & clock        & clock       & 9.610        & 0.261      & 9.515 \\
+0.352 & PC[2]     & regs[15][5] & clock        & clock       & 9.610        & 0.268      & 9.521 \\
+0.360 & PC[0]     & regs[15][2] & clock        & clock       & 9.610        & 0.293      & 9.538 \\
+0.362 & PC[3]     & regs[0][5]  & clock        & clock       & 9.610        & 0.298      & 9.541 \\
+0.362 & PC[1]     & regs[4][2]  & clock        & clock       & 9.610        & 0.261      & 9.504 \\
+0.362 & PC[2]     & regs[15][2] & clock        & clock       & 9.610        & 0.293      & 9.536 \\
+0.364 & PC[5]     & regs[9][5]  & clock        & clock       & 9.610        & 0.293      & 9.534 \\
+0.368 & PC[3]     & regs[4][5]  & clock        & clock       & 9.610        & 0.261      & 9.498 \\
+0.368 & PC[5]     & regs[10][7] & clock        & clock       & 9.610        & 0.300      & 9.537 \\
+0.370 & PC[0]     & regs[7][5]  & clock        & clock       & 9.610        & 0.278      & 9.513 \\
+0.372 & PC[2]     & regs[7][5]  & clock        & clock       & 9.610        & 0.278      & 9.511 \\
+0.375 & PC[0]     & regs[13][3] & clock        & clock       & 9.610        & 0.275      & 9.505 \\
+0.375 & PC[0]     & regs[12][5] & clock        & clock       & 9.610        & 0.297      & 9.527 \\
+0.377 & PC[2]     & regs[13][3] & clock        & clock       & 9.610        & 0.275      & 9.503 \\
+0.377 & PC[2]     & regs[12][5] & clock        & clock       & 9.610        & 0.297      & 9.525 \\
+0.379 & PC[3]     & regs[4][2]  & clock        & clock       & 9.610        & 0.261      & 9.487 \\
+0.382 & PC[0]     & regs[9][7]  & clock        & clock       & 9.610        & 0.293      & 9.516 \\
+0.384 & PC[2]     & regs[9][7]  & clock        & clock       & 9.610        & 0.293      & 9.514 \\
+0.389 & PC[1]     & regs[5][5]  & clock        & clock       & 9.610        & 0.291      & 9.507 \\
+0.390 & PC[5]     & regs[9][0]  & clock        & clock       & 9.610        & 0.293      & 9.508 \\
+0.395 & PC[1]     & regs[13][5] & clock        & clock       & 9.610        & 0.275      & 9.485 \\
+0.397 & PC[1]     & regs[5][2]  & clock        & clock       & 9.610        & 0.291      & 9.499 \\
+0.397 & PC[5]     & regs[13][7] & clock        & clock       & 9.610        & 0.275      & 9.483 \\
+0.401 & PC[0]     & regs[14][3] & clock        & clock       & 9.610        & 0.301      & 9.505 \\
+
+\hline
+\end{longtable}

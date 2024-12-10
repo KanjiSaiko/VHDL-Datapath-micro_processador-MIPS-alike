@@ -1,0 +1,125 @@
+Setup: 'clock' report for MIPS_Pipeline
+Mon Dec 09 11:49:31 2024
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+
+\begin{longtable}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Slack} & \textbf{From Node} & \textbf{To Node} & \textbf{Launch Clock} & \textbf{Latch Clock} & \textbf{Relationship} & \textbf{Clock Skew} & \textbf{Data Delay}    \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Slack} & \textbf{From Node} & \textbf{To Node} & \textbf{Launch Clock} & \textbf{Latch Clock} & \textbf{Relationship} & \textbf{Clock Skew} & \textbf{Data Delay}    \\
+\hline
+\endhead
+%+--------------------------------------------------------------------------------------------------------------------------------+
+%; Slow 1200mV 85C Model Setup: 'clock'                                                                                           ;
+%;-------+-----------------------------------+--------------+--------------+-------------+--------------+------------+------------+
+%; Slack ; From Node                         ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
+%+-------+-----------------------------------+--------------+--------------+-------------+--------------+------------+------------+
+
+0.239    & RAM_input_register-Address-PB.    & regs[3][0]   & clock        & clock       & 6.100        & -0.393     & 5.463      \\
+0.255    & RAM_input_register-Address-PB.    & regs[11][1]  & clock        & clock       & 6.100        & -0.069     & 5.771      \\
+0.285    & RAM_input_register-Address-PB.    & regs[9][1]   & clock        & clock       & 6.100        & -0.043     & 5.767      \\
+0.311    & RAM_input_register-Address-PB.    & regs[3][2]   & clock        & clock       & 6.100        & -0.393     & 5.391      \\
+0.333    & RAM_input_register-Address-PB.    & regs[8][1]   & clock        & clock       & 6.100        & -0.059     & 5.703      \\
+0.371    & RAM_input_register-Address-PB.    & regs[0][1]   & clock        & clock       & 6.100        & -0.029     & 5.695      \\
+0.384    & RAM_input_register-Address-PB.    & regs[10][1]  & clock        & clock       & 6.100        & -0.023     & 5.688      \\
+0.427    & RAM_input_register-Address-PB.    & regs[5][7]   & clock        & clock       & 6.100        & -0.373     & 5.295      \\
+0.433    & RAM_input_register-Address-PB.    & regs[3][6]   & clock        & clock       & 6.100        & -0.393     & 5.269      \\
+0.439    & RAM_input_register-Address-PB.    & regs[4][1]   & clock        & clock       & 6.100        & -0.042     & 5.614      \\
+0.474    & RAM_input_register-Address-PB.    & regs[3][3]   & clock        & clock       & 6.100        & -0.393     & 5.228      \\
+0.478    & RAM_input_register-Address-PB.    & regs[6][0]   & clock        & clock       & 6.100        & -0.075     & 5.542      \\
+0.483    & RAM_input_register-Address-PB.    & regs[11][7]  & clock        & clock       & 6.100        & -0.069     & 5.543      \\
+0.492    & RAM_input_register-Address-PB.    & regs[7][7]   & clock        & clock       & 6.100        & -0.049     & 5.554      \\
+0.516    & RAM_input_register-Address-PB.    & regs[9][7]   & clock        & clock       & 6.100        & -0.043     & 5.536      \\
+0.544    & RAM_input_register-Address-PB.    & regs[7][1]   & clock        & clock       & 6.100        & -0.055     & 5.496      \\
+0.565    & RAM_input_register-Address-PB.    & regs[14][1]  & clock        & clock       & 6.100        & -0.056     & 5.474      \\
+0.577    & RAM_input_register-Address-PB.    & regs[15][2]  & clock        & clock       & 6.100        & -0.042     & 5.476      \\
+0.582    & RAM_input_register-Address-PB.    & regs[8][2]   & clock        & clock       & 6.100        & -0.051     & 5.462      \\
+0.596    & RAM_input_register-Address-PB.    & regs[12][1]  & clock        & clock       & 6.100        & -0.029     & 5.470      \\
+0.606    & RAM_input_register-Address-PB.    & regs[5][1]   & clock        & clock       & 6.100        & -0.057     & 5.432      \\
+0.609    & RAM_input_register-Address-PB.    & regs[10][2]  & clock        & clock       & 6.100        & -0.023     & 5.463      \\
+0.612    & regs[0][0]                        & R0ID_EX[0]   & clock        & clock       & 6.100        & -0.324     & 4.967      \\
+0.629    & RAM_input_register-Address-PB.    & regs[1][2]   & clock        & clock       & 6.100        & -0.065     & 5.401      \\
+0.633    & RAM_input_register-Address-PB.    & regs[1][1]   & clock        & clock       & 6.100        & -0.030     & 5.432      \\
+0.652    & RAM_input_register-Address-PB.    & regs[6][2]   & clock        & clock       & 6.100        & -0.051     & 5.392      \\
+0.652    & RAM_input_register-Address-PB.    & regs[2][2]   & clock        & clock       & 6.100        & -0.042     & 5.401      \\
+0.661    & RAM_input_register-Address-PB.    & regs[0][3]   & clock        & clock       & 6.100        & -0.403     & 5.031      \\
+0.671    & RAM_input_register-Address-PB.    & regs[4][2]   & clock        & clock       & 6.100        & -0.042     & 5.382      \\
+0.675    & RAM_input_register-Address-PB.    & regs[0][2]   & clock        & clock       & 6.100        & -0.016     & 5.404      \\
+0.675    & RAM_input_register-Address-PB.    & regs[10][3]  & clock        & clock       & 6.100        & -0.023     & 5.397      \\
+0.676    & RAM_input_register-Address-PB.    & regs[15][1]  & clock        & clock       & 6.100        & -0.042     & 5.377      \\
+0.711    & R0ID_EX[3]                        & ulaEX_MEM[2] & clock        & clock       & 6.100        & 0.252      & 5.636      \\
+0.711    & R0ID_EX[3]                        & ulaEX_MEM[3] & clock        & clock       & 6.100        & 0.252      & 5.636      \\
+0.711    & R0ID_EX[3]                        & ulaEX_MEM[5] & clock        & clock       & 6.100        & 0.252      & 5.636      \\
+0.711    & R0ID_EX[3]                        & ulaEX_MEM[6] & clock        & clock       & 6.100        & 0.252      & 5.636      \\
+0.711    & R0ID_EX[3]                        & ulaEX_MEM[1] & clock        & clock       & 6.100        & 0.252      & 5.636      \\
+0.711    & R0ID_EX[3]                        & ulaEX_MEM[7] & clock        & clock       & 6.100        & 0.252      & 5.636      \\
+0.711    & R0ID_EX[3]                        & ulaEX_MEM[4] & clock        & clock       & 6.100        & 0.252      & 5.636      \\
+0.711    & R0ID_EX[3]                        & ulaEX_MEM[0] & clock        & clock       & 6.100        & 0.252      & 5.636      \\
+0.715    & R0ID_EX[3]                        & R0ID_EX[6]   & clock        & clock       & 6.100        & 0.074      & 5.262      \\
+0.719    & InID_EX[9]                        & RwID_EX[2]   & clock        & clock       & 6.100        & -0.095     & 5.281      \\
+0.732    & RAM_input_register-Address-PB.    & regs[1][7]   & clock        & clock       & 6.100        & -0.065     & 5.298      \\
+0.734    & regs[4][3]                        & RwID_EX[3]   & clock        & clock       & 6.100        & -0.440     & 4.921      \\
+0.736    & RAM_input_register-Address-PB.    & regs[7][4]   & clock        & clock       & 6.100        & -0.069     & 5.290      \\
+0.738    & RAM_input_register-Address-PB.    & regs[6][1]   & clock        & clock       & 6.100        & -0.017     & 5.340      \\
+0.744    & InEX_MEM[1]                       & ulaEX_MEM[5] & clock        & clock       & 6.100        & 0.252      & 5.603      \\
+0.752    & RAM_input_register-Address-PB.    & regs[11][2]  & clock        & clock       & 6.100        & -0.045     & 5.298      \\
+0.754    & RAM_input_register-Address-PB.    & regs[10][6]  & clock        & clock       & 6.100        & -0.039     & 5.302      \\
+0.754    & R0ID_EX[2]                        & ulaEX_MEM[2] & clock        & clock       & 6.100        & 0.252      & 5.593      \\
+0.754    & R0ID_EX[2]                        & ulaEX_MEM[3] & clock        & clock       & 6.100        & 0.252      & 5.593      \\
+0.754    & R0ID_EX[2]                        & ulaEX_MEM[5] & clock        & clock       & 6.100        & 0.252      & 5.593      \\
+0.754    & R0ID_EX[2]                        & ulaEX_MEM[6] & clock        & clock       & 6.100        & 0.252      & 5.593      \\
+0.754    & R0ID_EX[2]                        & ulaEX_MEM[1] & clock        & clock       & 6.100        & 0.252      & 5.593      \\
+0.754    & R0ID_EX[2]                        & ulaEX_MEM[7] & clock        & clock       & 6.100        & 0.252      & 5.593      \\
+0.754    & R0ID_EX[2]                        & ulaEX_MEM[4] & clock        & clock       & 6.100        & 0.252      & 5.593      \\
+0.754    & R0ID_EX[2]                        & ulaEX_MEM[0] & clock        & clock       & 6.100        & 0.252      & 5.593      \\
+0.756    & RAM_input_register-Address-PB.    & regs[2][7]   & clock        & clock       & 6.100        & -0.042     & 5.297      \\
+0.758    & InID_EX[3]                        & R1ID_EX[7]   & clock        & clock       & 6.100        & -0.085     & 5.252      \\
+0.758    & R0ID_EX[2]                        & R0ID_EX[6]   & clock        & clock       & 6.100        & 0.074      & 5.219      \\
+0.759    & RAM_input_register-Address-PB.    & regs[1][6]   & clock        & clock       & 6.100        & -0.065     & 5.271      \\
+0.763    & RAM_input_register-Address-PB.    & regs[5][4]   & clock        & clock       & 6.100        & -0.042     & 5.290      \\
+0.766    & RAM_input_register-Address-PB.    & regs[5][2]   & clock        & clock       & 6.100        & -0.068     & 5.261      \\
+0.773    & RAM_input_register-Address-PB.    & regs[5][6]   & clock        & clock       & 6.100        & -0.040     & 5.282      \\
+0.774    & InID_EX[4]                        & R0ID_EX[5]   & clock        & clock       & 6.100        & 0.049      & 5.178      \\
+0.777    & R0ID_EX[3]                        & InIF_ID[13]  & clock        & clock       & 6.100        & -0.041     & 5.277      \\
+0.778    & R0ID_EX[3]                        & InIF_ID[14]  & clock        & clock       & 6.100        & -0.041     & 5.276      \\
+0.778    & RAM_input_register-Address-PB.    & regs[9][2]   & clock        & clock       & 6.100        & -0.018     & 5.299      \\
+0.781    & R0ID_EX[3]                        & InIF_ID[4]   & clock        & clock       & 6.100        & -0.041     & 5.273      \\
+0.781    & RAM_input_register-Address-PB.    & regs[15][6]  & clock        & clock       & 6.100        & -0.013     & 5.301      \\
+0.783    & R0ID_EX[3]                        & InIF_ID[12]  & clock        & clock       & 6.100        & -0.041     & 5.271      \\
+0.783    & RAM_input_register-Address-PB.    & regs[0][7]   & clock        & clock       & 6.100        & -0.016     & 5.296      \\
+0.784    & R0ID_EX[3]                        & InIF_ID[1]   & clock        & clock       & 6.100        & -0.041     & 5.270      \\
+0.784    & RAM_input_register-Address-PB.    & regs[10][7]  & clock        & clock       & 6.100        & -0.044     & 5.267      \\
+0.785    & RAM_input_register-Address-PB.    & regs[4][4]   & clock        & clock       & 6.100        & -0.042     & 5.268      \\
+0.789    & InID_EX[0]                        & R1ID_EX[2]   & clock        & clock       & 6.100        & -0.080     & 5.226      \\
+0.789    & mem_d                             & regs[3][0]   & clock        & clock       & 6.100        & -0.077     & 5.229      \\
+0.794    & RAM_input_register-Address-PB.    & regs[9][6]   & clock        & clock       & 6.100        & -0.051     & 5.250      \\
+0.795    & R0ID_EX[3]                        & InIF_ID[8]   & clock        & clock       & 6.100        & -0.045     & 5.255      \\
+0.795    & mem_d                             & regs[3][0]   & clock        & clock       & 6.100        & -0.077     & 5.223      \\
+0.797    & R0ID_EX[3]                        & InIF_ID[6]   & clock        & clock       & 6.100        & -0.045     & 5.253      \\
+0.798    & R0ID_EX[3]                        & InIF_ID[15]  & clock        & clock       & 6.100        & -0.045     & 5.252      \\
+0.798    & InID_EX[3]                        & R1ID_EX[3]   & clock        & clock       & 6.100        & -0.081     & 5.216      \\
+0.799    & RAM_input_register-Address-PB.    & regs[5][0]   & clock        & clock       & 6.100        & -0.057     & 5.239      \\
+0.799    & RAM_input_register-Address-PB.    & regs[1][3]   & clock        & clock       & 6.100        & -0.065     & 5.231      \\
+0.800    & R0ID_EX[3]                        & InIF_ID[3]   & clock        & clock       & 6.100        & -0.045     & 5.250      \\
+0.800    & R0ID_EX[3]                        & InIF_ID[11]  & clock        & clock       & 6.100        & -0.045     & 5.250      \\
+0.800    & regs[8][6]                        & RwID_EX[6]   & clock        & clock       & 6.100        & -0.467     & 4.828      \\
+0.807    & RAM_input_register-Address-PB.    & regs[14][6]  & clock        & clock       & 6.100        & -0.013     & 5.275      \\
+0.815    & RAM_input_register-Address-PB.    & regs[15][5]  & clock        & clock       & 6.100        & -0.070     & 5.210      \\
+0.820    & R0ID_EX[2]                        & InIF_ID[13]  & clock        & clock       & 6.100        & -0.041     & 5.234      \\
+0.821    & RAM_input_register-Address-PB.    & regs[7][6]   & clock        & clock       & 6.100        & -0.055     & 5.219      \\
+0.821    & R0ID_EX[2]                        & InIF_ID[14]  & clock        & clock       & 6.100        & -0.041     & 5.233      \\
+0.822    & RAM_input_register-Address-PB.    & regs[6][7]   & clock        & clock       & 6.100        & -0.017     & 5.256      \\
+0.823    & RAM_input_register-Address-PB.    & regs[1][0]   & clock        & clock       & 6.100        & -0.030     & 5.242      \\
+0.823    & RAM_input_register-Address-PB.    & regs[2][4]   & clock        & clock       & 6.100        & -0.047     & 5.225      \\
+0.824    & R0ID_EX[2]                        & InIF_ID[4]   & clock        & clock       & 6.100        & -0.041     & 5.230      \\
+0.826    & R0ID_EX[2]                        & InIF_ID[12]  & clock        & clock       & 6.100        & -0.041     & 5.228      \\
+0.827    & R0ID_EX[2]                        & InIF_ID[1]   & clock        & clock       & 6.100        & -0.041     & 5.227      \\
+0.830    & RAM_input_register-Address-PB.    & regs[14][3]  & clock        & clock       & 6.100        & -0.056     & 5.209      \\
+
+
+\hline
+\end{longtable}

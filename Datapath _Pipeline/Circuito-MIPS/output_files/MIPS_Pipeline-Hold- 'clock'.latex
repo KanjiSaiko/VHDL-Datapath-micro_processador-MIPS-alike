@@ -1,0 +1,124 @@
+Hold: 'clock' report for MIPS_Pipeline
+Mon Dec 09 11:49:42 2024
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+
+\begin{longtable}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Slack} & \textbf{From Node} & \textbf{To Node} & \textbf{Launch Clock} & \textbf{Latch Clock} & \textbf{Relationship} & \textbf{Clock Skew} & \textbf{Data Delay}    \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Slack} & \textbf{From Node} & \textbf{To Node} & \textbf{Launch Clock} & \textbf{Latch Clock} & \textbf{Relationship} & \textbf{Clock Skew} & \textbf{Data Delay}    \\
+\hline
+\endhead
+%+------------------------------------------------------------------------------------------------------------------------------------------+
+%; Slow 1200mV 85C Model Hold: 'clock'                                                                                                     ;
+%+-------+-------------------------+----------------------------------+---------------+-------------+--------------+------------+-----------+
+%; Slack ; From Node               ; To Node                          ; Launch Clock  ;Latch Clock  ; Relationship ; Clock Skew ; Data Delay;
+%+-------+-------------------------+----------------------------------+---------------+-------------+--------------+------------+-----------+
+
+0.395     & PC[7]                   & PC[7]                            & clock        & clock       & 0.000        & 0.064      & 0.616    \\
+0.475     & InIF_ID[11]             & InID_EX[11]                      & clock        & clock       & 0.000        & 0.065      & 0.697    \\
+0.475     & InIF_ID[6]              & InID_EX[6]                       & clock        & clock       & 0.000        & 0.065      & 0.697    \\
+0.500     & InID_EX[13]             & InEX_MEM[13]                     & clock        & clock       & 0.000        & 0.063      & 0.720    \\
+0.516     & InEX_MEM[10]            & InMEM_WB[10]                     & clock        & clock       & 0.000        & 0.063      & 0.736    \\
+0.516     & InEX_MEM[8]             & InMEM_WB[8]                      & clock        & clock       & 0.000        & 0.063      & 0.736    \\
+0.517     & InEX_MEM[9]             & InMEM_WB[9]                      & clock        & clock       & 0.000        & 0.063      & 0.737    \\
+0.523     & InEX_MEM[4]             & InMEM_WB[4]                      & clock        & clock       & 0.000        & 0.076      & 0.756    \\
+0.551     & InIF_ID[8]              & InID_EX[8]                       & clock        & clock       & 0.000        & 0.065      & 0.773    \\
+0.555     & InIF_ID[9]              & InID_EX[9]                       & clock        & clock       & 0.000        & 0.064      & 0.776    \\
+0.571     & PC[5]                   & PC[5]                            & clock        & clock       & 0.000        & 0.064      & 0.792    \\
+0.574     & InID_EX[12]             & InEX_MEM[12]                     & clock        & clock       & 0.000        & 0.063      & 0.794    \\
+0.574     & mem_d_rtl_0_bypass[21]  & regs[7][2]                       & clock        & clock       & 0.000        & 0.415      & 1.146    \\
+0.577     & PC[6]                   & PC[6]                            & clock        & clock       & 0.000        & 0.064      & 0.798    \\
+0.584     & PC[1]                   & PC[1]                            & clock        & clock       & 0.000        & 0.064      & 0.805    \\
+0.587     & PC[2]                   & PC[2]                            & clock        & clock       & 0.000        & 0.064      & 0.808    \\
+0.599     & PC[0]                   & PC[0]                            & clock        & clock       & 0.000        & 0.064      & 0.820    \\
+0.600     & PC[4]                   & PC[4]                            & clock        & clock       & 0.000        & 0.064      & 0.821    \\
+0.611     & PC[4]                   & InIF_ID[9]                       & clock        & clock       & 0.000        & 0.064      & 0.832    \\
+0.611     & RwEX_MEM[4]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.379      & 1.177    \\
+0.615     & RwEX_MEM[1]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.381      & 1.183    \\
+0.616     & RwEX_MEM[0]             & RAM_input_register-Datain-PA.    & clock        & clock       & 0.000        & 0.379      & 1.182    \\
+0.622     & PC[2]                   & InIF_ID[0]                       & clock        & clock       & 0.000        & 0.427      & 1.206    \\
+0.625     & InEX_MEM[3]             & InMEM_WB[3]                      & clock        & clock       & 0.000        & 0.396      & 1.178    \\
+0.629     & InMEM_WB[4]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.077      & 0.893    \\
+0.637     & InEX_MEM[2]             & InMEM_WB[2]                      & clock        & clock       & 0.000        & 0.396      & 1.190    \\
+0.640     & RwEX_MEM[3]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.379      & 1.206    \\
+0.643     & RwEX_MEM[7]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.381      & 1.211    \\
+0.651     & R0ID_EX[1]              & ulaEX_MEM[1]                     & clock        & clock       & 0.000        & 0.391      & 1.199    \\
+0.663     & RwEX_MEM[2]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.379      & 1.229    \\
+0.686     & mem_d_rtl_0_bypass[17]  & regs[7][0]                       & clock        & clock       & 0.000        & 0.415      & 1.258    \\
+0.688     & PC[3]                   & InIF_ID[5]                       & clock        & clock       & 0.000        & 0.427      & 1.272    \\
+0.689     & PC[3]                   & InIF_ID[2]                       & clock        & clock       & 0.000        & 0.427      & 1.273    \\
+0.692     & PC[3]                   & InIF_ID[10]                      & clock        & clock       & 0.000        & 0.427      & 1.276    \\
+0.710     & InEX_MEM[2]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.397      & 1.294    \\
+0.737     & InMEM_WB[13]            & regs[7][2]                       & clock        & clock       & 0.000        & 0.423      & 1.317    \\
+0.759     & InMEM_WB[12]            & regs[7][2]                       & clock        & clock       & 0.000        & 0.423      & 1.339    \\
+0.792     & mem_d_rtl_0_bypass[25]  & regs[3][4]                       & clock        & clock       & 0.000        & 0.063      & 1.012    \\
+0.798     & InID_EX[14]             & InEX_MEM[14]                     & clock        & clock       & 0.000        & 0.066      & 1.021    \\
+0.799     & PC[1]                   & InIF_ID[9]                       & clock        & clock       & 0.000        & 0.064      & 1.020    \\
+0.803     & InEX_MEM[13]            & InEX_MEM[5]                      & clock        & clock       & 0.000        & 0.400      & 1.360    \\
+0.830     & InIF_ID[2]              & InID_EX[2]                       & clock        & clock       & 0.000        & -0.289     & 0.698    \\
+0.845     & RwEX_MEM[7]             & mem_d_rtl_0_bypass[31]           & clock        & clock       & 0.000        & 0.403      & 1.405    \\
+0.845     & PC[5]                   & PC[6]                            & clock        & clock       & 0.000        & 0.064      & 1.066    \\
+0.851     & PC[6]                   & InIF_ID[9]                       & clock        & clock       & 0.000        & 0.064      & 1.072    \\
+0.851     & PC[0]                   & InIF_ID[0]                       & clock        & clock       & 0.000        & 0.427      & 1.435    \\
+0.858     & PC[1]                   & PC[2]                            & clock        & clock       & 0.000        & 0.064      & 1.079    \\
+0.859     & R0ID_EX[3]~_Duplicate_  & ulaEX_MEM[3]                     & clock        & clock       & 0.000        & 0.391      & 1.407    \\
+0.865     & PC[6]                   & PC[7]                            & clock        & clock       & 0.000        & 0.064      & 1.086    \\
+0.868     & InMEM_WB[6]             & RAM_input_register-Address-PB.   & clock        & clock       & 0.000        & 0.077      & 1.132    \\
+0.868     & mem_d~20                & regs[7][2]                       & clock        & clock       & 0.000        & 0.415      & 1.440    \\
+0.873     & mem_d_rtl_0_bypass[25]  & regs[1][4]                       & clock        & clock       & 0.000        & 0.405      & 1.435    \\
+0.873     & PC[0]                   & PC[1]                            & clock        & clock       & 0.000        & 0.064      & 1.094    \\
+0.875     & RwEX_MEM[6]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.379      & 1.441    \\
+0.875     & PC[0]                   & PC[2]                            & clock        & clock       & 0.000        & 0.064      & 1.096    \\
+0.876     & PC[2]                   & PC[3]                            & clock        & clock       & 0.000        & 0.064      & 1.097    \\
+0.878     & PC[2]                   & PC[4]                            & clock        & clock       & 0.000        & 0.064      & 1.099    \\
+0.883     & InID_EX[15]             & InEX_MEM[15]                     & clock        & clock       & 0.000        & 0.066      & 1.106    \\
+0.887     & PC[4]                   & PC[5]                            & clock        & clock       & 0.000        & 0.064      & 1.108    \\
+0.889     & InEX_MEM[1]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.397      & 1.473    \\
+0.889     & PC[4]                   & PC[6]                            & clock        & clock       & 0.000        & 0.064      & 1.110    \\
+0.895     & InEX_MEM[0]             & InMEM_WB[0]                      & clock        & clock       & 0.000        & 0.396      & 1.448    \\
+0.904     & PC[2]                   & InIF_ID[9]                       & clock        & clock       & 0.000        & 0.064      & 1.125    \\
+0.912     & InEX_MEM[11]            & InMEM_WB[11]                     & clock        & clock       & 0.000        & 0.066      & 1.135    \\
+0.914     & InMEM_WB[13]            & regs[7][0]                       & clock        & clock       & 0.000        & 0.423      & 1.494    \\
+0.917     & InMEM_WB[1]             & RAM_input_register-Address-PB.   & clock        & clock       & 0.000        & 0.077      & 1.181    \\
+0.918     & InEX_MEM[3]             & RAM_input_register-Address-PA.   & clock        & clock       & 0.000        & 0.397      & 1.502    \\
+0.933     & PC[6]                   & InIF_ID[2]                       & clock        & clock       & 0.000        & 0.427      & 1.517    \\
+0.936     & InIF_ID[1]              & InID_EX[1]                       & clock        & clock       & 0.000        & 0.061      & 1.154    \\
+0.937     & PC[6]                   & InIF_ID[0]                       & clock        & clock       & 0.000        & 0.427      & 1.521    \\
+0.938     & PC[6]                   & InIF_ID[5]                       & clock        & clock       & 0.000        & 0.427      & 1.522    \\
+0.940     & R0ID_EX[1]              & ulaEX_MEM[2]                     & clock        & clock       & 0.000        & 0.391      & 1.488    \\
+0.940     & PC[6]                   & InIF_ID[10]                      & clock        & clock       & 0.000        & 0.427      & 1.524    \\
+0.942     & R0ID_EX[1]              & ulaEX_MEM[3]                     & clock        & clock       & 0.000        & 0.391      & 1.490    \\
+0.944     & InEX_MEM[12]            & InEX_MEM[5]                      & clock        & clock       & 0.000        & 0.400      & 1.501    \\
+0.949     & InIF_ID[4]              & InID_EX[4]                       & clock        & clock       & 0.000        & 0.066      & 1.172    \\
+0.949     & RwEX_MEM[6]             & mem_d~24                         & clock        & clock       & 0.000        & 0.046      & 1.152    \\
+0.949     & RwEX_MEM[6]             & mem_d_rtl_0_bypass[29]           & clock        & clock       & 0.000        & 0.046      & 1.152    \\
+0.951     & mem_d~17                & reg[7][2]                        & clock        & clock       & 0.000        & 0.415      & 1.523    \\
+0.952     & PC[7]                   & InIF_ID[9]                       & clock        & clock       & 0.000        & 0.064      & 1.173    \\
+0.955     & PC[5]                   & PC[7]                            & clock        & clock       & 0.000        & 0.064      & 1.176    \\
+0.963     & InEX_MEM[12]            & InMEM_WB[12]                     & clock        & clock       & 0.000        & 0.063      & 1.183    \\
+0.963     & mem_d_rtl_0_bypass[21]  & regs[13][2]                      & clock        & clock       & 0.000        & 0.443      & 1.563    \\
+0.968     & PC[1]                   & PC[3]                            & clock        & clock       & 0.000        & 0.064      & 1.189    \\
+0.968     & PC[3]                   & PC[3]                            & clock        & clock       & 0.000        & 0.064      & 1.189    \\
+0.968     & InMEM_WB[12]            & regs[7][0]                       & clock        & clock       & 0.000        & 0.423      & 1.548    \\
+0.970     & RwEX_MEM[2]             & mem_d~20                         & clock        & clock       & 0.000        & 0.046      & 1.173    \\
+0.970     & PC[1]                   & PC[4]                            & clock        & clock       & 0.000        & 0.064      & 1.191    \\
+0.971     & RwEX_MEM[2]             & mem_d_rtl_0_bypass[21]           & clock        & clock       & 0.000        & 0.046      & 1.174    \\
+0.972     & mem_d_rtl_0_bypass[23]  & regs[5][3]                       & clock        & clock       & 0.000        & -0.261     & 0.868    \\
+0.972     & InEX_MEM[13]            & InEX_MEM[15]                     & clock        & clock       & 0.000        & 0.063      & 1.192    \\
+0.973     & InMEM_WB[3]             & mem_d_rtl_0_bypass[7]            & clock        & clock       & 0.000        & 0.103      & 1.233    \\
+0.973     & PC[3]                   & InIF_ID[0]                       & clock        & clock       & 0.000        & 0.427      & 1.557    \\
+0.974     & InEX_MEM[13]            & InEX_MEM[14]                     & clock        & clock       & 0.000        & 0.063      & 1.194    \\
+0.975     & RwEX_MEM[1]             & mem_d_rtl_0_bypass[19]           & clock        & clock       & 0.000        & 0.048      & 1.180    \\
+0.976     & mem_d_rtl_0_bypass[31]  & regs[3][7]                       & clock        & clock       & 0.000        & -0.263     & 0.870    \\
+0.978     & InEX_MEM[13]            & InMEM_WB[13]                     & clock        & clock       & 0.000        & 0.063      & 1.198    \\
+0.978     & RwEX_MEM[1]             & mem_d~19                         & clock        & clock       & 0.000        & 0.048      & 1.183    \\
+0.979     & RwEX_MEM[0]             & mem_d~18                         & clock        & clock       & 0.000        & 0.046      & 1.182    \\
+0.979     & RwEX_MEM[0]             & mem_d_rtl_0_bypass[17]           & clock        & clock       & 0.000        & 0.046      & 1.182    \\
+
+\hline
+\end{longtable}
