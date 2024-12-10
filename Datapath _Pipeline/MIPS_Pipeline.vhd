@@ -17,7 +17,7 @@ architecture behavior of MIPS_Pipeline is
     type mem_instruc is array (integer range 0 to 255) of std_logic_vector(15 downto 0);
     type banco_regs is array (integer range 0 to 15) of std_logic_vector(7 downto 0);
 
-    signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 256 posições de 16 bits cada.
+    signal mem_i    	        : mem_instruc:= ( --Memória de Instruçoes, com 256 posiçoes de 16 bits cada.
         0  => "0110000000001010", -- BNE R0 != R1 FALSO
         1  => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
         2  => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
@@ -43,35 +43,35 @@ architecture behavior of MIPS_Pipeline is
         22 => "1011011100100001", -- SUI R2 - 1 -> R7 (Valor 3)
         23 => "0111010000000100", -- STA R4 no endereço 4 (Valor 36)
         24 => "0100000000000001", -- JMP para endereço 1
-        others => (others => '1') -- Demais posiçõe zeradas
+        others => (others => '1') -- Demais posiçoe zeradas
     );
 
-    signal mem_d	            : mem_dados := ( --Memória de Dados, com 256 posições de 8 bits cada.
+    signal mem_d	            : mem_dados := ( --Memória de Dados, com 256 posiçoes de 8 bits cada.
         0 => "00000000",
         1 => "00000001", --1
         2 => "00000011", --3
-        others => (others => '0') -- Demais posições zeradas
+        others => (others => '0') -- Demais posiçoes zeradas
     ); 
 
     signal PC	                                    : std_logic_vector(7 downto 0); -- Contador de programa (Program Counter)
     signal regs                                     : banco_regs := (others => (others => '0')); --Banco com 16 Registradores
     signal desvio	                                : std_logic; --Controle para indicar se deve ocorrer um salto (branch).
-    signal multiplicacao, multiplicai               : std_logic_vector(15 downto 0); --Saída da ULA que executa operações aritméticas.
-    signal ulaEX_MEM                                : std_logic_vector(7 downto 0); --Saída da ULA que executa operações aritméticas.
-    signal equal	                                : std_logic; --Sinal para verificar se R0 é igual a R1 (usado em instruções de comparação).
+    signal multiplicacao, multiplicai               : std_logic_vector(15 downto 0); --Saida da ULA que executa operaçoes aritmeticas.
+    signal ulaEX_MEM                                : std_logic_vector(7 downto 0); --Saida da ULA que executa operaçoes aritmeticas.
+    signal equal	                                : std_logic; --Sinal para verificar se R0 e igual a R1 (usado em instruçoes de comparaçao).
     signal R0ID_EX                                  : std_logic_vector(7 downto 0);
     signal R1ID_EX                                  : std_logic_vector(7 downto 0);
     signal RwID_EX, RwEX_MEM, RwMEM_WB              : std_logic_vector(7 downto 0); --registrador a ser escrito
-    signal PCIF_ID, PCID_EX, PCEX_MEM, PCMEM_WB     : std_logic_vector(7 downto 0); -- Contador de programa (Program Counter) que armazena o endereço atual de execução.
-    signal InIF_ID, InID_EX, InEX_MEM, InMEM_WB     : std_logic_vector(15 downto 0); --Instrução Atual
+    signal PCIF_ID, PCID_EX, PCEX_MEM, PCMEM_WB     : std_logic_vector(7 downto 0); -- Contador de programa (Program Counter) que armazena o endereço atual de execuçao.
+    signal InIF_ID, InID_EX, InEX_MEM, InMEM_WB     : std_logic_vector(15 downto 0); --Instruçao Atual
 
 
 begin 
-            --Verifica se R0 e R1 têm valores iguais.
+            --Verifica se R0 e R1 tem valores iguais.
             equal <= '1' when (R0ID_EX = RwEX_MEM) else
                 '0';
 
-            --Indica se um salto deve ocorrer. Fazer Bolhas
+            --Indica se um salto deve ocorrer.
             desvio <= '1' when (InEX_MEM(15 downto 12) = "0110" and equal = '0') or (InEX_MEM(15 downto 12) = "0101" and equal = '1') else
                 '0';
 
@@ -82,7 +82,7 @@ begin
 
     process(reset, clock)
         begin
-            if (reset = '1') then   --Se reset está ativo (1), ele zera tudo
+            if (reset = '1') then   --Se reset esta ativo (1), ele zera tudo
                 regs    <= (others => (others => '0'));
                 PC      <= (others => '0');
                 PCIF_ID <= (others => '0');

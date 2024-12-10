@@ -20,20 +20,24 @@ architecture behavior of MIPS is
     type banco_regs is array (integer range 0 to 15) of std_logic_vector(7 downto 0);
 
     signal mem_i    	        : mem_instruc:= ( --Memória de Instruções, com 256 posições de 16 bits cada.
-        0  => "0110000000010010", -- BNE R0 != R1 
-        --0 => "0101000000010010", -- BEQ R0 != R1 
+        0  => "0110000000001010", -- BNE R0 != R1 FALSO
         1  => "0000000000000001", -- LDA endereço 1 para R0 (Valor 1)
         2  => "0000000100000010", -- LDA endereço 2 para R1 (Valor 3)
-        3  => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4)
-        4  => "0111001000000001", -- STA R2 no endereço 1 (Valor 4)
-        --5 => "0011001100100001", -- MUL R1 * R2 no R3 (Valor 12)
-        5  => "1000001100100011", -- MUI R1 * R2 no R3 (Valor 12)
-        6  => "0110001000010010", -- BEQ R2 - R0 -> R2 (ENDEREÇO 8)
-        7  => "0111001100000010", -- STA R3 no endereço 2 (Valor 12)
-        --8 => "0010001000100000", -- SUB R2 - R0 -> R2 (Valor 3)
-        8  => "1011001000100001", -- SUI R2 - R0 -> R2 (Valor 3)
-        9  => "0111001000000011", -- STA R2 no endereço 3 (Valor 3)
-        10 => "1001010000101111", -- ADDI R2 + IMM -> R4 (Valor 18)
+        3  => "1010100000000111", -- LWI Valor 7 no registrador 8
+        4  => "0101000000011111", -- BEQ R0 = R1 VAI DAR FALSO
+        5  => "0001001000000001", -- ADD R0 + R1 -> R2 => (Valor 4) // hazard de dependência de dados!!
+        6  => "1001001100100101", -- ADDI R2 + 5 -> R3 => (Valor 9)
+        7  => "0011010000100011", -- MUL R3 * R2 no R4 (Valor 36)
+        8  => "1000010100010101", -- MUI R1 * 5 no R5 (Valor 15)
+        9 =>  "0111001000000100", -- STA R2 no endereço 4 (Valor 4)
+        10 => "0110001000010010", -- BNE R2 != R1 SALTO PC+3 => PC 21
+        11 => "0111001100000101", -- STA R3 no endereço 5 (Valor 9)
+        12 => "0011100000100011", -- MUL R3 * R2 no R8 (Valor 36)
+        13 => "1000101000010101", -- MUI R1 * 5 no R10 (Valor 15)
+        14 => "0010011000110010", -- SUB R3 - R2 -> R6 (Valor 5)
+        15 => "1011011100100001", -- SUI R2 - 1 -> R7 (Valor 3)
+        16 => "0111010000000100", -- STA R4 no endereço 4 (Valor 36)
+        17 => "0100000000000001", -- JMP para endereço 1
         others => (others => '1') -- Demais posiçõe zeradas
     );
 

@@ -78,7 +78,7 @@ begin
 
     process(reset, clock)
         begin
-            if (reset = '1') then   --Se reset está ativo (1), ele zera tudo
+            if (reset = '1') then   --Se reset esta ativo (1), ele zera tudo
                 regs    <= (others => (others => '0'));
                 PC      <= (others => '0');
                 PCIF_ID <= (others => '0');
